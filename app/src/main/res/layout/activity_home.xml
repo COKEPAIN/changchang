@@ -19,7 +19,7 @@
 
             <ImageButton
                 android:id="@+id/btn_shop"
-                style="@style/Widget.AppCompat.Button.Borderless"
+                android:style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="0dp"
                 android:layout_height="50dp"
                 android:layout_weight="1"
@@ -35,7 +35,7 @@
 
             <ImageButton
                 android:id="@+id/btn_profile"
-                style="@style/Widget.AppCompat.Button.Borderless"
+                android:style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="0dp"
                 android:layout_height="50dp"
                 android:layout_weight="1"
@@ -51,7 +51,7 @@
 
             <ImageButton
                 android:id="@+id/btn_drawingbook"
-                style="@style/Widget.AppCompat.Button.Borderless"
+                android:style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="0dp"
                 android:layout_height="50dp"
                 android:layout_weight="1"
@@ -128,7 +128,7 @@
 
             <ImageButton
                 android:id="@+id/btn_todo"
-                style="@style/Widget.AppCompat.Button.Borderless"
+                android:style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="0dp"
                 android:layout_height="50dp"
                 android:layout_weight="1"
@@ -144,7 +144,7 @@
 
             <ImageButton
                 android:id="@+id/btn_home"
-                style="@style/Widget.AppCompat.Button.Borderless"
+                android:style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="0dp"
                 android:layout_height="50dp"
                 android:layout_weight="1"
@@ -160,7 +160,7 @@
 
             <ImageButton
                 android:id="@+id/btn_map"
-                style="@style/Widget.AppCompat.Button.Borderless"
+                android:style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="0dp"
                 android:layout_height="50dp"
                 android:layout_weight="1"
