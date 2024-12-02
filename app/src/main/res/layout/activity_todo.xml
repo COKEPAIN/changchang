@@ -4,7 +4,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <!-- 상단 바 -->
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -60,61 +59,80 @@
                 android:scaleType="centerInside" />
 
         </LinearLayout>
+
     </FrameLayout>
 
-    <!-- 중단 화면 ~ 하단 바 까지 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center" >
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:res="@drawable/person"/>
+    </LinearLayout>
+
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/background">
-        
-
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/changchangsaid"
-            android:layout_marginTop="100dp"/>
-
-        <!-- 화면 중단 -->
+        android:layout_height="match_parent" >
 
         <LinearLayout
-            android:layout_width="220dp"
-            android:layout_height="300dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="70dp"
-            android:orientation="vertical">
+            android:layout_width="match_parent"
+            android:layout_height="631dp"
+            android:orientation="vertical"
+            android:padding="5dp">
 
-            <TextView
-                android:layout_width="220dp"
-                android:layout_height="30dp"
-                android:background="#C7E8F1"
-                android:text="G.2"
-                android:textAlignment="center"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-            <ImageView
-                android:layout_width="220dp"
-                android:layout_height="240dp"
-                android:id="@+id/changchang"
-                android:src="@drawable/ic_chang" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
 
-            <TextView
-                android:layout_width="220dp"
-                android:layout_height="30dp"
-                android:background="#73414A"
-                android:text="창창이"
-                android:textAlignment="center"
-                android:textColor="#ffffff"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+
+
+
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/black" />
+
+                    <EditText
+                        android:id="@+id/inputToDo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:gravity="start|top"
+                        android:hint="할 일을 입력하세요."
+                        android:inputType="textMultiLine" />
+
+                    <Button
+                        android:id="@+id/saveButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="저장" />
+
+                    <ListView
+                        android:id="@+id/listView1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+            </ScrollView>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/black" />
+
 
         </LinearLayout>
-
-
-        <!-- 화면 하단 바 -->
 
         <LinearLayout
             android:id="@+id/bottom_navigation_bar"
@@ -170,8 +188,5 @@
                 android:text="Map" />
 
         </LinearLayout>
-
     </FrameLayout>
-
-
 </LinearLayout>
