@@ -33,6 +33,8 @@ public class MainActivity extends AppCompatActivity {
         changchang = (ImageView)findViewById(R.id.changchang);
         changsay = (TextView) findViewById(R.id.changchangsaid);
 
+
+
         map.setOnClickListener(new View.OnClickListener() { // 맵 액티비티 전환
             @Override
             public void onClick(View view) {
