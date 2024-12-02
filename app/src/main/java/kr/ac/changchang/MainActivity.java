@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,12 +15,14 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
     ImageButton home, map, todo, shop, profile, book;
+    ImageView changchang;
     Intent intent;
+    TextView changsay;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_home);
 
         home = (ImageButton) findViewById(R.id.btn_home);
         map = (ImageButton) findViewById(R.id.btn_map);
@@ -26,6 +30,8 @@ public class MainActivity extends AppCompatActivity {
         shop = (ImageButton) findViewById(R.id.btn_shop);
         profile = (ImageButton) findViewById(R.id.btn_profile);
         book = (ImageButton) findViewById(R.id.btn_drawingbook);
+        changchang = (ImageView)findViewById(R.id.changchang);
+        changsay = (TextView) findViewById(R.id.changchangsaid);
 
         map.setOnClickListener(new View.OnClickListener() { // 맵 액티비티 전환
             @Override
@@ -63,6 +69,11 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
+        changchang.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                changsay.setText("test");
+            }
+        });
     }
 }
