@@ -70,7 +70,7 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:res="@drawable/ic_profile"/>
+            android:res="@drawable/person"/>
     </LinearLayout>
 
 
@@ -78,95 +78,18 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" >
 
-        <LinearLayout
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="631dp"
-            android:orientation="vertical"
-            android:padding="5dp">
+            android:layout_height="wrap_content" >
+
+            <ImageButton
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/image01"/>
 
 
-            <ScrollView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+        </ScrollView>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Schedule"
-                        android:textSize="20sp"
-                        android:textStyle="bold" />
-
-                    <ListView
-                        android:id="@+id/assignment"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
-
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:background="@color/black" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Assignment"
-                        android:textSize="20sp"
-                        android:textStyle="bold" />
-
-                    <ListView
-                        android:id="@+id/schedule"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
-
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:background="@color/black" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="To-do"
-                        android:textSize="20sp"
-                        android:textStyle="bold" />
-
-                    <EditText
-                        android:id="@+id/inputToDo"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:ems="10"
-                        android:gravity="start|top"
-                        android:hint="할 일을 입력하세요."
-                        android:inputType="textMultiLine" />
-
-                    <Button
-                        android:id="@+id/saveButton"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="저장" />
-
-                    <ListView
-                        android:id="@+id/listView1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
-
-                </LinearLayout>
-            </ScrollView>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/black" />
-
-
-        </LinearLayout>
 
         <LinearLayout
             android:id="@+id/bottom_navigation_bar"
@@ -175,8 +98,8 @@
             android:layout_gravity="bottom"
             android:background="@color/white"
             android:elevation="4dp"
-            android:gravity="bottom"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:gravity="bottom">
 
             <ImageButton
                 android:id="@+id/btn_todo"
@@ -185,9 +108,9 @@
                 android:layout_height="50dp"
                 android:layout_weight="1"
                 android:drawableTop="@drawable/ic_todo"
-                android:scaleType="centerInside"
                 android:src="@drawable/ic_todo"
-                android:text="TO-DO" />
+                android:text="TO-DO"
+                android:scaleType="centerInside" />
 
             <View
                 android:layout_width="1dp"
@@ -201,9 +124,9 @@
                 android:layout_height="50dp"
                 android:layout_weight="1"
                 android:drawableTop="@drawable/ic_home"
-                android:scaleType="centerInside"
                 android:src="@drawable/ic_home"
-                android:text="Home" />
+                android:text="Home"
+                android:scaleType="centerInside" />
 
             <View
                 android:layout_width="1dp"
@@ -217,9 +140,9 @@
                 android:layout_height="50dp"
                 android:layout_weight="1"
                 android:drawableTop="@drawable/ic_map"
-                android:scaleType="centerInside"
                 android:src="@drawable/ic_map"
-                android:text="Map" />
+                android:text="Map"
+                android:scaleType="centerInside" />
 
         </LinearLayout>
     </FrameLayout>
