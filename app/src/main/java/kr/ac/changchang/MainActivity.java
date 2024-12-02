@@ -13,7 +13,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        EdgeToEdge.enable(this);test
+//        EdgeToEdge.enable(this);testtest
         setContentView(R.layout.activity_home);
     }
 }
