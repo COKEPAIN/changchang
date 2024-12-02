@@ -84,6 +84,7 @@
             android:orientation="vertical"
             android:padding="5dp">
 
+
             <ScrollView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
@@ -93,14 +94,48 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Schedule"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
 
-
+                    <ListView
+                        android:id="@+id/assignment"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
 
 
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
                         android:background="@color/black" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Assignment"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <ListView
+                        android:id="@+id/schedule"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/black" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="To-do"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
 
                     <EditText
                         android:id="@+id/inputToDo"
@@ -124,7 +159,6 @@
 
                 </LinearLayout>
             </ScrollView>
-
 
             <View
                 android:layout_width="match_parent"
