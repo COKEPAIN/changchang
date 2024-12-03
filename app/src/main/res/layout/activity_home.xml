@@ -19,13 +19,12 @@
 
             <ImageButton
                 android:id="@+id/btn_shop"
-                android:style="@style/Widget.AppCompat.Button.Borderless"
+                style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="0dp"
                 android:layout_height="50dp"
                 android:layout_weight="1"
                 android:drawableTop="@drawable/ic_shop"
                 android:src="@drawable/ic_shop"
-                android:text="TO-DO"
                 android:scaleType="centerInside" />
 
             <View
@@ -35,13 +34,12 @@
 
             <ImageButton
                 android:id="@+id/btn_profile"
-                android:style="@style/Widget.AppCompat.Button.Borderless"
+                style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="0dp"
                 android:layout_height="50dp"
                 android:layout_weight="1"
                 android:drawableTop="@drawable/ic_profile"
                 android:src="@drawable/ic_profile"
-                android:text="Home"
                 android:scaleType="centerInside" />
 
             <View
@@ -51,7 +49,7 @@
 
             <ImageButton
                 android:id="@+id/btn_drawingbook"
-                android:style="@style/Widget.AppCompat.Button.Borderless"
+                style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="0dp"
                 android:layout_height="50dp"
                 android:layout_weight="1"
@@ -91,7 +89,7 @@
                 android:layout_width="220dp"
                 android:layout_height="30dp"
                 android:background="#C7E8F1"
-                android:text="G.2"
+                android:text="@string/grade_2"
                 android:textAlignment="center"
                 android:textSize="20sp"
                 android:textStyle="bold" />
@@ -106,7 +104,7 @@
                 android:layout_width="220dp"
                 android:layout_height="30dp"
                 android:background="#73414A"
-                android:text="창창이"
+                android:text="@string/changchang"
                 android:textAlignment="center"
                 android:textColor="#ffffff"
                 android:textSize="20sp"
@@ -125,18 +123,17 @@
             android:background="@color/white"
             android:elevation="4dp"
             android:gravity="bottom"
-            android:orientation="horizontal">
+            android:orientation="horizontal" >
 
             <ImageButton
                 android:id="@+id/btn_todo"
-                android:style="@style/Widget.AppCompat.Button.Borderless"
+                style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="0dp"
                 android:layout_height="50dp"
                 android:layout_weight="1"
                 android:drawableTop="@drawable/ic_todo"
                 android:scaleType="centerInside"
-                android:src="@drawable/ic_todo"
-                android:text="TO-DO" />
+                android:src="@drawable/ic_todo"/>
 
             <View
                 android:layout_width="1dp"
@@ -145,14 +142,13 @@
 
             <ImageButton
                 android:id="@+id/btn_home"
-                android:style="@style/Widget.AppCompat.Button.Borderless"
+                style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="0dp"
                 android:layout_height="50dp"
                 android:layout_weight="1"
                 android:drawableTop="@drawable/ic_home"
                 android:scaleType="centerInside"
-                android:src="@drawable/ic_home"
-                android:text="Home" />
+                android:src="@drawable/ic_home" />
 
             <View
                 android:layout_width="1dp"
@@ -161,14 +157,13 @@
 
             <ImageButton
                 android:id="@+id/btn_map"
-                android:style="@style/Widget.AppCompat.Button.Borderless"
+                style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="0dp"
                 android:layout_height="50dp"
                 android:layout_weight="1"
                 android:drawableTop="@drawable/ic_map"
                 android:scaleType="centerInside"
-                android:src="@drawable/ic_map"
-                android:text="Map" />
+                android:src="@drawable/ic_map" />
 
         </LinearLayout>
 
