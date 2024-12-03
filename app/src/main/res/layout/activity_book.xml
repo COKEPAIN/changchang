@@ -71,7 +71,7 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:res="@drawable/person"/>
+            android:src="@drawable/ic_profile"/>
     </LinearLayout>
 
 
@@ -93,7 +93,6 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="32dp"
-                    android:fontFamily="@font/Workspace"
                     android:text="Item"
                     android:textSize="25sp" />
 
@@ -340,7 +339,7 @@
                                 android:layout_width="100dp"
                                 android:layout_height="100dp"
                                 android:layout_gravity="center"
-                                android:src="@drawable/book8"
+                                android:src="@drawable/book7"
                                 android:scaleType="centerCrop"/>
 
                             <TextView

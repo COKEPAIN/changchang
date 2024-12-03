@@ -19,7 +19,6 @@
 
             <ImageButton
                 android:id="@+id/btn_shop"
-                android:style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="0dp"
                 android:layout_height="50dp"
                 android:layout_weight="1"
@@ -35,7 +34,6 @@
 
             <ImageButton
                 android:id="@+id/btn_profile"
-                android:style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="0dp"
                 android:layout_height="50dp"
                 android:layout_weight="1"
@@ -51,7 +49,6 @@
 
             <ImageButton
                 android:id="@+id/btn_drawingbook"
-                android:style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="0dp"
                 android:layout_height="50dp"
                 android:layout_weight="1"
@@ -129,7 +126,6 @@
 
             <ImageButton
                 android:id="@+id/btn_todo"
-                android:style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="0dp"
                 android:layout_height="50dp"
                 android:layout_weight="1"
@@ -145,7 +141,6 @@
 
             <ImageButton
                 android:id="@+id/btn_home"
-                android:style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="0dp"
                 android:layout_height="50dp"
                 android:layout_weight="1"
@@ -161,7 +156,6 @@
 
             <ImageButton
                 android:id="@+id/btn_map"
-                android:style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="0dp"
                 android:layout_height="50dp"
                 android:layout_weight="1"
