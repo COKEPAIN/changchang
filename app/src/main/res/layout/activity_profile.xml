@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <!-- 상단 바 -->
+    <!-- 상단바 -->
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -58,63 +58,109 @@
                 android:scaleType="centerInside" />
 
         </LinearLayout>
+
     </FrameLayout>
 
-    <!-- 중단 화면 ~ 하단 바 까지 -->
-
+    <!-- 중단 -->
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/background">
-        
-
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/changchangsaid"
-            android:layout_marginTop="100dp"
-            android:gravity="center"/>
-
-        <!-- 화면 중단 -->
+        android:layout_gravity="center">
 
         <LinearLayout
-            android:layout_width="220dp"
-            android:layout_height="300dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="70dp"
-            android:orientation="vertical">
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/IVORY"
+            android:orientation="vertical"
+            android:padding="10dp">
 
             <TextView
-                android:layout_width="220dp"
-                android:layout_height="30dp"
-                android:background="#C7E8F1"
-                android:text="@string/grade_2"
-                android:textAlignment="center"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Profile"
+                android:textSize="25sp"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/Workspace"/>
 
-            <ImageView
-                android:layout_width="220dp"
-                android:layout_height="240dp"
-                android:id="@+id/changchang"
-                android:src="@drawable/ic_chang" />
-
+            <!-- 학년 표시 -->
             <TextView
-                android:layout_width="220dp"
-                android:layout_height="30dp"
-                android:background="#73414A"
-                android:text="@string/changchang"
-                android:textAlignment="center"
-                android:textColor="#ffffff"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+                android:id="@+id/grade"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"/>
+
+            <!-- 체력 표시 -->
+            <TextView
+                android:id="@+id/health"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"/>
+
+            <!-- 지능 표시 -->
+            <TextView
+                android:id="@+id/intel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"/>
+
+            <!-- 스트레스 지수 표시 -->
+            <TextView
+                android:id="@+id/stress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"/>
+
+            <!-- 행복도 표시 -->
+            <TextView
+                android:id="@+id/happiness"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"/>
+
+            <!-- 집중력 표시 -->
+            <TextView
+                android:id="@+id/focus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"/>
+
+            <!-- 시간 관리 능력 표시 -->
+            <TextView
+                android:id="@+id/timeManagement"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"/>
+
+            <!-- 리더십 표시 -->
+            <TextView
+                android:id="@+id/leadership"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"/>
+
+            <!-- 창의성 표시 -->
+            <TextView
+                android:id="@+id/creativity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"/>
+
+            <!-- 사회성 표시 -->
+            <TextView
+                android:id="@+id/socialSkills"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"/>
+
+            <!-- 학업 능력 표시 -->
+            <TextView
+                android:id="@+id/academicAbility"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"/>
+
 
         </LinearLayout>
-
-
-        <!-- 화면 하단 바 -->
-
         <LinearLayout
             android:id="@+id/bottom_navigation_bar"
             android:layout_width="match_parent"
@@ -122,8 +168,8 @@
             android:layout_gravity="bottom"
             android:background="@color/white"
             android:elevation="4dp"
-            android:gravity="bottom"
-            android:orientation="horizontal" >
+            android:orientation="horizontal"
+            android:gravity="bottom">
 
             <ImageButton
                 android:id="@+id/btn_todo"
@@ -132,8 +178,8 @@
                 android:layout_height="50dp"
                 android:layout_weight="1"
                 android:drawableTop="@drawable/ic_todo"
-                android:scaleType="centerInside"
-                android:src="@drawable/ic_todo"/>
+                android:src="@drawable/ic_todo"
+                android:scaleType="centerInside" />
 
             <View
                 android:layout_width="1dp"
@@ -147,8 +193,8 @@
                 android:layout_height="50dp"
                 android:layout_weight="1"
                 android:drawableTop="@drawable/ic_home"
-                android:scaleType="centerInside"
-                android:src="@drawable/ic_home" />
+                android:src="@drawable/ic_home"
+                android:scaleType="centerInside" />
 
             <View
                 android:layout_width="1dp"
@@ -162,12 +208,9 @@
                 android:layout_height="50dp"
                 android:layout_weight="1"
                 android:drawableTop="@drawable/ic_map"
-                android:scaleType="centerInside"
-                android:src="@drawable/ic_map" />
+                android:src="@drawable/ic_map"
+                android:scaleType="centerInside" />
 
         </LinearLayout>
-
     </FrameLayout>
-
-
 </LinearLayout>

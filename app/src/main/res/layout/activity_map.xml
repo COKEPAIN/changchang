@@ -4,7 +4,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <!-- 상단 바 -->
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -58,62 +57,26 @@
                 android:scaleType="centerInside" />
 
         </LinearLayout>
+
     </FrameLayout>
-
-    <!-- 중단 화면 ~ 하단 바 까지 -->
-
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/background">
-        
-
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/changchangsaid"
-            android:layout_marginTop="100dp"
-            android:gravity="center"/>
-
-        <!-- 화면 중단 -->
+        android:layout_height="match_parent" >
 
         <LinearLayout
-            android:layout_width="220dp"
-            android:layout_height="300dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="70dp"
-            android:orientation="vertical">
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/map">
 
-            <TextView
-                android:layout_width="220dp"
-                android:layout_height="30dp"
-                android:background="#C7E8F1"
-                android:text="@string/grade_2"
-                android:textAlignment="center"
-                android:textSize="20sp"
-                android:textStyle="bold" />
-
-            <ImageView
-                android:layout_width="220dp"
-                android:layout_height="240dp"
-                android:id="@+id/changchang"
-                android:src="@drawable/ic_chang" />
-
-            <TextView
-                android:layout_width="220dp"
-                android:layout_height="30dp"
-                android:background="#73414A"
-                android:text="@string/changchang"
-                android:textAlignment="center"
-                android:textColor="#ffffff"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+            <com.google.android.gms.maps.MapView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/mapView" />
 
         </LinearLayout>
 
 
-        <!-- 화면 하단 바 -->
+
 
         <LinearLayout
             android:id="@+id/bottom_navigation_bar"
@@ -122,8 +85,8 @@
             android:layout_gravity="bottom"
             android:background="@color/white"
             android:elevation="4dp"
-            android:gravity="bottom"
-            android:orientation="horizontal" >
+            android:orientation="horizontal"
+            android:gravity="bottom">
 
             <ImageButton
                 android:id="@+id/btn_todo"
@@ -132,8 +95,8 @@
                 android:layout_height="50dp"
                 android:layout_weight="1"
                 android:drawableTop="@drawable/ic_todo"
-                android:scaleType="centerInside"
-                android:src="@drawable/ic_todo"/>
+                android:src="@drawable/ic_todo"
+                android:scaleType="centerInside" />
 
             <View
                 android:layout_width="1dp"
@@ -147,8 +110,8 @@
                 android:layout_height="50dp"
                 android:layout_weight="1"
                 android:drawableTop="@drawable/ic_home"
-                android:scaleType="centerInside"
-                android:src="@drawable/ic_home" />
+                android:src="@drawable/ic_home"
+                android:scaleType="centerInside" />
 
             <View
                 android:layout_width="1dp"
@@ -162,12 +125,9 @@
                 android:layout_height="50dp"
                 android:layout_weight="1"
                 android:drawableTop="@drawable/ic_map"
-                android:scaleType="centerInside"
-                android:src="@drawable/ic_map" />
+                android:src="@drawable/ic_map"
+                android:scaleType="centerInside" />
 
         </LinearLayout>
-
     </FrameLayout>
-
-
 </LinearLayout>

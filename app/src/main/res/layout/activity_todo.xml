@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <!-- 상단 바 -->
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -25,6 +26,7 @@
                 android:layout_weight="1"
                 android:drawableTop="@drawable/ic_shop"
                 android:src="@drawable/ic_shop"
+                android:text="TO-DO"
                 android:scaleType="centerInside" />
 
             <View
@@ -40,6 +42,7 @@
                 android:layout_weight="1"
                 android:drawableTop="@drawable/ic_profile"
                 android:src="@drawable/ic_profile"
+                android:text="Home"
                 android:scaleType="centerInside" />
 
             <View
@@ -58,62 +61,114 @@
                 android:scaleType="centerInside" />
 
         </LinearLayout>
+
     </FrameLayout>
 
-    <!-- 중단 화면 ~ 하단 바 까지 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center" >
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scr="@drawable/ic_profile"/>
+    </LinearLayout>
+
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/background">
-        
-
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/changchangsaid"
-            android:layout_marginTop="100dp"
-            android:gravity="center"/>
-
-        <!-- 화면 중단 -->
+        android:layout_height="match_parent" >
 
         <LinearLayout
-            android:layout_width="220dp"
-            android:layout_height="300dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="70dp"
-            android:orientation="vertical">
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="5dp"
+            android:background="#FAFAF9">
 
-            <TextView
-                android:layout_width="220dp"
-                android:layout_height="30dp"
-                android:background="#C7E8F1"
-                android:text="@string/grade_2"
-                android:textAlignment="center"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
 
-            <ImageView
-                android:layout_width="220dp"
-                android:layout_height="240dp"
-                android:id="@+id/changchang"
-                android:src="@drawable/ic_chang" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
 
-            <TextView
-                android:layout_width="220dp"
-                android:layout_height="30dp"
-                android:background="#73414A"
-                android:text="@string/changchang"
-                android:textAlignment="center"
-                android:textColor="#ffffff"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Schedule"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <ListView
+                        android:id="@+id/assignment"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/black" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Assignment"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <ListView
+                        android:id="@+id/schedule"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/black" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="To-do"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <ListView
+                        android:id="@+id/listView1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+            </ScrollView>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="bottom|end"
+                android:layout_marginBottom="50dp"
+                android:text="+"
+                android:background="@drawable/shape_for_cicle_btn"
+                android:textSize="25sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/black" />
+
 
         </LinearLayout>
-
-
-        <!-- 화면 하단 바 -->
 
         <LinearLayout
             android:id="@+id/bottom_navigation_bar"
@@ -166,8 +221,5 @@
                 android:src="@drawable/ic_map" />
 
         </LinearLayout>
-
     </FrameLayout>
-
-
 </LinearLayout>
