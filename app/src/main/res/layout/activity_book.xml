@@ -86,15 +86,15 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/cool"
+                android:background="@color/cija"
                 android:orientation="vertical"
-                android:padding="10dp">
+                android:padding="5dp">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="32dp"
                     android:fontFamily="@font/Workspace"
-                    android:text="SHOP"
+                    android:text="Item"
                     android:textSize="25sp" />
 
                 <GridLayout

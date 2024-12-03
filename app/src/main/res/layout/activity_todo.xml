@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -18,7 +20,7 @@
 
             <ImageButton
                 android:id="@+id/btn_shop"
-                style="@style/Widget.AppCompat.Button.Borderless"
+                android:style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="0dp"
                 android:layout_height="50dp"
                 android:layout_weight="1"
@@ -34,7 +36,7 @@
 
             <ImageButton
                 android:id="@+id/btn_profile"
-                style="@style/Widget.AppCompat.Button.Borderless"
+                android:style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="0dp"
                 android:layout_height="50dp"
                 android:layout_weight="1"
@@ -50,7 +52,7 @@
 
             <ImageButton
                 android:id="@+id/btn_drawingbook"
-                style="@style/Widget.AppCompat.Button.Borderless"
+                android:style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="0dp"
                 android:layout_height="50dp"
                 android:layout_weight="1"
@@ -80,14 +82,15 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="631dp"
+            android:layout_height="match_parent"
             android:orientation="vertical"
-            android:padding="5dp">
-
+            android:padding="5dp"
+            android:background="#FAFAF9">
 
             <ScrollView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="0dp"
+                android:layout_weight="1">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -137,28 +140,27 @@
                         android:textSize="20sp"
                         android:textStyle="bold" />
 
-                    <EditText
-                        android:id="@+id/inputToDo"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:ems="10"
-                        android:gravity="start|top"
-                        android:hint="할 일을 입력하세요."
-                        android:inputType="textMultiLine" />
-
-                    <Button
-                        android:id="@+id/saveButton"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="저장" />
-
                     <ListView
                         android:id="@+id/listView1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" />
 
                 </LinearLayout>
+
             </ScrollView>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="bottom|end"
+                android:layout_marginBottom="50dp"
+                android:text="+"
+                android:background="@drawable/shape_for_cicle_btn"
+                android:textSize="25sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <View
                 android:layout_width="match_parent"
@@ -176,7 +178,7 @@
             android:background="@color/white"
             android:elevation="4dp"
             android:gravity="bottom"
-            android:orientation="horizontal">
+            android:orientation="horizontal" >
 
             <ImageButton
                 android:id="@+id/btn_todo"
