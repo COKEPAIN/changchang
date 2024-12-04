@@ -87,77 +87,48 @@
                 android:id="@+id/grade"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"/>
+                android:layout_marginBottom="10dp"
+                android:text="학년 : "/>
 
-            <!-- 체력 표시 -->
+            <!-- 학번 표시 -->
             <TextView
-                android:id="@+id/health"
+                android:id="@+id/studno"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"/>
-
-            <!-- 지능 표시 -->
-            <TextView
-                android:id="@+id/intel"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"/>
+                android:layout_marginBottom="10dp"
+                android:text="학번 :"/>
 
             <!-- 스트레스 지수 표시 -->
             <TextView
                 android:id="@+id/stress"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"/>
+                android:layout_marginBottom="10dp"
+                android:text="스트레스 :"/>
 
             <!-- 행복도 표시 -->
             <TextView
                 android:id="@+id/happiness"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"/>
+                android:layout_marginBottom="10dp"
+                android:text="행복도 : "/>
 
             <!-- 집중력 표시 -->
             <TextView
                 android:id="@+id/focus"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"/>
-
-            <!-- 시간 관리 능력 표시 -->
-            <TextView
-                android:id="@+id/timeManagement"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"/>
-
-            <!-- 리더십 표시 -->
-            <TextView
-                android:id="@+id/leadership"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"/>
-
-            <!-- 창의성 표시 -->
-            <TextView
-                android:id="@+id/creativity"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"/>
-
-            <!-- 사회성 표시 -->
-            <TextView
-                android:id="@+id/socialSkills"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"/>
+                android:layout_marginBottom="10dp"
+                android:text="집중력 : "/>
 
             <!-- 학업 능력 표시 -->
             <TextView
                 android:id="@+id/academicAbility"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"/>
+                android:layout_marginBottom="10dp"
+                android:text="학업 능력 : "/>
 
 
         </LinearLayout>
