@@ -35,7 +35,7 @@ public class Todo extends AppCompatActivity {
     Todo_checkListAdapter adapter_todo; // todo 리스트에 대한 어뎁터
     Todo_textview_threeAdapter adapter_textview; // textview에대한 어뎁터
     Todo_textview_threeAdapter adapter_schedule; // schedule에대한 어뎁터
-    private ApiService apiService; // api 설정하기 위한 변수
+    ApiService apiService = RetrofitClient.getRetrofitInstance().create(ApiService.class);; // api 설정하기 위한 변수
     List<Todo_textview_three> task; //남은 과제 리스트
 
 
@@ -89,8 +89,10 @@ public class Todo extends AppCompatActivity {
         });
         // 기본 버튼 구현 끝
 
+        // 유저 정보 들고오기
+        getUserStat(20213114);
 
-        
+
         // 남은 수업 시작 시간
         List<Todo_textview_three> today_class = new ArrayList<>();
         today_class.add(new Todo_textview_three("고자구", "10:30", "12:00"));
@@ -111,11 +113,11 @@ public class Todo extends AppCompatActivity {
         // 과제 리스트 시작
         ListView listView_textview = findViewById(R.id.schedule); // 적절한 ListView ID 사용
         task = new ArrayList<>();
-//        task.add(new Todo_textview_three("Item 1A", "Item 1B", "Item 1C"));
+//        task.add(new Todo_textview_three("Item 1A", "Item 1B", "Item 1C")); // 예제
 //        task.add(new Todo_textview_three("Item 2A", "Item 2B", "Item 2C"));
 //        task.add(new Todo_textview_three("Item 3A", "Item 3B", "Item 3C"));
         // API로 과제 들고오기
-        fetchAssignments(20213114, () -> {
+        getUserTask(20213114, () -> {
             if (!task.isEmpty()) {
                 Log.e("task TEST", "내용 확인: " + task.get(0).getText1());
                 adapter_textview = new Todo_textview_threeAdapter(this, task);
@@ -196,8 +198,8 @@ public class Todo extends AppCompatActivity {
 
         builder.create().show();
     }
-    private void fetchAssignments(int studentId, Runnable onComplete) {
-        ApiService apiService = RetrofitClient.getRetrofitInstance().create(ApiService.class);
+    private void getUserTask(int studentId, Runnable onComplete) {
+
         Call<List<Todo_assignmentRespones>> call = apiService.getAssignments(studentId);
 
         call.enqueue(new Callback<List<Todo_assignmentRespones>>() {
@@ -234,4 +236,29 @@ public class Todo extends AppCompatActivity {
             }
         });
     }
+    private void getUserStat(int userId) { // 유저 정보 들고오기
+        Call<UserStatusResponse> call = apiService.getUserStatus(userId);
+
+        call.enqueue(new Callback<UserStatusResponse>() {
+            @Override
+            public void onResponse(Call<UserStatusResponse> call, Response<UserStatusResponse> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    UserStatusResponse userData = response.body();
+                    Log.d("API_SUCCESS", "User Name: " + userData.getUsername());
+                    Toast.makeText(Todo.this, "User: " + userData.getUsername(), Toast.LENGTH_SHORT).show();
+                } else {
+                    Log.e("API_ERROR", "Response failed");
+                    Toast.makeText(Todo.this, "Failed to load user data", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<UserStatusResponse> call, Throwable t) {
+                Log.e("API_FAILURE", "Error: " + t.getMessage());
+                Toast.makeText(Todo.this, "API 호출 실패", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+
 }
