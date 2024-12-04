@@ -1,6 +1,8 @@
 package kr.ac.changchang;
 
 import android.app.AlertDialog;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
@@ -125,34 +127,30 @@ public class Map extends AppCompatActivity implements OnMapReadyCallback {
         // ListView 설정
         ListView listView = dialogView.findViewById(R.id.homePageListview);
         homePageList = new ArrayList<>();
-        homePageList.add(new Map_homePageListview("공지", "test1"));
-        homePageList.add(new Map_homePageListview("공지", "test2"));
-        homePageList.add(new Map_homePageListview("공지", "test3"));
-        homePageList.add(new Map_homePageListview("공지", "test1"));
-        homePageList.add(new Map_homePageListview("공지", "test2"));
-        homePageList.add(new Map_homePageListview("공지", "test3"));
-        homePageList.add(new Map_homePageListview("공지", "test1"));
-        homePageList.add(new Map_homePageListview("공지", "test2"));
-        homePageList.add(new Map_homePageListview("공지", "test3"));
-        homePageList.add(new Map_homePageListview("공지", "test1"));
-        homePageList.add(new Map_homePageListview("공지", "test2"));
-        homePageList.add(new Map_homePageListview("공지", "test3"));
+        homePageList.add(new Map_homePageListview("공지", "제목1", "https://www.naver.com"));
+        homePageList.add(new Map_homePageListview("공지", "제목2", "https://www.daum.net"));
+        homePageList.add(new Map_homePageListview("공지", "제목3", "https://www.youtube.com"));
 
+        // 어댑터 연결
         Map_homePageListviewAdapter adapter = new Map_homePageListviewAdapter(this, homePageList);
         listView.setAdapter(adapter);
 
+        // 항목 클릭 이벤트 처리
         listView.setOnItemClickListener((parent, view, position, id) -> {
-            // 클릭된 항목의 데이터 가져오기
             Map_homePageListview clickedItem = homePageList.get(position);
 
-            // 원하는 작업 수행 (예: Toast 메시지 표시)
-            Toast.makeText(this, "클릭한 항목: " + clickedItem.getText1() + ", " + clickedItem.getText2(), Toast.LENGTH_SHORT).show();
+            // 해당 항목의 링크 열기
+            Intent intent = new Intent(Intent.ACTION_VIEW);
+            intent.setData(Uri.parse(clickedItem.getLink()));
+            try {
+                intent.setData(Uri.parse(clickedItem.getLink()));
+                startActivity(intent);
+            } catch (Exception e) {
+                Toast.makeText(this, "URL을 열 수 없습니다.", Toast.LENGTH_SHORT).show();
+                e.printStackTrace();
+            }
 
-            // 클릭 이벤트에 따라 다른 작업 수행
-//            if ("test1".equals(clickedItem.getText2())) {
-//                // 특정 항목에 대해 별도 작업
-//                performSpecificAction(clickedItem);
-//            }
+
         });
 
 

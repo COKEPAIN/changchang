@@ -1,27 +1,37 @@
 package kr.ac.changchang;
 
 public class Map_homePageListview {
-    private String text1;
-    private String text2;
+    private String type; // 공지 유형
+    private String title; // 제목
+    private String link; // 링크
 
-    public Map_homePageListview(String text1, String text2) {
-        this.text1 = text1;
-        this.text2 = text2;
+    public Map_homePageListview(String type, String title, String link) {
+        this.type = type;
+        this.title = title;
+        this.link = link;
     }
 
-    public String getText1() {
-        return text1;
+    public String getType() {
+        return type;
     }
 
-    public void setText1(String text1) {
-        this.text1 = text1;
+    public void setType(String type) {
+        this.type = type;
     }
 
-    public String getText2() {
-        return text2;
+    public String getTitle() {
+        return title;
     }
 
-    public void setText2(String text2) {
-        this.text2 = text2;
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getLink() {
+        return link;
+    }
+
+    public void setLink(String link) {
+        this.link = link;
     }
 }

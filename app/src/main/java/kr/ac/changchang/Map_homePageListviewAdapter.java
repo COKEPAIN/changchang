@@ -49,8 +49,8 @@ public class Map_homePageListviewAdapter extends BaseAdapter {
         TextView textView1 = convertView.findViewById(R.id.text1);
         TextView textView2 = convertView.findViewById(R.id.text2);
 
-        textView1.setText(currentItem.getText1());
-        textView2.setText(currentItem.getText2());
+        textView1.setText(currentItem.getTitle());
+        textView2.setText(currentItem.getTitle());
 
         return convertView;
     }
