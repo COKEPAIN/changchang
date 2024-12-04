@@ -80,7 +80,7 @@
                 android:text="Profile"
                 android:textSize="25sp"
                 android:layout_marginBottom="10dp"
-                android:fontFamily="@font/Workspace"/>
+                android:fontFamily="@font/workspace"/>
 
             <!-- 학년 표시 -->
             <TextView
@@ -88,7 +88,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
-                android:text="학년 : "/>
+                android:text="Grade : "
+                android:textSize="20sp"
+                android:textStyle="bold"/>
 
             <!-- 학번 표시 -->
             <TextView
@@ -96,7 +98,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
-                android:text="학번 :"/>
+                android:text="Student no :"
+                android:textSize="20sp"
+                android:textStyle="bold"/>
 
             <!-- 스트레스 지수 표시 -->
             <TextView
@@ -104,7 +108,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
-                android:text="스트레스 :"/>
+                android:text="Stress :"
+                android:textSize="20sp"
+                android:textStyle="bold"/>
 
             <!-- 행복도 표시 -->
             <TextView
@@ -112,7 +118,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
-                android:text="행복도 : "/>
+                android:text="Happiness : "
+                android:textSize="20sp"
+                android:textStyle="bold"/>
 
             <!-- 집중력 표시 -->
             <TextView
@@ -120,7 +128,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
-                android:text="집중력 : "/>
+                android:text="Focus : "
+                android:textSize="20sp"
+                android:textStyle="bold"/>
 
             <!-- 학업 능력 표시 -->
             <TextView
@@ -128,7 +138,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
-                android:text="학업 능력 : "/>
+                android:text="Academic Ability : "
+                android:textSize="20sp"
+                android:textStyle="bold"/>
 
 
         </LinearLayout>
