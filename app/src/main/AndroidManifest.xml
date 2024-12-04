@@ -35,6 +35,9 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyAteRPRaCKeZiq-2Lvl8MzxiPkFkyEFU7o"/>
 
+        <!-- 승민 - 배경음악 -->
+        <service android:name=".MusicService" />
+
     </application>
 
 </manifest>
