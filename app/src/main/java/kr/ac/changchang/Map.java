@@ -53,35 +53,87 @@ public class Map extends AppCompatActivity implements OnMapReadyCallback {
 
         // 창원의 위치
         LatLng basePosition = new LatLng(35.242466, 128.696543);
-//        LatLng computSeience = new LatLng(35.241387,128.695727); // 컴공
-//        LatLng legitimacy = new LatLng(35.242497,128.697048); // 정통
-//        LatLng computSeience = new LatLng(35.241120,128.698693); // 건축학과
-//        LatLng computSeience = new LatLng(35.241367,128.697756); // 산시공
-//        LatLng computSeience = new LatLng(35.241120,128.698693); // 건축학과
-//        LatLng computSeience = new LatLng(35.243345,128.697028); // 스모빌
-//        LatLng computSeience = new LatLng(35.241715,128.699112); // 환경에너지공학
-//        LatLng computSeience = new LatLng(35.241018,128.698978); // 건시공
-//        LatLng computSeience = new LatLng(35.242439,128.697258); // 건축공학
-//        LatLng computSeience = new LatLng(35.243482,128.697223); // 조선해양공학
+        LatLng computSeience = new LatLng(35.241387,128.695727); // 컴공
+        LatLng legitimacy = new LatLng(35.242497,128.697048); // 정통
+        LatLng department = new LatLng(35.241120,128.698693); // 건축학과
+        LatLng industrialSystem = new LatLng(35.241367,128.697756); // 산시공
+        LatLng chemicalEngineering = new LatLng(35.241120,128.698693); // 화학공학
+        LatLng smartOtion = new LatLng(35.243345,128.697028); // 스모빌
+        LatLng environmentalEnergy  = new LatLng(35.241715,128.699112); // 환경에너지공학
+        LatLng architecturalSystem = new LatLng(35.241018,128.698978); // 건시공
+        LatLng departmentEngineering = new LatLng(35.242439,128.697258); // 건축공학
+        LatLng shipbuilding = new LatLng(35.243482,128.697223); // 조선해양공학
         // 카메라를 창원으로 이동
         googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(basePosition, 17));
         // 줌 레벨은 1~21 사이. 15는 적당히 가까운 거리
 
-        Marker marker = googleMap.addMarker(new MarkerOptions()
+        // 마커 정보를 저장할 리스트
+        List<Marker> markers = new ArrayList<>();
+
+        // 마커 추가
+        markers.add(googleMap.addMarker(new MarkerOptions()
                 .position(basePosition)
                 .title("창원")
-                .snippet("여기는 창원입니다.")
-        );
+                .snippet("여기는 창원입니다.")));
 
-        googleMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
-            @Override
-            public boolean onMarkerClick(@NonNull Marker clickedMarker) {
-                // 클릭한 마커가 특정 마커인지 확인
-                if (clickedMarker.equals(marker)) {
+        markers.add(googleMap.addMarker(new MarkerOptions()
+                .position(computSeience)
+                .title("컴퓨터 공학")
+                .snippet("컴퓨터 공학 위치입니다.")));
+
+        markers.add(googleMap.addMarker(new MarkerOptions()
+                .position(legitimacy)
+                .title("정보통신")
+                .snippet("정보통신 위치입니다.")));
+
+        markers.add(googleMap.addMarker(new MarkerOptions()
+                .position(department)
+                .title("건축학과")
+                .snippet("건축학과 위치입니다.")));
+
+        markers.add(googleMap.addMarker(new MarkerOptions()
+                .position(industrialSystem)
+                .title("산업시스템공학")
+                .snippet("산업시스템공학 위치입니다.")));
+
+        markers.add(googleMap.addMarker(new MarkerOptions()
+                .position(chemicalEngineering)
+                .title("화학공학")
+                .snippet("화학공학 위치입니다.")));
+
+        markers.add(googleMap.addMarker(new MarkerOptions()
+                .position(smartOtion)
+                .title("스마트 모빌리티")
+                .snippet("스마트 모빌리티 위치입니다.")));
+
+        markers.add(googleMap.addMarker(new MarkerOptions()
+                .position(environmentalEnergy)
+                .title("환경에너지공학")
+                .snippet("환경에너지공학 위치입니다.")));
+
+        markers.add(googleMap.addMarker(new MarkerOptions()
+                .position(architecturalSystem)
+                .title("건축시스템")
+                .snippet("건축시스템 위치입니다.")));
+
+        markers.add(googleMap.addMarker(new MarkerOptions()
+                .position(departmentEngineering)
+                .title("건축공학")
+                .snippet("건축공학 위치입니다.")));
+
+        markers.add(googleMap.addMarker(new MarkerOptions()
+                .position(shipbuilding)
+                .title("조선해양공학")
+                .snippet("조선해양공학 위치입니다.")));
+
+        googleMap.setOnMarkerClickListener(clickedMarker -> {
+            for (Marker marker : markers) {
+                if (marker.equals(clickedMarker)) {
                     showAlertDialog();
+                    break;
                 }
-                return false; // false: 기본 동작(정보창 표시)도 실행
             }
+            return false; // 기본 동작(정보창 표시)도 실행
         });
     }
     @Override
