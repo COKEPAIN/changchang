@@ -1,6 +1,13 @@
 package kr.ac.changchang;
 
+import android.app.AlertDialog;
 import android.os.Bundle;
+import android.view.Gravity;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -12,11 +19,16 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapsInitializer;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Map extends AppCompatActivity implements OnMapReadyCallback {
     private MapView mapView;
     private GoogleMap googleMap;
+    List<Map_homePageListview> homePageList;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -53,7 +65,22 @@ public class Map extends AppCompatActivity implements OnMapReadyCallback {
         googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(basePosition, 17));
         // 줌 레벨은 1~21 사이. 15는 적당히 가까운 거리
 
-        googleMap.addMarker(new MarkerOptions().position(basePosition).title("기본위치").snippet("기본위치 입니다"));
+        Marker marker = googleMap.addMarker(new MarkerOptions()
+                .position(basePosition)
+                .title("창원")
+                .snippet("여기는 창원입니다.")
+        );
+
+        googleMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+            @Override
+            public boolean onMarkerClick(@NonNull Marker clickedMarker) {
+                // 클릭한 마커가 특정 마커인지 확인
+                if (clickedMarker.equals(marker)) {
+                    showAlertDialog();
+                }
+                return false; // false: 기본 동작(정보창 표시)도 실행
+            }
+        });
     }
     @Override
     protected void onResume() {
@@ -85,5 +112,68 @@ public class Map extends AppCompatActivity implements OnMapReadyCallback {
         if (mapView != null) {
             mapView.onLowMemory();
         }
+    }
+    private void showAlertDialog() {
+        // AlertDialog의 빌더 생성
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("공지사항");
+
+        // Dialog에 사용자 정의 레이아웃 설정
+        View dialogView = getLayoutInflater().inflate(R.layout.dialog_map_listview, null);
+        builder.setView(dialogView);
+
+        // ListView 설정
+        ListView listView = dialogView.findViewById(R.id.homePageListview);
+        homePageList = new ArrayList<>();
+        homePageList.add(new Map_homePageListview("공지", "test1"));
+        homePageList.add(new Map_homePageListview("공지", "test2"));
+        homePageList.add(new Map_homePageListview("공지", "test3"));
+        homePageList.add(new Map_homePageListview("공지", "test1"));
+        homePageList.add(new Map_homePageListview("공지", "test2"));
+        homePageList.add(new Map_homePageListview("공지", "test3"));
+        homePageList.add(new Map_homePageListview("공지", "test1"));
+        homePageList.add(new Map_homePageListview("공지", "test2"));
+        homePageList.add(new Map_homePageListview("공지", "test3"));
+        homePageList.add(new Map_homePageListview("공지", "test1"));
+        homePageList.add(new Map_homePageListview("공지", "test2"));
+        homePageList.add(new Map_homePageListview("공지", "test3"));
+
+        Map_homePageListviewAdapter adapter = new Map_homePageListviewAdapter(this, homePageList);
+        listView.setAdapter(adapter);
+
+        listView.setOnItemClickListener((parent, view, position, id) -> {
+            // 클릭된 항목의 데이터 가져오기
+            Map_homePageListview clickedItem = homePageList.get(position);
+
+            // 원하는 작업 수행 (예: Toast 메시지 표시)
+            Toast.makeText(this, "클릭한 항목: " + clickedItem.getText1() + ", " + clickedItem.getText2(), Toast.LENGTH_SHORT).show();
+
+            // 클릭 이벤트에 따라 다른 작업 수행
+//            if ("test1".equals(clickedItem.getText2())) {
+//                // 특정 항목에 대해 별도 작업
+//                performSpecificAction(clickedItem);
+//            }
+        });
+
+
+        // AlertDialog 생성
+        AlertDialog dialog = builder.create();
+
+        // Dialog 창의 크기와 위치를 조정
+        dialog.setOnShowListener(dialogInterface -> {
+            // Dialog의 Window 가져오기
+            if (dialog.getWindow() != null) {
+                dialog.getWindow().setLayout(
+                        ViewGroup.LayoutParams.MATCH_PARENT, // 너비를 화면 전체로 설정
+                        (int) (getResources().getDisplayMetrics().heightPixels * 0.8)   // 높이를 화면 전체로 설정
+                );
+
+                // Window의 속성 설정
+                dialog.getWindow().setGravity(Gravity.BOTTOM); // 창을 아래로 붙이기
+            }
+        });
+        dialog.getWindow().setGravity(Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL);
+
+        dialog.show();
     }
 }
