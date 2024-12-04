@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <!-- 80은 투명도를 나타내며, 00~FF 사이의 값을 사용 -->
+    <solid android:color="#80FFFFFF"/>
+    <!-- 모서리를 둥글게 처리 -->
+    <corners android:radius="8dp"/>
+</shape>
