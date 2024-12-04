@@ -1,22 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
     android:padding="16dp">
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/inputToDo"
-        android:hint="할 일을 입력하세요" />
+<!--    관호 수정함-->
 
-    <Button
+    <EditText
+        android:id="@+id/input1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/enterToDo"
-        android:text="제출"
-        android:textSize="20sp"
-        android:textStyle="bold" />
+        android:hint="첫 번째 입력"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/input2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="두 번째 입력"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/input3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="세 번째 입력"
+        android:inputType="text" />
 
 </LinearLayout>
