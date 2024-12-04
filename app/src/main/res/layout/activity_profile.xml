@@ -76,74 +76,231 @@
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:text="Profile"
                 android:textSize="25sp"
-                android:layout_marginBottom="10dp"
-                android:fontFamily="@font/workspace"/>
+                android:fontFamily="@font/Workspace"/>
 
-            <!-- 학년 표시 -->
-            <TextView
-                android:id="@+id/grade"
+            <!-- 아이콘 및 변경 불가 기본 사항 -->
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:text="Grade : "
-                android:textSize="20sp"
-                android:textStyle="bold"/>
+                android:orientation="horizontal" >
 
-            <!-- 학번 표시 -->
-            <TextView
-                android:id="@+id/studno"
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:id="@+id/profile_image"
+                    android:src="@drawable/ic_drawbook"
+                    android:layout_gravity="end"
+                    android:background="@color/cool"
+                    android:layout_marginRight="10dp"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/point"
+                        android:text="Point : "
+                        android:textSize="20sp"
+                        android:layout_marginBottom="5dp"
+                        android:textStyle="bold"/>
+
+                    <!-- 학년 표시 -->
+                    <TextView
+                        android:id="@+id/grade"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        android:text="Grade : "
+                        android:textSize="20sp"
+                        android:textStyle="bold"/>
+
+                    <!-- 학번 표시 -->
+                    <TextView
+                        android:id="@+id/studno"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:text="Student no :"
+                        android:textSize="20sp"
+                        android:textStyle="bold"/>
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- 상태 바 -->
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:text="Student no :"
-                android:textSize="20sp"
-                android:textStyle="bold"/>
+                android:background="@color/white"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp">
 
-            <!-- 스트레스 지수 표시 -->
-            <TextView
-                android:id="@+id/stress"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:text="Stress :"
-                android:textSize="20sp"
-                android:textStyle="bold"/>
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
 
-            <!-- 행복도 표시 -->
-            <TextView
-                android:id="@+id/happiness"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:text="Happiness : "
-                android:textSize="20sp"
-                android:textStyle="bold"/>
+                        <!-- 스트레스 지수 표시 -->
+                        <TextView
+                            android:id="@+id/stress"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="10dp"
+                            android:text="Stress"
+                            android:textSize="20sp"
+                            android:textStyle="bold"/>
 
-            <!-- 집중력 표시 -->
-            <TextView
-                android:id="@+id/focus"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:text="Focus : "
-                android:textSize="20sp"
-                android:textStyle="bold"/>
+                        <!-- 행복도 표시 -->
+                        <TextView
+                            android:id="@+id/happiness"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="10dp"
+                            android:text="Happiness"
+                            android:textSize="20sp"
+                            android:textStyle="bold"/>
 
-            <!-- 학업 능력 표시 -->
-            <TextView
-                android:id="@+id/academicAbility"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:text="Academic Ability : "
-                android:textSize="20sp"
-                android:textStyle="bold"/>
+                        <!-- 집중력 표시 -->
+                        <TextView
+                            android:id="@+id/focus"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="10dp"
+                            android:text="Focus"
+                            android:textSize="20sp"
+                            android:textStyle="bold"/>
+
+                        <!-- 학업 능력 표시 -->
+                        <TextView
+                            android:id="@+id/academicAbility"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="10dp"
+                            android:text="Academic Ability"
+                            android:textSize="20sp"
+                            android:textStyle="bold"/>
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="150dp"
+                        android:background="@color/black"/>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <!-- 상태 바 섹션 -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/white"
+                            android:orientation="vertical">
+
+                            <!-- 스트레스 지수 -->
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:layout_marginBottom="20dp"
+                                android:layout_marginTop="5dp">
+
+                                <FrameLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="20dp"
+                                    android:background="#E0E0E0">
+
+                                    <View
+                                        android:id="@+id/stress_bar"
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:background="#FF5722"/>
+
+                                </FrameLayout>
+                            </LinearLayout>
+
+                            <!-- 행복도 -->
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:layout_marginBottom="20dp">
+
+                                <FrameLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="20dp"
+                                    android:background="#E0E0E0">
+
+                                    <View
+                                        android:id="@+id/happiness_bar"
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:background="#4CAF50"/>
+                                </FrameLayout>
+                            </LinearLayout>
+
+                            <!-- 집중력 -->
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:layout_marginBottom="18dp">
+
+                                <FrameLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="20dp"
+                                    android:background="#E0E0E0">
+
+                                    <View
+                                        android:id="@+id/focus_bar"
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:background="#2196F3"/>
+                                </FrameLayout>
+                            </LinearLayout>
+
+                            <!-- 학업 능력 -->
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:layout_marginBottom="8dp">
 
 
+                                <FrameLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="20dp"
+                                    android:background="#E0E0E0">
+
+                                    <View
+                                        android:id="@+id/academic_bar"
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:background="#9C27B0"/>
+                                </FrameLayout>
+                            </LinearLayout>
+                        </LinearLayout>
+
+                    </LinearLayout>
+            </LinearLayout>
         </LinearLayout>
+
+
+
+
+
+
+        <!-- 하단 바 -->
         <LinearLayout
             android:id="@+id/bottom_navigation_bar"
             android:layout_width="match_parent"
@@ -193,7 +350,6 @@
                 android:drawableTop="@drawable/ic_map"
                 android:src="@drawable/ic_map"
                 android:scaleType="centerInside" />
-
         </LinearLayout>
     </FrameLayout>
 </LinearLayout>
