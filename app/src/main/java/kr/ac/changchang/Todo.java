@@ -14,6 +14,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -35,6 +36,7 @@ public class Todo extends AppCompatActivity {
     Todo_textview_threeAdapter adapter_textview; // textview에대한 어뎁터
     Todo_textview_threeAdapter adapter_schedule; // schedule에대한 어뎁터
     private ApiService apiService; // api 설정하기 위한 변수
+    List<Todo_textview_three> task; //남은 과제 리스트
 
 
     @Override
@@ -87,12 +89,6 @@ public class Todo extends AppCompatActivity {
         });
         // 기본 버튼 구현 끝
 
-        // Retrofit 인스턴스 생성
-        apiService = RetrofitClient.getRetrofitInstance().create(ApiService.class);
-
-        // API 호출
-        fetchPosts();
-
 
         
         // 남은 수업 시작 시간
@@ -113,17 +109,25 @@ public class Todo extends AppCompatActivity {
         // 수업시간 끝
 
         // 과제 리스트 시작
-        List<Todo_textview_three> task = new ArrayList<>();
-        task.add(new Todo_textview_three("Item 1A", "Item 1B", "Item 1C"));
-        task.add(new Todo_textview_three("Item 2A", "Item 2B", "Item 2C"));
-        task.add(new Todo_textview_three("Item 3A", "Item 3B", "Item 3C"));
-
         ListView listView_textview = findViewById(R.id.schedule); // 적절한 ListView ID 사용
-        adapter_textview = new Todo_textview_threeAdapter(this, task);
-        listView_textview.setAdapter(adapter_textview);
-        adapter_textview.notifyDataSetChanged();
-        params = listView_textview.getLayoutParams(); //높이를 동적으로 할당
-        params.height = (int) (44*task.size()* getResources().getDisplayMetrics().density); // dp를 px로 변환
+        task = new ArrayList<>();
+//        task.add(new Todo_textview_three("Item 1A", "Item 1B", "Item 1C"));
+//        task.add(new Todo_textview_three("Item 2A", "Item 2B", "Item 2C"));
+//        task.add(new Todo_textview_three("Item 3A", "Item 3B", "Item 3C"));
+        // API로 과제 들고오기
+        fetchAssignments(20213114, () -> {
+            if (!task.isEmpty()) {
+                Log.e("task TEST", "내용 확인: " + task.get(0).getText1());
+                adapter_textview = new Todo_textview_threeAdapter(this, task);
+
+                listView_textview.setAdapter(adapter_textview);
+
+                adapter_textview.notifyDataSetChanged();
+                params = listView_textview.getLayoutParams(); //높이를 동적으로 할당
+                params.height = (int) (44*task.size()* getResources().getDisplayMetrics().density); // dp를 px로 변환
+            }
+        });
+
         // 과제 리스트 끝
 
         //todo list
@@ -192,24 +196,41 @@ public class Todo extends AppCompatActivity {
 
         builder.create().show();
     }
-    private void fetchPosts() {
-        Call<List<Post>> call = apiService.getPosts();
-        call.enqueue(new Callback<List<Post>>() {
+    private void fetchAssignments(int studentId, Runnable onComplete) {
+        ApiService apiService = RetrofitClient.getRetrofitInstance().create(ApiService.class);
+        Call<List<Todo_assignmentRespones>> call = apiService.getAssignments(studentId);
+
+        call.enqueue(new Callback<List<Todo_assignmentRespones>>() {
             @Override
-            public void onResponse(Call<List<Post>> call, Response<List<Post>> response) {
+            public void onResponse(Call<List<Todo_assignmentRespones>> call, Response<List<Todo_assignmentRespones>> response) {
                 if (response.isSuccessful() && response.body() != null) {
-                    List<Post> posts = response.body();
-                    for (Post post : posts) {
-                        Log.d("MainActivity", "Post: " + post.getTitle());
+                    task.clear();
+                    String submitStat;
+                    for (Todo_assignmentRespones assignment : response.body()) {
+                        submitStat = "";
+                        if(assignment.getSubmitted()){
+                            submitStat = "제출 됨";
+                        }
+                        task.add(new Todo_textview_three(
+                                assignment.getSubjectName(),
+                                assignment.getDeadline(),
+                                submitStat // 과제 ID 추가
+                        ));
+                    }
+
+                    if (onComplete != null) {
+                        onComplete.run();
                     }
                 } else {
-                    Log.e("MainActivity", "Request failed");
+                    Log.e("API", "Failed to get assignments");
+                    Toast.makeText(Todo.this, "과제 데이터를 가져오지 못했습니다.", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
-            public void onFailure(Call<List<Post>> call, Throwable t) {
-                Log.e("MainActivity", "Error: " + t.getMessage());
+            public void onFailure(Call<List<Todo_assignmentRespones>> call, Throwable t) {
+                Log.e("API", "Error: " + t.getMessage());
+                Toast.makeText(Todo.this, "서버 연결에 실패했습니다.", Toast.LENGTH_SHORT).show();
             }
         });
     }

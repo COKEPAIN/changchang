@@ -30,6 +30,11 @@
         <activity android:name=".Map"/>
         <activity android:name=".Profile"/>
         <activity android:name=".Book"/>
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyAteRPRaCKeZiq-2Lvl8MzxiPkFkyEFU7o"/>
+
     </application>
 
 </manifest>

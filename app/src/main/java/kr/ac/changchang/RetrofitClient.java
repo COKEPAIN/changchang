@@ -9,8 +9,8 @@ public class RetrofitClient {
     public static Retrofit getRetrofitInstance() {
         if (retrofit == null) {
             retrofit = new Retrofit.Builder()
-                    .baseUrl("https://jsonplaceholder.typicode.com/") // Base URL
-                    .addConverterFactory(GsonConverterFactory.create()) // JSON 변환
+                    .baseUrl("https://jubilant-disco-pwvjvpj66x6frxj-8080.app.github.dev/")
+                    .addConverterFactory(GsonConverterFactory.create())
                     .build();
         }
         return retrofit;
