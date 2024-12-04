@@ -74,7 +74,7 @@
                 android:layout_height="match_parent"
                 android:background="@color/cija"
                 android:orientation="vertical"
-                android:padding="5dp">
+                android:padding="10dp">
 
                 <TextView
                     android:layout_width="match_parent"
