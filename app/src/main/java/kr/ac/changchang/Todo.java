@@ -2,6 +2,7 @@ package kr.ac.changchang;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Adapter;
@@ -21,6 +22,10 @@ import androidx.appcompat.widget.AppCompatButton;
 import java.util.ArrayList;
 import java.util.List;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class Todo extends AppCompatActivity {
     ImageButton home, map, todo, shop, profile, book;
     Intent intent;
@@ -29,6 +34,8 @@ public class Todo extends AppCompatActivity {
     Todo_checkListAdapter adapter_todo; // todo 리스트에 대한 어뎁터
     Todo_textview_threeAdapter adapter_textview; // textview에대한 어뎁터
     Todo_textview_threeAdapter adapter_schedule; // schedule에대한 어뎁터
+    private ApiService apiService; // api 설정하기 위한 변수
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -79,8 +86,14 @@ public class Todo extends AppCompatActivity {
             }
         });
         // 기본 버튼 구현 끝
-        
-        
+
+        // Retrofit 인스턴스 생성
+        apiService = RetrofitClient.getRetrofitInstance().create(ApiService.class);
+
+        // API 호출
+        fetchPosts();
+
+
         
         // 남은 수업 시작 시간
         List<Todo_textview_three> today_class = new ArrayList<>();
@@ -178,5 +191,26 @@ public class Todo extends AppCompatActivity {
         builder.setNegativeButton("취소", (dialogInterface, i) -> dialogInterface.dismiss());
 
         builder.create().show();
+    }
+    private void fetchPosts() {
+        Call<List<Post>> call = apiService.getPosts();
+        call.enqueue(new Callback<List<Post>>() {
+            @Override
+            public void onResponse(Call<List<Post>> call, Response<List<Post>> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    List<Post> posts = response.body();
+                    for (Post post : posts) {
+                        Log.d("MainActivity", "Post: " + post.getTitle());
+                    }
+                } else {
+                    Log.e("MainActivity", "Request failed");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Post>> call, Throwable t) {
+                Log.e("MainActivity", "Error: " + t.getMessage());
+            }
+        });
     }
 }
