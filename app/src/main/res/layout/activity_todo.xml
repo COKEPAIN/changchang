@@ -64,16 +64,16 @@
 
     </FrameLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_gravity="center" >
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scr="@drawable/ic_profile"/>
-    </LinearLayout>
+<!--    <LinearLayout 없어져야한다고 하지않았나?-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="horizontal"-->
+<!--        android:layout_gravity="center" >-->
+<!--        <ImageView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:src="@drawable/ic_profile"/>-->
+<!--    </LinearLayout>-->
 
 
     <FrameLayout
@@ -107,7 +107,9 @@
                     <ListView
                         android:id="@+id/assignment"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:divider="@android:color/darker_gray"
+                        android:dividerHeight="1dp" />
 
 
                     <View
@@ -143,7 +145,9 @@
                     <ListView
                         android:id="@+id/listView1"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:divider="@android:color/darker_gray"
+                        android:dividerHeight="1dp" />
 
                 </LinearLayout>
 
@@ -154,9 +158,10 @@
                 android:layout_height="50dp"
                 android:layout_gravity="bottom|end"
                 android:layout_marginBottom="50dp"
-                android:text="+"
                 android:background="@drawable/shape_for_cicle_btn"
+                android:text="+"
                 android:textSize="25sp"
+                android:id="@+id/inputTodo"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
