@@ -12,8 +12,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class Login extends AppCompatActivity {
-    // 배경음악
-    private MediaPlayer mediaPlayer = new MediaPlayer();
+
 
     EditText id, pwd;
     Button login;
@@ -24,15 +23,6 @@ public class Login extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        
-        // 배경음악
-        try {
-            mediaPlayer = MediaPlayer.create(this,R.raw.backsong);
-            mediaPlayer.setLooping(true);
-            mediaPlayer.start();
-        } catch (Exception e){
-            e.printStackTrace();
-        }
 
         id = findViewById(R.id.login_Username);
         pwd = findViewById(R.id.login_Password);
@@ -49,10 +39,5 @@ public class Login extends AppCompatActivity {
                 }
             }
         });
-    }
-
-    @Override
-    protected void onDestroy(){
-        
     }
 }

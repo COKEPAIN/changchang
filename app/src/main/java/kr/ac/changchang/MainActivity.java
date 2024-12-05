@@ -1,6 +1,7 @@
 package kr.ac.changchang;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
@@ -16,8 +17,8 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
 
-    // 승민 - 배경음악
-    private long backBtnTime = 0;  // 클래스 상단에 멤버 변수로 선언
+    // 배경음악
+    private MediaPlayer mediaPlayer = new MediaPlayer();
 
     ImageButton home, map, todo, shop, profile, book;
     ImageView changchang;
@@ -30,7 +31,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
         // 승민
-        startService(new Intent(getApplicationContext(), MusicService.class));
+        try {
+            mediaPlayer = MediaPlayer.create(this,R.raw.backsong);
+            mediaPlayer.setLooping(true);
+            mediaPlayer.start();
+        } catch (Exception e){
+            e.printStackTrace();
+        }
 
         home = (ImageButton) findViewById(R.id.btn_home);
         map = (ImageButton) findViewById(R.id.btn_map);
@@ -93,36 +100,5 @@ public class MainActivity extends AppCompatActivity {
                 changsay.setText("test");
             }
         });
-    }
-
-    // 승민 - 배경음악
-    @Override
-    protected void onDestroy() {
-        stopService(new Intent(getApplicationContext(), MusicService.class));
-        super.onDestroy();
-    }
-
-    // 승민 - 홈버튼으로 앱 나가면 음악 꺼지게
-    @Override
-    protected void onUserLeaveHint() {
-        super.onUserLeaveHint();
-
-        stopService(new Intent(getApplicationContext(), MusicService.class));
-    }
-
-    // 승민 - 뒤로가기 두 번 이벤트
-    @Override
-    public void onBackPressed(){
-        long curTime = System.currentTimeMillis();
-        long gapTime = curTime - backBtnTime;
-
-        if ( 0 <= gapTime && 2000 >= gapTime) {
-            super.onBackPressed();
-
-        } else {
-            backBtnTime = curTime;
-            Toast.makeText(this, "한 번더 누르면 종료됩니다.", Toast.LENGTH_SHORT).show();
-        }
-        stopService(new Intent(getApplicationContext(), MusicService.class));
     }
 }
