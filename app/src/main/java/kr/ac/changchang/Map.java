@@ -8,6 +8,7 @@ import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -28,6 +29,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Map extends AppCompatActivity implements OnMapReadyCallback {
+    ImageButton home, map, todo, shop, profile, book;
+    Intent intent;
     private MapView mapView;
     private GoogleMap googleMap;
     List<Map_homePageListview> homePageList;
@@ -36,6 +39,49 @@ public class Map extends AppCompatActivity implements OnMapReadyCallback {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map);
+
+        home = (ImageButton) findViewById(R.id.btn_home);
+        map = (ImageButton) findViewById(R.id.btn_map);
+        todo = (ImageButton) findViewById(R.id.btn_todo);
+        shop = (ImageButton) findViewById(R.id.btn_shop);
+        profile = (ImageButton) findViewById(R.id.btn_profile);
+        book = (ImageButton) findViewById(R.id.btn_drawingbook);
+
+        profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                intent = new Intent(getApplicationContext(),Profile.class);
+                startActivity(intent);
+            }
+        });
+        shop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                intent = new Intent(getApplicationContext(),Shop.class);
+                startActivity(intent);
+            }
+        });
+        todo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                intent = new Intent(getApplicationContext(),Todo.class);
+                startActivity(intent);
+            }
+        });
+        book.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                intent = new Intent(getApplicationContext(),Book.class);
+                startActivity(intent);
+            }
+        });
+        home.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                intent = new Intent(getApplicationContext(),MainActivity.class);
+                startActivity(intent);
+            }
+        });
 
         mapView = findViewById(R.id.mapView);
 
