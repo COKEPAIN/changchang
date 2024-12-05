@@ -85,7 +85,7 @@
                 android:layout_width="220dp"
                 android:layout_height="240dp"
                 android:id="@+id/changchang"
-                android:src="@drawable/changchang7" />
+                android:src="@drawable/changchang1" />
 
             <TextView
                 android:layout_width="220dp"
