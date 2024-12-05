@@ -4,78 +4,50 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="#FAFAF9">
 
-    <FrameLayout
+    <LinearLayout
+        android:id="@+id/top_navigation_bar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="60dp"
+        android:layout_gravity="top"
+        android:background="@drawable/rounded_nav"
+        android:orientation="horizontal"
+        android:layout_margin="12dp"
+        android:elevation="4dp"
+        android:padding="8dp">
 
-        <LinearLayout
-            android:id="@+id/top_navigation_bar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="top"
-            android:background="@color/white"
-            android:orientation="horizontal" >
+        <ImageButton
+            android:id="@+id/btn_shop"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:src="@drawable/ic_shop"
+            android:scaleType="centerInside"
+            android:background="?attr/selectableItemBackgroundBorderless"/>
 
-            <ImageButton
-                android:id="@+id/btn_shop"
-                style="@style/Widget.AppCompat.Button.Borderless"
-                android:layout_width="0dp"
-                android:layout_height="50dp"
-                android:layout_weight="1"
-                android:drawableTop="@drawable/ic_shop"
-                android:src="@drawable/ic_shop"
-                android:text="TO-DO"
-                android:scaleType="centerInside" />
+        <ImageButton
+            android:id="@+id/btn_profile"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:src="@drawable/ic_profile"
+            android:scaleType="centerInside"
+            android:background="?attr/selectableItemBackgroundBorderless"/>
 
-            <View
-                android:layout_width="1dp"
-                android:layout_height="match_parent"
-                android:background="@color/black" />
-
-            <ImageButton
-                android:id="@+id/btn_profile"
-                style="@style/Widget.AppCompat.Button.Borderless"
-                android:layout_width="0dp"
-                android:layout_height="50dp"
-                android:layout_weight="1"
-                android:drawableTop="@drawable/ic_profile"
-                android:src="@drawable/ic_profile"
-                android:text="Home"
-                android:scaleType="centerInside" />
-
-            <View
-                android:layout_width="1dp"
-                android:layout_height="match_parent"
-                android:background="@color/black" />
-
-            <ImageButton
-                android:id="@+id/btn_drawingbook"
-                style="@style/Widget.AppCompat.Button.Borderless"
-                android:layout_width="0dp"
-                android:layout_height="50dp"
-                android:layout_weight="1"
-                android:drawableTop="@drawable/ic_drawbook"
-                android:src="@drawable/ic_drawbook"
-                android:scaleType="centerInside" />
-
-        </LinearLayout>
-
-    </FrameLayout>
-
-<!--    <LinearLayout 없어져야한다고 하지않았나?-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:orientation="horizontal"-->
-<!--        android:layout_gravity="center" >-->
-<!--        <ImageView-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent"-->
-<!--            android:src="@drawable/ic_profile"/>-->
-<!--    </LinearLayout>-->
-
-
+        <ImageButton
+            android:id="@+id/btn_drawingbook"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:src="@drawable/ic_drawbook"
+            android:scaleType="centerInside"
+            android:background="?attr/selectableItemBackgroundBorderless"/>
+    </LinearLayout>
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent" >
@@ -85,7 +57,7 @@
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:padding="5dp"
-            android:background="#FAFAF9">
+            >
 
             <ScrollView
                 android:layout_width="match_parent"
@@ -157,7 +129,7 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_gravity="bottom|end"
-                android:layout_marginBottom="50dp"
+                android:layout_marginBottom="70dp"
                 android:background="@drawable/shape_for_cicle_btn"
                 android:text="+"
                 android:textSize="25sp"
@@ -175,56 +147,48 @@
 
         </LinearLayout>
 
+        <!-- 화면 하단 바 -->
+
         <LinearLayout
             android:id="@+id/bottom_navigation_bar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="60dp"
             android:layout_gravity="bottom"
-            android:background="@color/white"
+            android:layout_margin="12dp"
+            android:background="@drawable/rounded_nav"
             android:elevation="4dp"
-            android:gravity="bottom"
-            android:orientation="horizontal" >
+            android:orientation="horizontal"
+            android:padding="8dp">
 
             <ImageButton
                 android:id="@+id/btn_todo"
-                style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="0dp"
-                android:layout_height="50dp"
-                android:layout_weight="1"
-                android:drawableTop="@drawable/ic_todo"
-                android:scaleType="centerInside"
-                android:src="@drawable/ic_todo"/>
-
-            <View
-                android:layout_width="1dp"
                 android:layout_height="match_parent"
-                android:background="@color/black" />
+                android:layout_weight="1"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:src="@drawable/ic_todo"
+                android:scaleType="centerInside"
+                android:background="?attr/selectableItemBackgroundBorderless"/>
 
             <ImageButton
                 android:id="@+id/btn_home"
-                style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="0dp"
-                android:layout_height="50dp"
-                android:layout_weight="1"
-                android:drawableTop="@drawable/ic_home"
-                android:scaleType="centerInside"
-                android:src="@drawable/ic_home" />
-
-            <View
-                android:layout_width="1dp"
                 android:layout_height="match_parent"
-                android:background="@color/black" />
+                android:layout_weight="1"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:src="@drawable/ic_home"
+                android:scaleType="centerInside"
+                android:background="?attr/selectableItemBackgroundBorderless"/>
 
             <ImageButton
                 android:id="@+id/btn_map"
-                style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="0dp"
-                android:layout_height="50dp"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:drawableTop="@drawable/ic_map"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:src="@drawable/ic_map"
                 android:scaleType="centerInside"
-                android:src="@drawable/ic_map" />
-
+                android:background="?attr/selectableItemBackgroundBorderless"/>
         </LinearLayout>
     </FrameLayout>
 </LinearLayout>
