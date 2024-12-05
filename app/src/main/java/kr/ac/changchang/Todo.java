@@ -1,6 +1,7 @@
 package kr.ac.changchang;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -41,7 +42,8 @@ public class Todo extends AppCompatActivity {
     Todo_textview_threeAdapter adapter_schedule; // schedule에대한 어뎁터
     ApiService apiService = RetrofitClient.getRetrofitInstance().create(ApiService.class);; // api 설정하기 위한 변수
     List<Todo_textview_three> task; //남은 과제 리스트
-
+    String today;
+    String userId;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -95,13 +97,13 @@ public class Todo extends AppCompatActivity {
 
         // 유저 정보 들고오기
         getUserStat(20213114);
-
+        getUserSubject();
 
         // 남은 수업 시작 시간
         List<Todo_textview_three> today_class = new ArrayList<>();
-        today_class.add(new Todo_textview_three("고자구", "10:30", "12:00"));
-        today_class.add(new Todo_textview_three("논리설계", "13:00", "14:00"));
-        today_class.add(new Todo_textview_three("집가고싶다", "15:00", "16:00"));
+//        today_class.add(new Todo_textview_three("고자구", "10:30", "12:00"));
+//        today_class.add(new Todo_textview_three("논리설계", "13:00", "14:00"));
+//        today_class.add(new Todo_textview_three("집가고싶다", "15:00", "16:00"));
 
         // ListView와 어댑터 설정
         ListView listView_schedule = findViewById(R.id.assignment); // 적절한 ListView ID 사용
@@ -263,7 +265,7 @@ public class Todo extends AppCompatActivity {
         });
     }
     private void getUserSubject() {
-        Call<List<Subject>> call = apiService.getSubjects();
+        Call<List<Subject>> call = apiService.getSubjects(20213114);
 
         Map<Integer, String> day = new HashMap<>();
         day.put(1,"Monday");
@@ -271,24 +273,32 @@ public class Todo extends AppCompatActivity {
         day.put(3,"Thursday");
         day.put(4,"Wednesday");
         day.put(5,"Friday");
-        String today = "";
 
 
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            today = day.get(LocalDate.now().getDayOfWeek().getValue());
+        }
         call.enqueue(new Callback<List<Subject>>() {
             @Override
             public void onResponse(Call<List<Subject>> call, Response<List<Subject>> response) {
                 if (response.isSuccessful() && response.body() != null) {
                     // 데이터를 기존 리스트에 추가
                     List<Todo_textview_three> today_class = new ArrayList<>();
-                    for (Subject subject : response.body()) {
-
-                        Log.e("날짜가 어떻게 들어가는지 확인", "Error: " + subject.getSchedules().get(0).getDayOfWeek()); // 테스트용
+                    for (Subject subject : response.body()) { // 테스트용
                         for (Schedule schedule : subject.getSchedules()) {
-                            today_class.add(new Todo_textview_three(
-                                    subject.getSubjectName(),
-                                    schedule.getStartTime(),
-                                    schedule.getEndTime()
-                            ));
+                            Log.d("DEBUG_TODO", "Subject: " + subject.getSubjectName() +
+                                    ", Day: " + schedule.getDayOfWeek() +
+                                    ", Start: " + schedule.getStartTime() +
+                                    ", End: " + schedule.getEndTime());
+                            if(schedule.getDayOfWeek().equals(today)){
+
+                                today_class.add(new Todo_textview_three(
+                                        subject.getSubjectName(),
+                                        schedule.getStartTime(),
+                                        schedule.getEndTime()
+                                ));
+                            }
+
                         }
                     }
 
