@@ -70,10 +70,10 @@ public class Todo extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        todo.setOnClickListener(new View.OnClickListener() { // todo list 액티비티 전환
+        home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                intent = new Intent(getApplicationContext(),Todo.class);
+                intent = new Intent(getApplicationContext(),MainActivity.class);
                 startActivity(intent);
             }
         });

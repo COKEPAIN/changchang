@@ -6,6 +6,9 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET"/>
 
+    <!-- 배경음악 -->
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -15,6 +18,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Changchang"
+
         tools:targetApi="31">
         <activity
             android:name=".MainActivity"
@@ -34,6 +38,10 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyAteRPRaCKeZiq-2Lvl8MzxiPkFkyEFU7o"/>
+
+        <!-- 승민 - 배경음악 -->
+        <service android:name=".MusicService" />
+
 
     </application>
 

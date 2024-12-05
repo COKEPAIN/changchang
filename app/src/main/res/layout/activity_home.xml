@@ -2,70 +2,57 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@drawable/background">
 
     <!-- 상단 바 -->
-    <FrameLayout
+    <LinearLayout
+        android:id="@+id/top_navigation_bar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="60dp"
+        android:layout_gravity="top"
+        android:background="@drawable/rounded_nav"
+        android:orientation="horizontal"
+        android:layout_margin="12dp"
+        android:elevation="4dp"
+        android:padding="8dp">
 
-        <LinearLayout
-            android:id="@+id/top_navigation_bar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="top"
-            android:background="@color/white"
-            android:orientation="horizontal" >
+        <ImageButton
+            android:id="@+id/btn_shop"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:src="@drawable/ic_shop"
+            android:scaleType="centerInside"
+            android:background="?attr/selectableItemBackgroundBorderless"/>
 
-            <ImageButton
-                android:id="@+id/btn_shop"
-                android:layout_width="0dp"
-                android:layout_height="50dp"
-                android:layout_weight="1"
-                style="@style/Widget.AppCompat.Button.Borderless"
-                android:drawableTop="@drawable/ic_shop"
-                android:src="@drawable/ic_shop"
-                android:scaleType="centerInside" />
+        <ImageButton
+            android:id="@+id/btn_profile"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:src="@drawable/ic_profile"
+            android:scaleType="centerInside"
+            android:background="?attr/selectableItemBackgroundBorderless"/>
 
-            <View
-                android:layout_width="1dp"
-                android:layout_height="match_parent"
-                android:background="@color/black" />
-
-            <ImageButton
-                android:id="@+id/btn_profile"
-                android:layout_width="0dp"
-                android:layout_height="50dp"
-                android:layout_weight="1"
-                android:drawableTop="@drawable/ic_profile"
-                style="@style/Widget.AppCompat.Button.Borderless"
-                android:src="@drawable/ic_profile"
-                android:scaleType="centerInside" />
-
-            <View
-                android:layout_width="1dp"
-                android:layout_height="match_parent"
-                android:background="@color/black" />
-
-            <ImageButton
-                android:id="@+id/btn_drawingbook"
-                android:layout_width="0dp"
-                style="@style/Widget.AppCompat.Button.Borderless"
-                android:layout_height="50dp"
-                android:layout_weight="1"
-                android:drawableTop="@drawable/ic_drawbook"
-                android:src="@drawable/ic_drawbook"
-                android:scaleType="centerInside" />
-
-        </LinearLayout>
-    </FrameLayout>
+        <ImageButton
+            android:id="@+id/btn_drawingbook"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:src="@drawable/ic_drawbook"
+            android:scaleType="centerInside"
+            android:background="?attr/selectableItemBackgroundBorderless"/>
+    </LinearLayout>
 
     <!-- 중단 화면 ~ 하단 바 까지 -->
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/background">
+        android:layout_height="match_parent">
         
 
 
@@ -88,9 +75,9 @@
             <TextView
                 android:layout_width="220dp"
                 android:layout_height="30dp"
-                android:background="#C7E8F1"
                 android:text="@string/grade_2"
                 android:textAlignment="center"
+                android:background="@drawable/rounded_nav2"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
@@ -98,7 +85,7 @@
                 android:layout_width="220dp"
                 android:layout_height="240dp"
                 android:id="@+id/changchang"
-                android:src="@drawable/ic_chang" />
+                android:src="@drawable/changchang1" />
 
             <TextView
                 android:layout_width="220dp"
@@ -118,53 +105,43 @@
         <LinearLayout
             android:id="@+id/bottom_navigation_bar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="60dp"
             android:layout_gravity="bottom"
-            android:background="@color/white"
+            android:layout_margin="12dp"
+            android:background="@drawable/rounded_nav"
             android:elevation="4dp"
-            android:gravity="bottom"
-            android:orientation="horizontal" >
+            android:orientation="horizontal"
+            android:padding="8dp">
 
             <ImageButton
                 android:id="@+id/btn_todo"
                 android:layout_width="0dp"
-                android:layout_height="50dp"
-                style="@style/Widget.AppCompat.Button.Borderless"
-                android:layout_weight="1"
-                android:drawableTop="@drawable/ic_todo"
-                android:scaleType="centerInside"
-                android:src="@drawable/ic_todo"/>
-
-            <View
-                android:layout_width="1dp"
                 android:layout_height="match_parent"
-                android:background="@color/black" />
+                android:layout_weight="1"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:src="@drawable/ic_todo"
+                android:scaleType="centerInside"
+                android:background="?attr/selectableItemBackgroundBorderless"/>
 
             <ImageButton
                 android:id="@+id/btn_home"
                 android:layout_width="0dp"
-                android:layout_height="50dp"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
                 style="@style/Widget.AppCompat.Button.Borderless"
-                android:drawableTop="@drawable/ic_home"
+                android:src="@drawable/ic_home"
                 android:scaleType="centerInside"
-                android:src="@drawable/ic_home" />
-
-            <View
-                android:layout_width="1dp"
-                android:layout_height="match_parent"
-                android:background="@color/black" />
+                android:background="?attr/selectableItemBackgroundBorderless"/>
 
             <ImageButton
                 android:id="@+id/btn_map"
                 android:layout_width="0dp"
-                android:layout_height="50dp"
-                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:drawableTop="@drawable/ic_map"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:src="@drawable/ic_map"
                 android:scaleType="centerInside"
-                android:src="@drawable/ic_map" />
-
+                android:background="?attr/selectableItemBackgroundBorderless"/>
         </LinearLayout>
 
     </FrameLayout>
