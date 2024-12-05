@@ -9,8 +9,8 @@ public class RetrofitClient {
     public static Retrofit getRetrofitInstance() {
         if (retrofit == null) {
             retrofit = new Retrofit.Builder()
-//                    .baseUrl("https://jubilant-disco-pwvjvpj66x6frxj-8080.app.github.dev/") // 성민이꺼
-                    .baseUrl("https://crispy-enigma-5r77r65q65qcvgwr-8080.app.github.dev/") // 영필이꺼
+                    .baseUrl("https://jubilant-disco-pwvjvpj66x6frxj-8080.app.github.dev/") // 성민이꺼
+//                    .baseUrl("https://crispy-enigma-5r77r65q65qcvgwr-8080.app.github.dev/") // 영필이꺼
                     .addConverterFactory(GsonConverterFactory.create())
                     .build();
         }

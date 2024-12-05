@@ -21,7 +21,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.List;
+import java.time.DayOfWeek;
+import java.time.LocalDate;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -119,7 +123,6 @@ public class Todo extends AppCompatActivity {
         // API로 과제 들고오기
         getUserTask(20213114, () -> {
             if (!task.isEmpty()) {
-                Log.e("task TEST", "내용 확인: " + task.get(0).getText1());
                 adapter_textview = new Todo_textview_threeAdapter(this, task);
 
                 listView_textview.setAdapter(adapter_textview);
@@ -256,6 +259,58 @@ public class Todo extends AppCompatActivity {
             public void onFailure(Call<UserStatusResponse> call, Throwable t) {
                 Log.e("API_FAILURE", "Error: " + t.getMessage());
                 Toast.makeText(Todo.this, "API 호출 실패", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+    private void getUserSubject() {
+        Call<List<Subject>> call = apiService.getSubjects();
+
+        Map<Integer, String> day = new HashMap<>();
+        day.put(1,"Monday");
+        day.put(2,"Tuesday");
+        day.put(3,"Thursday");
+        day.put(4,"Wednesday");
+        day.put(5,"Friday");
+        String today = "";
+
+
+        call.enqueue(new Callback<List<Subject>>() {
+            @Override
+            public void onResponse(Call<List<Subject>> call, Response<List<Subject>> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    // 데이터를 기존 리스트에 추가
+                    List<Todo_textview_three> today_class = new ArrayList<>();
+                    for (Subject subject : response.body()) {
+
+                        Log.e("날짜가 어떻게 들어가는지 확인", "Error: " + subject.getSchedules().get(0).getDayOfWeek()); // 테스트용
+                        for (Schedule schedule : subject.getSchedules()) {
+                            today_class.add(new Todo_textview_three(
+                                    subject.getSubjectName(),
+                                    schedule.getStartTime(),
+                                    schedule.getEndTime()
+                            ));
+                        }
+                    }
+
+                    // 어댑터에 변경사항 알림
+                    adapter_schedule = new Todo_textview_threeAdapter(Todo.this, today_class);
+                    ListView listView_schedule = findViewById(R.id.assignment);
+                    listView_schedule.setAdapter(adapter_schedule);
+                    adapter_schedule.notifyDataSetChanged();
+
+                    // 높이 조정
+                    ViewGroup.LayoutParams params = listView_schedule.getLayoutParams();
+                    params.height = (int) (44 * today_class.size() * getResources().getDisplayMetrics().density);
+                    listView_schedule.setLayoutParams(params);
+                } else {
+                    Toast.makeText(Todo.this, "수업 데이터를 가져오지 못했습니다.", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Subject>> call, Throwable t) {
+                Toast.makeText(Todo.this, "서버 요청 실패: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                t.printStackTrace();
             }
         });
     }
