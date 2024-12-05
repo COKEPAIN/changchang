@@ -65,8 +65,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:text="Profile"
-                android:textSize="25sp"
-                android:fontFamily="@font/workspace"/>
+                android:textSize="25sp"/>
 
             <!-- 아이콘 및 변경 불가 기본 사항 -->
             <LinearLayout
