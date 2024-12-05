@@ -10,7 +10,7 @@ import androidx.annotation.Nullable;
 
 // 승민 - 배경음악 처리
 public class MusicService extends Service {
-    MediaPlayer mediaPlayer;
+    private MediaPlayer mediaPlayer;
 
     @Nullable
     @Override
@@ -24,7 +24,7 @@ public class MusicService extends Service {
         super.onCreate();
 
 
-        mediaPlayer = MediaPlayer.create(this, R.raw.late);
+        mediaPlayer = MediaPlayer.create(this, R.raw.backsong);
         mediaPlayer.setLooping(true);
     }
 
