@@ -29,4 +29,11 @@ public interface ApiService {
     // 유저 정보 조회 (GET)
     @GET("api/users/{userId}/character_status")
     Call<UserStatusResponse> getUserStatus(@Path("userId") int userId);
+
+    // 공지 사항 정보 (GET)
+    @GET("notices/department/{id}") //
+    Call<List<MapNoticeResponse>> getMapNotices(@Path("id") int id);
+
+    @GET("api/users/{userId}/subject") // 엔드포인트는 서버에 따라 변경
+    Call<List<Subject>> getSubjects();
 }

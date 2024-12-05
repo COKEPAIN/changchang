@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,13 +26,19 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class Map extends AppCompatActivity implements OnMapReadyCallback {
     private MapView mapView;
     private GoogleMap googleMap;
     List<Map_homePageListview> homePageList;
-
+    ListView listView;
+    java.util.Map<String, Integer> departmentNum = new HashMap<>();
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +57,20 @@ public class Map extends AppCompatActivity implements OnMapReadyCallback {
     public void onMapReady(@NonNull GoogleMap googleMap) {
         // Google Map이 준비되었을 때 실행
         this.googleMap = googleMap;
+
+
+
+        departmentNum.put("컴퓨터 공학",1);
+        departmentNum.put("정보통신",2);
+        departmentNum.put("산업시스템공학",3);
+        departmentNum.put("스마트 모빌리티",4);
+        departmentNum.put("환경에너지공학",5);
+        departmentNum.put("건축시스템",6);
+        departmentNum.put("건축공학",7);
+        departmentNum.put("건축학과",8);
+        departmentNum.put("화학공학",9);
+        departmentNum.put("조선해양공학",10);
+
 
         // 창원의 위치
         LatLng basePosition = new LatLng(35.242466, 128.696543);
@@ -71,10 +92,6 @@ public class Map extends AppCompatActivity implements OnMapReadyCallback {
         List<Marker> markers = new ArrayList<>();
 
         // 마커 추가
-        markers.add(googleMap.addMarker(new MarkerOptions()
-                .position(basePosition)
-                .title("창원")
-                .snippet("여기는 창원입니다.")));
 
         markers.add(googleMap.addMarker(new MarkerOptions()
                 .position(computSeience)
@@ -129,7 +146,9 @@ public class Map extends AppCompatActivity implements OnMapReadyCallback {
         googleMap.setOnMarkerClickListener(clickedMarker -> {
             for (Marker marker : markers) {
                 if (marker.equals(clickedMarker)) {
-                    showAlertDialog();
+
+                    Log.e("MAP TEST", "이름: " + marker.getTitle());
+                    showAlertDialog(marker.getTitle());
                     break;
                 }
             }
@@ -167,25 +186,24 @@ public class Map extends AppCompatActivity implements OnMapReadyCallback {
             mapView.onLowMemory();
         }
     }
-    private void showAlertDialog() {
+    private void showAlertDialog(String title) {
         // AlertDialog의 빌더 생성
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("공지사항");
+        builder.setTitle(title + " 공지사항");
 
         // Dialog에 사용자 정의 레이아웃 설정
         View dialogView = getLayoutInflater().inflate(R.layout.dialog_map_listview, null);
         builder.setView(dialogView);
 
         // ListView 설정
-        ListView listView = dialogView.findViewById(R.id.homePageListview);
+        listView = dialogView.findViewById(R.id.homePageListview);
         homePageList = new ArrayList<>();
-        homePageList.add(new Map_homePageListview("공지", "제목1", "https://www.naver.com"));
-        homePageList.add(new Map_homePageListview("공지", "제목2", "https://www.daum.net"));
-        homePageList.add(new Map_homePageListview("공지", "제목3", "https://www.youtube.com"));
 
         // 어댑터 연결
         Map_homePageListviewAdapter adapter = new Map_homePageListviewAdapter(this, homePageList);
         listView.setAdapter(adapter);
+
+        getTableInfo(departmentNum.get(title));
 
         // 항목 클릭 이벤트 처리
         listView.setOnItemClickListener((parent, view, position, id) -> {
@@ -226,4 +244,35 @@ public class Map extends AppCompatActivity implements OnMapReadyCallback {
 
         dialog.show();
     }
+    private void getTableInfo(int id) {
+        ApiService apiService = RetrofitClient.getRetrofitInstance().create(ApiService.class);
+
+        Call<List<MapNoticeResponse>> call = apiService.getMapNotices(id);
+
+        call.enqueue(new Callback<List<MapNoticeResponse>>() {
+            @Override
+            public void onResponse(Call<List<MapNoticeResponse>> call, Response<List<MapNoticeResponse>> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    // API 응답 데이터를 리스트에 추가
+                    homePageList.clear(); // 기존 데이터를 지웁니다.
+                    for (MapNoticeResponse notice : response.body()) {
+                        homePageList.add(new Map_homePageListview(notice.getType(), notice.getTitle(), notice.getLink()));
+                    }
+
+                    // 어댑터에 데이터 변경 알림
+                    ((Map_homePageListviewAdapter) listView.getAdapter()).notifyDataSetChanged();
+                } else {
+                    Toast.makeText(Map.this, "공지 데이터를 가져오지 못했습니다.", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<MapNoticeResponse>> call, Throwable t) {
+                Toast.makeText(Map.this, "서버 요청 실패: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                t.printStackTrace();
+            }
+        });
+    }
+
+
 }
