@@ -32,8 +32,6 @@ public class MainActivity extends AppCompatActivity {
         // 승민
         startService(new Intent(getApplicationContext(), MusicService.class));
 
-
-
         home = (ImageButton) findViewById(R.id.btn_home);
         map = (ImageButton) findViewById(R.id.btn_map);
         todo = (ImageButton) findViewById(R.id.btn_todo);
