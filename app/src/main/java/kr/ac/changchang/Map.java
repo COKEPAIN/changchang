@@ -47,6 +47,11 @@ public class Map extends AppCompatActivity implements OnMapReadyCallback {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map);
 
+        intent = getIntent();
+        int userid = intent.getIntExtra("userid",0);
+        String test = String.valueOf(userid);
+        Toast.makeText(this, test, Toast.LENGTH_SHORT).show();
+
         home = (ImageButton) findViewById(R.id.btn_home);
         map = (ImageButton) findViewById(R.id.btn_map);
         todo = (ImageButton) findViewById(R.id.btn_todo);
@@ -58,6 +63,7 @@ public class Map extends AppCompatActivity implements OnMapReadyCallback {
             @Override
             public void onClick(View view) {
                 intent = new Intent(getApplicationContext(),Profile.class);
+                intent.putExtra("userid",userid);
                 startActivity(intent);
             }
         });
@@ -65,6 +71,7 @@ public class Map extends AppCompatActivity implements OnMapReadyCallback {
             @Override
             public void onClick(View view) {
                 intent = new Intent(getApplicationContext(),Shop.class);
+                intent.putExtra("userid",userid);
                 startActivity(intent);
             }
         });
@@ -72,6 +79,7 @@ public class Map extends AppCompatActivity implements OnMapReadyCallback {
             @Override
             public void onClick(View view) {
                 intent = new Intent(getApplicationContext(),Todo.class);
+                intent.putExtra("userid",userid);
                 startActivity(intent);
             }
         });
@@ -79,6 +87,7 @@ public class Map extends AppCompatActivity implements OnMapReadyCallback {
             @Override
             public void onClick(View view) {
                 intent = new Intent(getApplicationContext(),Book.class);
+                intent.putExtra("userid",userid);
                 startActivity(intent);
             }
         });
@@ -86,6 +95,7 @@ public class Map extends AppCompatActivity implements OnMapReadyCallback {
             @Override
             public void onClick(View view) {
                 intent = new Intent(getApplicationContext(),MainActivity.class);
+                intent.putExtra("userid",userid);
                 startActivity(intent);
             }
         });

@@ -23,6 +23,7 @@ public class Login extends AppCompatActivity {
     Button login;
     Intent intent;
     int userid;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,7 +69,9 @@ public class Login extends AppCompatActivity {
                         intent.putExtra("focus", userStatusResponse.getFocus());
                         intent.putExtra("academicAbility", userStatusResponse.getAcademicAbility());
                         intent.putExtra("title", userStatusResponse.getTitle().getName());  // Title의 name만 전달
+
                         intent.putExtra("userid",userid);
+
                         startActivity(intent);
                         finish();
                     } else {

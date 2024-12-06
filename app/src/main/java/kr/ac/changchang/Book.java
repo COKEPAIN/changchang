@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,9 +19,9 @@ public class Book extends AppCompatActivity {
         setContentView(R.layout.activity_book);
 
         intent = getIntent();
-        userid = intent.getIntExtra("userid",0);
-
-        Toast.makeText(Book.this, "tset"+userid, Toast.LENGTH_SHORT).show();
+        int userid = intent.getIntExtra("userid",0);
+        String test = String.valueOf(userid);
+        Toast.makeText(this, test, Toast.LENGTH_SHORT).show();
 
         home = (ImageButton) findViewById(R.id.btn_home);
         map = (ImageButton) findViewById(R.id.btn_map);
@@ -35,6 +34,7 @@ public class Book extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 intent = new Intent(getApplicationContext(),Profile.class);
+                intent.putExtra("userid",userid);
                 startActivity(intent);
             }
         });
@@ -42,6 +42,7 @@ public class Book extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 intent = new Intent(getApplicationContext(),Shop.class);
+                intent.putExtra("userid",userid);
                 startActivity(intent);
             }
         });
@@ -49,6 +50,7 @@ public class Book extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 intent = new Intent(getApplicationContext(),Todo.class);
+                intent.putExtra("userid",userid);
                 startActivity(intent);
             }
         });
@@ -56,6 +58,7 @@ public class Book extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 intent = new Intent(getApplicationContext(),MainActivity.class);
+                intent.putExtra("userid",userid);
                 startActivity(intent);
             }
         });
@@ -63,6 +66,7 @@ public class Book extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 intent = new Intent(getApplicationContext(),Map.class);
+                intent.putExtra("userid",userid);
                 startActivity(intent);
             }
         });
