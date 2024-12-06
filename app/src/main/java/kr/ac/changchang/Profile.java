@@ -37,15 +37,15 @@ public class Profile extends AppCompatActivity {
     private int academicAbility;
     int maxBarWidthInDp = 300; // 최대 너비 (dp)
 
+    int userid;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
         intent = getIntent();
-        int userid = intent.getIntExtra("userid",0);
-        String test = String.valueOf(userid);
-        Toast.makeText(this, test, Toast.LENGTH_SHORT).show();
+        userid = intent.getIntExtra("userid",0);
 
         home = (ImageButton) findViewById(R.id.btn_home);
         map = (ImageButton) findViewById(R.id.btn_map);
@@ -115,7 +115,9 @@ public class Profile extends AppCompatActivity {
         grade = (TextView) findViewById(R.id.grade);
         studentId = (TextView) findViewById(R.id.studno);
 
-        getUserStat(20213114);
+        studentId.setText(String.valueOf(userid));
+
+        getUserStat(userid);
 
 
     }

@@ -217,7 +217,7 @@ public class Todo extends AppCompatActivity {
                                     adapter_todo.notifyDataSetChanged();
 
                                     // 높이 재조정
-                                    params.height = (int) (60 * checklist.size() * getResources().getDisplayMetrics().density);
+                                    params.height = (int) (60 * (checklist.size()-1) * getResources().getDisplayMetrics().density);
                                     listView_todo.setLayoutParams(params);
                                 } else {
                                     Toast.makeText(Todo.this, "알 수 없는 응답: " + serverMessage, Toast.LENGTH_SHORT).show();
