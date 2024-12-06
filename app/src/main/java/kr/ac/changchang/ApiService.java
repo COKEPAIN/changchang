@@ -32,6 +32,10 @@ public interface ApiService {
     @GET("api/user/{userId}")
     Call<UserStatusResponse> getUserStatus(@Path("userId") int userId);
 
+    // 유저 로그인 요청 (GET)
+    @GET("api/user/{userId}")
+    Call<UserStatusResponse> getUser(@Path("userId") int userId);
+
     // 공지 사항 정보 (GET)
     @GET("notices/department/{id}") //
     Call<List<MapNoticeResponse>> getMapNotices(@Path("id") int id);

@@ -38,7 +38,8 @@
                 android:gravity="center"
                 android:text="Welcome to ChangChang"
                 android:textColor="@color/white"
-                android:textSize="30sp"/>
+                android:textSize="30sp"
+                android:textStyle="bold|italic"/>
 
             <EditText
                 android:layout_width="match_parent"
