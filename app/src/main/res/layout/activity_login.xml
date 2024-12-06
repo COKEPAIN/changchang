@@ -31,17 +31,14 @@
             android:padding="24dp">
 
             <!-- Username 입력 필드 -->
-            <kr.ac.changchang.OutlineTextView
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:gravity="center"
                 android:text="Welcome to ChangChang"
                 android:textColor="@color/white"
-                android:textSize="30sp"
-                android:textStyle="bold|italic"
-                app:textStrokeColor="@android:color/black"
-                app:textStrokeWidth="5dp"/>
+                android:textSize="30sp"/>
 
             <EditText
                 android:layout_width="match_parent"
