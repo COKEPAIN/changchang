@@ -29,4 +29,8 @@ public interface ApiService {
     // 유저 정보 조회 (GET)
     @GET("api/users/{userId}/character_status")
     Call<UserStatusResponse> getUserStatus(@Path("userId") int userId);
+
+    // 유저 로그인 요청 (GET)
+    @GET("api/user/{userId}")
+    Call<UserStatusResponse> getUser(@Path("userId") int userId);
 }

@@ -30,6 +30,20 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+        // Intent로부터 전달받은 데이터 가져오기
+        intent = getIntent();
+        String username = intent.getStringExtra("username");
+        int grade = intent.getIntExtra("grade", 0);
+        int health = intent.getIntExtra("health", 0);
+        int intel = intent.getIntExtra("intel", 0);
+        int stress = intent.getIntExtra("stress", 0);
+        int happiness = intent.getIntExtra("happiness", 0);
+        int focus = intent.getIntExtra("focus", 0);
+        int academicAbility = intent.getIntExtra("academicAbility", 0);
+        String title = intent.getStringExtra("title");
+
+        Toast.makeText(this, username, Toast.LENGTH_SHORT).show();
+
         // 승민
         try {
             mediaPlayer = MediaPlayer.create(this,R.raw.backsong);
