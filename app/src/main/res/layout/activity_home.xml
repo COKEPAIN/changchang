@@ -143,8 +143,5 @@
                 android:scaleType="centerInside"
                 android:background="?attr/selectableItemBackgroundBorderless"/>
         </LinearLayout>
-
     </FrameLayout>
-
-
 </LinearLayout>
