@@ -27,7 +27,7 @@ public class Admin extends AppCompatActivity {
     TextView administer, studentName1;
     Button studentAttend1, studentAbsence1;
     ListView assignmentListView;
-    AppCompatButton admin;
+    Button admin;
 
     ViewGroup.LayoutParams params;
     int userid;
@@ -52,9 +52,11 @@ public class Admin extends AppCompatActivity {
         administer = findViewById(R.id.administer);
         studentName1 = findViewById(R.id.student_name1);
         studentAttend1 = findViewById(R.id.student_attendent1);
-        studentAbsence1 = findViewById(R.id.student_attendent1);
+        studentAbsence1 = findViewById(R.id.student_attendent2);
         admin = findViewById(R.id.admin);
         assignmentListView = findViewById(R.id.assignment);
+
+        getUserStat(userid);
 
         // "출석" 버튼 클릭 시 동작
         studentAttend1.setOnClickListener(new View.OnClickListener() {
@@ -66,6 +68,7 @@ public class Admin extends AppCompatActivity {
                 focus -= 5;
 
                 updateUserStatus(userid, grade, stress, happiness, focus, academicAbility);
+                Toast.makeText(Admin.this, "출석 반영 완료", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -73,11 +76,24 @@ public class Admin extends AppCompatActivity {
         studentAbsence1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // 결석 버튼 클릭 시, 메시지 토스트 출력
-                Toast.makeText(Admin.this, studentName1.getText() + "의 결석을 체크했습니다.", Toast.LENGTH_SHORT).show();
+                // 출석 버튼 클릭 시, 메시지 토스트 출력
+                stress += 5;
+                happiness -= 5;
+                focus += 5;
+
+                updateUserStatus(userid, grade, stress, happiness, focus, academicAbility);
+                Toast.makeText(Admin.this, "결석 반영 완료", Toast.LENGTH_SHORT).show();
             }
         });
+        admin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String subjectName = "고급자료구조";
+                String deadline = "2023-12-31T23:59:59";
 
+                addAssignment(userid, subjectName, deadline);
+            }
+        });
     }
     private void getUserStat(int userId) {
         Call<UserStatusResponse> call = apiService.getUserStatus(userId);
@@ -138,5 +154,32 @@ public class Admin extends AppCompatActivity {
             }
         });
     }
+    private void addAssignment(int studentId, String subjectName, String deadline) {
+        AssignmentRequest request = new AssignmentRequest(studentId, subjectName, deadline);
 
+        Call<Void> call = apiService.addAssignment(request);
+        call.enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                if (response.isSuccessful()) {
+                    Toast.makeText(Admin.this, "과제가 성공적으로 추가되었습니다.", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(Admin.this, "과제 추가 실패. 응답 코드: " + response.code(), Toast.LENGTH_SHORT).show();
+                    try {
+                        if (response.errorBody() != null) {
+                            Log.e("API_ERROR_BODY", response.errorBody().string());
+                        }
+                    } catch (Exception e) {
+                        Log.e("API_ERROR_BODY", "Error parsing error body", e);
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+                Toast.makeText(Admin.this, "서버 요청 실패: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                t.printStackTrace();
+            }
+        });
+    }
 }

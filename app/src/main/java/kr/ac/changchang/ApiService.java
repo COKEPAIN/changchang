@@ -74,4 +74,7 @@ public interface ApiService {
     @POST("/api/character/{studentId}")
     Call<Void> updateUserStatus(@Path("studentId") int studentId, @Body UserStatusUpdateRequest request);
 
+    // 사용자에게 과제 추가
+    @POST("/api/assignment/add")
+    Call<Void> addAssignment(@Body AssignmentRequest request);
 }
