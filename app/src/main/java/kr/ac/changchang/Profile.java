@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,6 +22,7 @@ public class Profile extends AppCompatActivity {
     View stressBar, happinessBar, focusBar, academicBar;
     TextView point, grade, studentId;
     ApiService apiService = RetrofitClient.getRetrofitInstance().create(ApiService.class);; // api 설정하기 위한 변수
+    ViewGroup.LayoutParams params;
 
     private String username;
     private int ugrade = 2;
@@ -30,6 +32,7 @@ public class Profile extends AppCompatActivity {
     private int happiness;
     private int focus;
     private int academicAbility;
+    int maxBarWidthInDp = 300; // 최대 너비 (dp)
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -109,6 +112,26 @@ public class Profile extends AppCompatActivity {
                     academicAbility = userData.getAcademicAbility();
 
                     grade.setText("Grade : "+ugrade);
+
+                    //스트레스 바에 대한 처리
+                    params = stressBar.getLayoutParams();
+                    params.width = (int) (stress / 100.0 * maxBarWidthInDp * getResources().getDisplayMetrics().density);
+                    stressBar.setLayoutParams(params);
+
+                    // 행복도바에 대한 처리
+                    params = happinessBar.getLayoutParams();
+                    params.width = (int) (happiness / 100.0 * maxBarWidthInDp * getResources().getDisplayMetrics().density);
+                    happinessBar.setLayoutParams(params);
+
+                    // 집중도 바에 대한 처리
+                    params = focusBar.getLayoutParams();
+                    params.width = (int) (focus / 100.0 * maxBarWidthInDp * getResources().getDisplayMetrics().density);
+                    focusBar.setLayoutParams(params);
+
+                    // 학업 능력 바에 대한 처리
+                    params = academicBar.getLayoutParams();
+                    params.width = (int) (academicAbility / 100.0 * maxBarWidthInDp * getResources().getDisplayMetrics().density);
+                    academicBar.setLayoutParams(params);
 
                 } else {
                     Log.e("API_ERROR", "Response failed");
