@@ -44,7 +44,7 @@ public class Todo extends AppCompatActivity {
     ApiService apiService = RetrofitClient.getRetrofitInstance().create(ApiService.class); // api 설정하기 위한 변수
     List<Todo_textview_three> task; //남은 과제 리스트
     String today;
-    String userId;
+    int userid;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -52,7 +52,7 @@ public class Todo extends AppCompatActivity {
         setContentView(R.layout.activity_todo);
 
         intent = getIntent();
-        int userid = intent.getIntExtra("userid",0);
+        userid = intent.getIntExtra("userid",0);
 
         // 기본 버튼 구현
         home = (ImageButton) findViewById(R.id.btn_home);
@@ -106,7 +106,7 @@ public class Todo extends AppCompatActivity {
         // 기본 버튼 구현 끝
 
         // 유저 정보 들고오기
-        getUserStat(20213114);
+        getUserStat(userid);
         getUserSubject();
 
         // 남은 수업 시작 시간
@@ -133,7 +133,7 @@ public class Todo extends AppCompatActivity {
 //        task.add(new Todo_textview_three("Item 2A", "Item 2B", "Item 2C"));
 //        task.add(new Todo_textview_three("Item 3A", "Item 3B", "Item 3C"));
         // API로 과제 들고오기
-        getUserTask(20213114, () -> {
+        getUserTask(userid, () -> {
             if (!task.isEmpty()) {
                 adapter_textview = new Todo_textview_threeAdapter(this, task);
 
@@ -160,7 +160,7 @@ public class Todo extends AppCompatActivity {
         listView_todo.setAdapter(adapter_todo);
         adapter_todo.notifyDataSetChanged();
 
-        getUserTodoList(20213114, listView_todo);
+        getUserTodoList(userid, listView_todo);
 //        params = listView_todo.getLayoutParams(); //높이를 동적으로 할당
 //        params.height = (int) (60*checklist.size()* getResources().getDisplayMetrics().density); // dp를 px로 변환
         // todo list 끝
@@ -196,10 +196,9 @@ public class Todo extends AppCompatActivity {
 
             if (!content.isEmpty()) {
                 // API 호출로 서버에 데이터 추가
-                int studentId = 20213114; // 고정된 학번 값
                 TodoRequest todoRequest = new TodoRequest(content);
 
-                Call<ResponseBody> call = apiService.addTodo(studentId, todoRequest);
+                Call<ResponseBody> call = apiService.addTodo(userid, todoRequest);
                 call.enqueue(new Callback<ResponseBody>() {
                     @Override
                     public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
@@ -334,7 +333,7 @@ public class Todo extends AppCompatActivity {
     }
 
     private void getUserSubject() {
-        Call<List<Subject>> call = apiService.getSubjects(20213114);
+        Call<List<Subject>> call = apiService.getSubjects(userid);
 
         Map<Integer, String> day = new HashMap<>();
         day.put(1,"Monday");

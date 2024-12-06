@@ -1,6 +1,7 @@
 package kr.ac.changchang;
 
 import android.app.AlertDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -28,17 +29,25 @@ public class Admin extends AppCompatActivity {
     ListView assignmentListView;
     AppCompatButton admin;
 
-    Assignment_checkListAdapter adapter_assignment;
     ViewGroup.LayoutParams params;
-
+    int userid;
     List<Todo_checkList> checklist;
     ApiService apiService = RetrofitClient.getRetrofitInstance().create(ApiService.class);
+    Intent intent;
+    int grade;
+    int stress;
+    int happiness;
+    int health;
+    int focus;
+    int academicAbility;
+    Title currentTitle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin); // 해당 XML 파일을 로드
-
+        intent = getIntent();
+        userid = intent.getIntExtra("userid",0);
         // XML 뷰와 연결
         administer = findViewById(R.id.administer);
         studentName1 = findViewById(R.id.student_name1);
@@ -52,7 +61,11 @@ public class Admin extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // 출석 버튼 클릭 시, 메시지 토스트 출력
-                Toast.makeText(Admin.this, studentName1.getText() + "의 출석을 체크했습니다.", Toast.LENGTH_SHORT).show();
+                stress -= 5;
+                happiness += 5;
+                focus -= 5;
+
+                updateUserStatus(userid, grade, stress, happiness, focus, academicAbility);
             }
         });
 
@@ -65,94 +78,65 @@ public class Admin extends AppCompatActivity {
             }
         });
 
-        // admin 과제 버튼 클릭 시 동작
-        admin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                showAlertDialog();
-                params = assignmentListView.getLayoutParams(); //높이를 동적으로 할당
+    }
+    private void getUserStat(int userId) {
+        Call<UserStatusResponse> call = apiService.getUserStatus(userId);
 
+        call.enqueue(new Callback<UserStatusResponse>() {
+            @Override
+            public void onResponse(Call<UserStatusResponse> call, Response<UserStatusResponse> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    UserStatusResponse userData = response.body();
+
+                    // 기존 정보 저장
+                    grade = userData.getGrade();
+                    health = userData.getHealth();
+                    stress = userData.getStress();
+                    happiness = userData.getHappiness();
+                    currentTitle = userData.getTitle(); // 현재 칭호
+
+                    // 새로운 칭호 목록 처리
+                    List<Title> availableTitles = userData.getAvailableTitles();
+                    if (availableTitles != null) {
+                        for (Title title : availableTitles) {
+                            Log.d("AVAILABLE_TITLE", "Name: " + title.getName() + ", Description: " + title.getDescription());
+                        }
+
+                    }
+                } else {
+                    Toast.makeText(Admin.this, "유저 데이터를 불러오지 못했습니다.", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<UserStatusResponse> call, Throwable t) {
+                Log.e("API_FAILURE", "Error: " + t.getMessage());
+                Toast.makeText(Admin.this, "API 호출 실패", Toast.LENGTH_SHORT).show();
             }
         });
-        
-        // admin 과제 추가 dialog 끝
-        private void showAlertDialog() {
-            ListView listView_todo = findViewById(R.id.listView1);
-
-            // AlertDialog의 뷰 설정
-            AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setTitle("새 할 일 추가");
-
-            // 입력 필드가 들어갈 레이아웃 생성
-            View dialogView = getLayoutInflater().inflate(R.layout.dialog_todo, null);
-            builder.setView(dialogView);
-
-            EditText inputContent = dialogView.findViewById(R.id.input1); // 입력 필드 하나만 사용
-
-            // 확인 버튼 설정
-            builder.setPositiveButton("확인", (dialogInterface, i) -> {
-                String content = inputContent.getText().toString().trim();
-
-                if (!content.isEmpty()) {
-                    // API 호출로 서버에 데이터 추가
-                    int studentId = 20213114; // 고정된 학번 값
-                    TodoRequest todoRequest = new TodoRequest(content);
-
-                    Call<ResponseBody> call = apiService.addTodo(studentId, todoRequest);
-                    call.enqueue(new Callback<ResponseBody>() {
-                        @Override
-                        public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                            Log.d("SERVER_RESPONSE_CODE", "Code: " + response.code());
-
-                            if (response.isSuccessful()) {
-                                try {
-                                    String serverMessage = response.body().string(); // 서버 응답 메시지 읽기
-                                    Log.d("SERVER_RESPONSE", "Message: " + serverMessage);
-
-                                    if (serverMessage.contains("Todo 리스트 생성되었습니다.")) {
-                                        Toast.makeText(Admin.this, "할 일이 추가되었습니다.", Toast.LENGTH_SHORT).show();
-
-                                        // 리스트에 새 항목 추가
-                                        checklist.add(new Todo_checkList(content, false, -1));
-                                        adapter_assignment.notifyDataSetChanged();
-
-                                        // 높이 재조정
-                                        params.height = (int) (60 * checklist.size() * getResources().getDisplayMetrics().density);
-                                        listView_todo.setLayoutParams(params);
-                                    } else {
-                                        Toast.makeText(Admin.this, "알 수 없는 응답: " + serverMessage, Toast.LENGTH_SHORT).show();
-                                    }
-                                } catch (Exception e) {
-                                    Log.e("RESPONSE_ERROR", "Error parsing server response", e);
-                                    Toast.makeText(Admin.this, "응답 파싱에 실패했습니다.", Toast.LENGTH_SHORT).show();
-                                }
-                            } else {
-                                Toast.makeText(Admin.this, "할 일 추가에 실패했습니다. 응답 코드: " + response.code(), Toast.LENGTH_SHORT).show();
-                                try {
-                                    if (response.errorBody() != null) {
-                                        Log.e("API_ERROR_BODY", response.errorBody().string());
-                                    }
-                                } catch (Exception e) {
-                                    Log.e("API_ERROR_BODY", "Error parsing error body", e);
-                                }
-                            }
-                        }
-
-                        @Override
-                        public void onFailure(Call<ResponseBody> call, Throwable t) {
-                            Toast.makeText(Admin.this, "서버 요청 실패: " + t.getMessage(), Toast.LENGTH_SHORT).show();
-                            t.printStackTrace();
-                        }
-                    });
-                } else {
-                    Toast.makeText(this, "할 일 내용을 입력하세요.", Toast.LENGTH_SHORT).show();
-                }
-            });
-
-            // 취소 버튼 설정
-            builder.setNegativeButton("취소", (dialogInterface, i) -> dialogInterface.dismiss());
-
-            builder.create().show();
-        }
     }
+    private void updateUserStatus(int studentId, int grade, int stress, int happiness, int focus, int academicAbility) {
+        // API 요청에 보낼 데이터 생성
+        UserStatusUpdateRequest request = new UserStatusUpdateRequest(grade, stress, happiness, focus, academicAbility);
+
+        // API 호출
+        Call<Void> call = apiService.updateUserStatus(studentId, request);
+        call.enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                if (response.isSuccessful()) {
+                    Toast.makeText(Admin.this, "유저 상태가 성공적으로 변경되었습니다.", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(Admin.this, "유저 상태 변경에 실패했습니다. 응답 코드: " + response.code(), Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+                Toast.makeText(Admin.this, "서버 요청 실패: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                t.printStackTrace();
+            }
+        });
+    }
+
 }

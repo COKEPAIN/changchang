@@ -69,4 +69,9 @@ public interface ApiService {
             @Path("studentId") int studentId,
             @Path("titleId") int titleId
     );
+
+    // 사용자의 스탯 변경
+    @POST("/api/character/{studentId}")
+    Call<Void> updateUserStatus(@Path("studentId") int studentId, @Body UserStatusUpdateRequest request);
+
 }
