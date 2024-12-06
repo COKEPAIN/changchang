@@ -416,7 +416,7 @@ public class Todo extends AppCompatActivity {
 
                     // 높이 조정
                     ViewGroup.LayoutParams params = listView.getLayoutParams();
-                    params.height = (int) (60 * checklist.size() * getResources().getDisplayMetrics().density);
+                    params.height = (int) (60 * checklist.size() * getResources().getDisplayMetrics().density);  // -1해야하나?
                     listView.setLayoutParams(params);
                 } else {
                     Toast.makeText(Todo.this, "Todo 데이터를 가져오지 못했습니다.", Toast.LENGTH_SHORT).show();
