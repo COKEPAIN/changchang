@@ -1,7 +1,12 @@
 package kr.ac.changchang;
 
+import java.util.List;
+
+import kr.ac.changchang.Title;
+
 public class UserStatusResponse {
     private String username;
+    private String password;
     private int grade;
     private int health;
     private int intel;
@@ -9,68 +14,24 @@ public class UserStatusResponse {
     private int happiness;
     private int focus;
     private int academicAbility;
-    private Title title;
+    private Title title; // 현재 칭호
+    private List<Title> availableTitles; // 사용 가능한 칭호들
 
-    public UserStatusResponse(String username, int grade, int health, int intel, int stress, int happiness, int focus, int academicAbility, Title title) {
-        this.username = username;
-        this.grade = grade;
-        this.health = health;
-        this.intel = intel;
-        this.stress = stress;
-        this.happiness = happiness;
-        this.focus = focus;
-        this.academicAbility = academicAbility;
-        this.title = title;
-    }
-
-    // 내부 클래스: Title 객체 매핑
-    public static class Title {
-        private String name;
-        private String description;
-        private String rarity;
-        private String conditions;
-
-        // Getter와 Setter
-        public String getName() {
-            return name;
-        }
-
-        public void setName(String name) {
-            this.name = name;
-        }
-
-        public String getDescription() {
-            return description;
-        }
-
-        public void setDescription(String description) {
-            this.description = description;
-        }
-
-        public String getRarity() {
-            return rarity;
-        }
-
-        public void setRarity(String rarity) {
-            this.rarity = rarity;
-        }
-
-        public String getConditions() {
-            return conditions;
-        }
-
-        public void setConditions(String conditions) {
-            this.conditions = conditions;
-        }
-    }
-
-    // Getter와 Setter
+    // Getters and Setters
     public String getUsername() {
         return username;
     }
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public int getGrade() {
@@ -135,5 +96,13 @@ public class UserStatusResponse {
 
     public void setTitle(Title title) {
         this.title = title;
+    }
+
+    public List<Title> getAvailableTitles() {
+        return availableTitles;
+    }
+
+    public void setAvailableTitles(List<Title> availableTitles) {
+        this.availableTitles = availableTitles;
     }
 }

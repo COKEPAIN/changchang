@@ -19,18 +19,37 @@ public interface ApiService {
     );
 
     // 유저의 과제 추가 (POST)
-    @POST("assignments/add")
+    @POST("api/assignment/add")
     Call<Void> addAssignment(@Body Todo_assignmentRequest assignmentRequest);
 
     // 유저의 과제 제출 조회 (GET)
-    @GET("assignments/{studentId}")
+    @GET("api/assignment/{studentId}")
     Call<List<Todo_assignmentRespones>> getAssignments(@Path("studentId") int studentId);
 
     // 유저 정보 조회 (GET)
-    @GET("api/users/{userId}/character_status")
+    @GET("api/user/{userId}")
     Call<UserStatusResponse> getUserStatus(@Path("userId") int userId);
 
-    // 유저 로그인 요청 (GET)
-    @GET("api/user/{userId}")
-    Call<UserStatusResponse> getUser(@Path("userId") int userId);
+    // 공지 사항 정보 (GET)
+    @GET("notices/department/{id}") //
+    Call<List<MapNoticeResponse>> getMapNotices(@Path("id") int id);
+
+    // 과목 정보 확인
+    @GET("api/user/{userId}/subjects") // 엔드포인트는 서버에 따라 변경
+    Call<List<Subject>> getSubjects(@Path("userId") int userId);
+
+    // 과제 삭제
+    @DELETE("api/todo/{todoId}")
+    Call<Void> deleteTodo(@Path("todoId") int todoId);
+
+    // 유저의 todo리스트 얻기
+    @GET("api/todo/{userId}")
+    Call<List<TodoResponse>> getTodos(@Path("userId") int userId);
+
+    // 유저에 todo 추가
+    @POST("api/todo/{studentId}")
+    Call<ResponseBody> addTodo(
+            @Path("studentId") int studentId,
+            @Body TodoRequest todoRequest
+    );
 }

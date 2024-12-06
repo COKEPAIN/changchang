@@ -1,12 +1,14 @@
 package kr.ac.changchang;
 
-public class Todo_checkList { // todo 리스트의 마지막 해야할 일의 대한 자바 파일
-    private String text; // 들어갈 이름
-    private boolean isChecked; // 체크박스 확인
+public class Todo_checkList {
+    private String text;
+    private boolean isChecked;
+    private int id; // ID 필드 추가
 
-    public Todo_checkList(String text, boolean isChecked) {
+    public Todo_checkList(String text, boolean isChecked, int id) {
         this.text = text;
         this.isChecked = isChecked;
+        this.id = id;
     }
 
     public String getText() {
@@ -23,5 +25,13 @@ public class Todo_checkList { // todo 리스트의 마지막 해야할 일의 �
 
     public void setChecked(boolean checked) {
         isChecked = checked;
+    }
+
+    public int getId() { // ID getter 추가
+        return id;
+    }
+
+    public void setId(int id) { // ID setter 추가
+        this.id = id;
     }
 }
