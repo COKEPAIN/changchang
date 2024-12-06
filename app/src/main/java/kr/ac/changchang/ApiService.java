@@ -21,11 +21,11 @@ public interface ApiService {
     );
 
     // 유저의 과제 추가 (POST)
-    @POST("api/assignments/add")
+    @POST("api/assignment/add")
     Call<Void> addAssignment(@Body Todo_assignmentRequest assignmentRequest);
 
     // 유저의 과제 제출 조회 (GET)
-    @GET("api/assignments/{studentId}")
+    @GET("api/assignment/{studentId}")
     Call<List<Todo_assignmentRespones>> getAssignments(@Path("studentId") int studentId);
 
     // 유저 정보 조회 (GET)
@@ -36,7 +36,7 @@ public interface ApiService {
     @GET("notices/department/{id}") //
     Call<List<MapNoticeResponse>> getMapNotices(@Path("id") int id);
 
-    // 과제 정보 확인
+    // 과목 정보 확인
     @GET("api/user/{userId}/subjects") // 엔드포인트는 서버에 따라 변경
     Call<List<Subject>> getSubjects(@Path("userId") int userId);
 
