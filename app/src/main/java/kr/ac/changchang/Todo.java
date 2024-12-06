@@ -51,6 +51,11 @@ public class Todo extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_todo);
 
+        intent = getIntent();
+        int userid = intent.getIntExtra("userid",0);
+        String test = String.valueOf(userid);
+        Toast.makeText(this, test, Toast.LENGTH_SHORT).show();
+
         // 기본 버튼 구현
         home = (ImageButton) findViewById(R.id.btn_home);
         map = (ImageButton) findViewById(R.id.btn_map);
@@ -63,6 +68,7 @@ public class Todo extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 intent = new Intent(getApplicationContext(),Map.class);
+                intent.putExtra("userid",userid);
                 startActivity(intent);
             }
         });
@@ -70,6 +76,7 @@ public class Todo extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 intent = new Intent(getApplicationContext(),Profile.class);
+                intent.putExtra("userid",userid);
                 startActivity(intent);
             }
         });
@@ -77,6 +84,7 @@ public class Todo extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 intent = new Intent(getApplicationContext(),MainActivity.class);
+                intent.putExtra("userid",userid);
                 startActivity(intent);
                 finish();
             }
@@ -85,6 +93,7 @@ public class Todo extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 intent = new Intent(getApplicationContext(),Book.class);
+                intent.putExtra("userid",userid);
                 startActivity(intent);
             }
         });
@@ -92,6 +101,7 @@ public class Todo extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 intent = new Intent(getApplicationContext(),Shop.class);
+                intent.putExtra("userid",userid);
                 startActivity(intent);
             }
         });
@@ -287,7 +297,7 @@ public class Todo extends AppCompatActivity {
             }
         });
     }
-    private void getUserStat(int userId) { // 유저 정보 들고오기
+    private void getUserStat(int userId) {
         Call<UserStatusResponse> call = apiService.getUserStatus(userId);
 
         call.enqueue(new Callback<UserStatusResponse>() {
@@ -295,11 +305,25 @@ public class Todo extends AppCompatActivity {
             public void onResponse(Call<UserStatusResponse> call, Response<UserStatusResponse> response) {
                 if (response.isSuccessful() && response.body() != null) {
                     UserStatusResponse userData = response.body();
-                    Log.d("API_SUCCESS", "User Name: " + userData.getUsername());
-                    Toast.makeText(Todo.this, "User: " + userData.getUsername(), Toast.LENGTH_SHORT).show();
+
+                    // 기존 정보 저장
+                    String username = userData.getUsername();
+                    int grade = userData.getGrade();
+                    int health = userData.getHealth();
+                    int stress = userData.getStress();
+                    int happiness = userData.getHappiness();
+                    Title currentTitle = userData.getTitle(); // 현재 칭호
+
+                    // 새로운 칭호 목록 처리
+                    List<Title> availableTitles = userData.getAvailableTitles();
+                    if (availableTitles != null) {
+                        for (Title title : availableTitles) {
+                            Log.d("AVAILABLE_TITLE", "Name: " + title.getName() + ", Description: " + title.getDescription());
+                        }
+
+                    }
                 } else {
-                    Log.e("API_ERROR", "Response failed");
-                    Toast.makeText(Todo.this, "Failed to load user data", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Todo.this, "유저 데이터를 불러오지 못했습니다.", Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -310,6 +334,7 @@ public class Todo extends AppCompatActivity {
             }
         });
     }
+
     private void getUserSubject() {
         Call<List<Subject>> call = apiService.getSubjects(20213114);
 
@@ -336,7 +361,7 @@ public class Todo extends AppCompatActivity {
                                     ", Day: " + schedule.getDayOfWeek() +
                                     ", Start: " + schedule.getStartTime() +
                                     ", End: " + schedule.getEndTime());
-                            if(schedule.getDayOfWeek().equals(today)){
+                            if(schedule.getDayOfWeek().equals("Monday")){ // 임시 수정
 
                                 today_class.add(new Todo_textview_three(
                                         subject.getSubjectName(),

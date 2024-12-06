@@ -3,6 +3,7 @@ package kr.ac.changchang;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -39,6 +40,10 @@ public class MainActivity extends AppCompatActivity {
         int academicAbility = intent.getIntExtra("academicAbility", 0);
         String title = intent.getStringExtra("title");
 
+        int userid = intent.getIntExtra("userid",0);
+        String test = String.valueOf(userid);
+        Toast.makeText(this, test, Toast.LENGTH_SHORT).show();
+
         home = (ImageButton) findViewById(R.id.btn_home);
         map = (ImageButton) findViewById(R.id.btn_map);
         todo = (ImageButton) findViewById(R.id.btn_todo);
@@ -52,6 +57,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 intent = new Intent(getApplicationContext(),Map.class);
+                // 승민
+                intent.addFlags(Intent.FLAG_ACTIVITY_NO_USER_ACTION);
+                intent.putExtra("userid",userid);
                 startActivity(intent);
             }
         });
@@ -59,6 +67,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 intent = new Intent(getApplicationContext(),Profile.class);
+                // 승민
+                intent.addFlags(Intent.FLAG_ACTIVITY_NO_USER_ACTION);
+                intent.putExtra("userid",userid);
                 startActivity(intent);
             }
         });
@@ -66,6 +77,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 intent = new Intent(getApplicationContext(),Todo.class);
+                // 승민
+                intent.addFlags(Intent.FLAG_ACTIVITY_NO_USER_ACTION);
+                intent.putExtra("userid",userid);
                 startActivity(intent);
             }
         });
@@ -73,6 +87,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 intent = new Intent(getApplicationContext(),Book.class);
+                // 승민
+                intent.addFlags(Intent.FLAG_ACTIVITY_NO_USER_ACTION);
+                intent.putExtra("userid",userid);
                 startActivity(intent);
             }
         });
@@ -80,6 +97,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 intent = new Intent(getApplicationContext(),Shop.class);
+                // 승민
+                intent.addFlags(Intent.FLAG_ACTIVITY_NO_USER_ACTION);
+                intent.putExtra("userid",userid);
                 startActivity(intent);
             }
         });
@@ -87,7 +107,21 @@ public class MainActivity extends AppCompatActivity {
         changchang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                changsay.setText("test");
+                // 3가지 문장을 배열에 저장
+                String[] messages = {"오늘 기분 좋다잉", "배고프다", "호관아 뭐하냐"};
+
+                // 랜덤으로 문장 선택
+                int randomIndex = (int) (Math.random() * messages.length);
+
+                // 랜덤으로 선택된 문장을 changsay에 설정
+                changsay.setText(messages[randomIndex]);
+                // 3초 후에 changsay를 보이지 않게 설정
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        changsay.setText(""); // changsay를 공백으로 설정
+                    }
+                }, 3000); // 3000ms = 3초
                 changsay.setHeight(80);
             }
         });
