@@ -26,6 +26,8 @@ public class MainActivity extends AppCompatActivity {
     Intent intent;
     TextView changsay;
 
+    int userid;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
         int focus = intent.getIntExtra("focus", 0);
         int academicAbility = intent.getIntExtra("academicAbility", 0);
         String title = intent.getStringExtra("title");
+        userid = intent.getIntExtra("userid",0);
 
         Toast.makeText(this, username, Toast.LENGTH_SHORT).show();
 
@@ -108,6 +111,13 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+
+
+        //창창이 타이틀
+        TextView changchangTItle = (TextView)findViewById(R.id.changchangtitle);
+        changchangTItle.setText(title);
+
 
         changchang.setOnClickListener(new View.OnClickListener() {
             @Override

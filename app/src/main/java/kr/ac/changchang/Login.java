@@ -22,7 +22,7 @@ public class Login extends AppCompatActivity {
     EditText id, pwd;
     Button login;
     Intent intent;
-
+    int userid;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,7 +35,7 @@ public class Login extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int userid = Integer.parseInt(id.getText().toString());
+                userid = Integer.parseInt(id.getText().toString());
                 String password = pwd.getText().toString();
 
                 loginUser(userid, password);
@@ -68,7 +68,7 @@ public class Login extends AppCompatActivity {
                         intent.putExtra("focus", userStatusResponse.getFocus());
                         intent.putExtra("academicAbility", userStatusResponse.getAcademicAbility());
                         intent.putExtra("title", userStatusResponse.getTitle().getName());  // Title의 name만 전달
-
+                        intent.putExtra("userid",userid);
                         startActivity(intent);
                         finish();
                     } else {
