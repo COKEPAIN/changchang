@@ -53,15 +53,16 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        
-
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/changchangsaid"
             android:layout_marginTop="100dp"
-            android:gravity="center"/>
+            android:gravity="center"
+            android:textStyle="bold|italic"
+            android:textSize="25sp"
+            android:background="@drawable/half_white"/>
 
         <!-- 화면 중단 -->
 

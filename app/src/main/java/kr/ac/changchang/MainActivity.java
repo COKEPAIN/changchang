@@ -18,9 +18,6 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
 
-    // 배경음악
-    private MediaPlayer mediaPlayer = new MediaPlayer();
-
     ImageButton home, map, todo, shop, profile, book;
     ImageView changchang;
     Intent intent;
@@ -46,17 +43,6 @@ public class MainActivity extends AppCompatActivity {
         String title = intent.getStringExtra("title");
         userid = intent.getIntExtra("userid",0);
 
-        Toast.makeText(this, username, Toast.LENGTH_SHORT).show();
-
-        // 승민
-        try {
-            mediaPlayer = MediaPlayer.create(this,R.raw.backsong);
-            mediaPlayer.setLooping(true);
-            mediaPlayer.start();
-        } catch (Exception e){
-            e.printStackTrace();
-        }
-
         home = (ImageButton) findViewById(R.id.btn_home);
         map = (ImageButton) findViewById(R.id.btn_map);
         todo = (ImageButton) findViewById(R.id.btn_todo);
@@ -70,8 +56,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 intent = new Intent(getApplicationContext(),Map.class);
-                // 승민
-                intent.addFlags(Intent.FLAG_ACTIVITY_NO_USER_ACTION);
                 startActivity(intent);
             }
         });
@@ -79,8 +63,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 intent = new Intent(getApplicationContext(),Profile.class);
-                // 승민
-                intent.addFlags(Intent.FLAG_ACTIVITY_NO_USER_ACTION);
                 startActivity(intent);
             }
         });
@@ -88,8 +70,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 intent = new Intent(getApplicationContext(),Todo.class);
-                // 승민
-                intent.addFlags(Intent.FLAG_ACTIVITY_NO_USER_ACTION);
                 startActivity(intent);
             }
         });
@@ -97,8 +77,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 intent = new Intent(getApplicationContext(),Book.class);
-                // 승민
-                intent.addFlags(Intent.FLAG_ACTIVITY_NO_USER_ACTION);
                 startActivity(intent);
             }
         });
@@ -106,8 +84,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 intent = new Intent(getApplicationContext(),Shop.class);
-                // 승민
-                intent.addFlags(Intent.FLAG_ACTIVITY_NO_USER_ACTION);
                 startActivity(intent);
             }
         });

@@ -21,18 +21,18 @@ public interface ApiService {
     );
 
     // 유저의 과제 추가 (POST)
-    @POST("api/assignment/add")
+    @POST("api/assignments/add")
     Call<Void> addAssignment(@Body Todo_assignmentRequest assignmentRequest);
 
     // 유저의 과제 제출 조회 (GET)
-    @GET("api/assignment/{studentId}")
+    @GET("api/assignments/{studentId}")
     Call<List<Todo_assignmentRespones>> getAssignments(@Path("studentId") int studentId);
 
     // 유저 정보 조회 (GET)
     @GET("api/user/{userId}")
     Call<UserStatusResponse> getUserStatus(@Path("userId") int userId);
 
-    // 유저 정보 조회 (GET)
+    // 유저 로그인 요청 (GET)
     @GET("api/user/{userId}")
     Call<UserStatusResponse> getUser(@Path("userId") int userId);
 
