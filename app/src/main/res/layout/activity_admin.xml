@@ -148,7 +148,7 @@
                 android:background="@drawable/shape_for_cicle_btn"
                 android:text="+"
                 android:textSize="25sp"
-                android:id="@+id/inputTodo"
+                android:id="@+id/admin"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"

@@ -5,8 +5,10 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -97,23 +99,35 @@ public class MainActivity extends AppCompatActivity {
         changchang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // 3가지 문장을 배열에 저장
                 String[] messages = {"오늘 기분 좋다잉", "배고프다", "호관아 뭐하냐"};
-
-                // 랜덤으로 문장 선택
                 int randomIndex = (int) (Math.random() * messages.length);
-
-                // 랜덤으로 선택된 문장을 changsay에 설정
                 changsay.setText(messages[randomIndex]);
-                // 3초 후에 changsay를 보이지 않게 설정
+
+                // FrameLayout.LayoutParams 사용
+                FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(
+                        FrameLayout.LayoutParams.MATCH_PARENT,
+                        dpToPx(80)
+                );
+                changsay.setLayoutParams(params);
+
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        changsay.setText(""); // changsay를 공백으로 설정
+                        changsay.setText("");
+                        // FrameLayout.LayoutParams 사용
+                        FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(
+                                FrameLayout.LayoutParams.MATCH_PARENT,
+                                dpToPx(0)
+                        );
+                        changsay.setLayoutParams(params);
                     }
-                }, 3000); // 3000ms = 3초
-                changsay.setHeight(80);
+                }, 3000);
             }
         });
+    }
+    // dp를 픽셀로 변환하는 메소드
+    private int dpToPx(int dp) {
+        float density = getResources().getDisplayMetrics().density;
+        return Math.round((float) dp * density);
     }
 }
