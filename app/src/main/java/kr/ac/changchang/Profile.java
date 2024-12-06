@@ -5,12 +5,14 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -23,6 +25,7 @@ public class Profile extends AppCompatActivity {
     TextView point, grade, studentId;
     ApiService apiService = RetrofitClient.getRetrofitInstance().create(ApiService.class);; // api 설정하기 위한 변수
     ViewGroup.LayoutParams params;
+    Button admin;
 
     private String username;
     private int ugrade = 2;
@@ -91,6 +94,18 @@ public class Profile extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        admin = findViewById(R.id.admin);
+        admin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                intent = new Intent(getApplicationContext(),Admin.class);
+                intent.putExtra("userid",userid);
+                startActivity(intent);
+            }
+        });
+
+
         stressBar = (View) findViewById(R.id.stress_bar);
         happinessBar = (View) findViewById(R.id.happiness_bar);
         focusBar = (View) findViewById(R.id.focus_bar);

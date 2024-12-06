@@ -5,8 +5,10 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -17,9 +19,6 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
-
-    // 배경음악
-    private MediaPlayer mediaPlayer = new MediaPlayer();
 
     ImageButton home, map, todo, shop, profile, book;
     ImageView changchang;
@@ -59,15 +58,6 @@ public class MainActivity extends AppCompatActivity {
             changchangTItle.setText(title);
         }
 
-        // 승민
-        try {
-            mediaPlayer = MediaPlayer.create(this,R.raw.backsong);
-            mediaPlayer.setLooping(true);
-            mediaPlayer.start();
-        } catch (Exception e){
-            e.printStackTrace();
-        }
-
         home = (ImageButton) findViewById(R.id.btn_home);
         map = (ImageButton) findViewById(R.id.btn_map);
         todo = (ImageButton) findViewById(R.id.btn_todo);
@@ -81,8 +71,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 intent = new Intent(getApplicationContext(),Map.class);
-                // 승민
-                intent.addFlags(Intent.FLAG_ACTIVITY_NO_USER_ACTION);
                 intent.putExtra("userid",userid);
                 startActivity(intent);
             }
@@ -91,8 +79,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 intent = new Intent(getApplicationContext(),Profile.class);
-                // 승민
-                intent.addFlags(Intent.FLAG_ACTIVITY_NO_USER_ACTION);
                 intent.putExtra("userid",userid);
                 startActivity(intent);
             }
@@ -101,8 +87,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 intent = new Intent(getApplicationContext(),Todo.class);
-                // 승민
-                intent.addFlags(Intent.FLAG_ACTIVITY_NO_USER_ACTION);
                 intent.putExtra("userid",userid);
                 startActivity(intent);
             }
@@ -111,8 +95,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 intent = new Intent(getApplicationContext(),Book.class);
-                // 승민
-                intent.addFlags(Intent.FLAG_ACTIVITY_NO_USER_ACTION);
                 intent.putExtra("userid",userid);
                 startActivity(intent);
             }
@@ -121,17 +103,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 intent = new Intent(getApplicationContext(),Shop.class);
-                // 승민
-                intent.addFlags(Intent.FLAG_ACTIVITY_NO_USER_ACTION);
                 intent.putExtra("userid",userid);
                 startActivity(intent);
             }
         });
-
-
-
-
-
 
         changchang.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -144,14 +119,32 @@ public class MainActivity extends AppCompatActivity {
 
                 // 랜덤으로 선택된 문장을 changsay에 설정
                 changsay.setText(messages[randomIndex]);
-                // 3초 후에 changsay를 보이지 않게 설정
+
+                // FrameLayout.LayoutParams 사용
+                FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(
+                        FrameLayout.LayoutParams.MATCH_PARENT,
+                        dpToPx(80)
+                );
+                changsay.setLayoutParams(params);
+
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        changsay.setText(""); // changsay를 공백으로 설정
+                        changsay.setText("");
+                        // FrameLayout.LayoutParams 사용
+                        FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(
+                                FrameLayout.LayoutParams.MATCH_PARENT,
+                                dpToPx(0)
+                        );
+                        changsay.setLayoutParams(params);
                     }
-                }, 3000); // 3000ms = 3초
+                }, 3000);
             }
         });
+    }
+    // dp를 픽셀로 변환하는 메소드
+    private int dpToPx(int dp) {
+        float density = getResources().getDisplayMetrics().density;
+        return Math.round((float) dp * density);
     }
 }

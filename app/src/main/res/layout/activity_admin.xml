@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -12,7 +13,8 @@
         android:text="user : "
         android:textStyle="bold|italic"
         android:textSize="50sp"
-        android:id="@+id/administer"/>
+        android:id="@+id/administer"
+        android:background="@color/cija"/>
 
     <View
         android:layout_width="match_parent"
@@ -21,7 +23,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:background="@color/white"
         android:orientation="vertical">
 
@@ -43,7 +45,7 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/student_name1"
                     android:text="test1"
-                    android:textSize="37sp"
+                    android:textSize="30sp"
                     android:textStyle="bold" />
 
             </LinearLayout>
@@ -51,166 +53,118 @@
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:orientation="vertical"
+                android:orientation="horizontal"
                 android:layout_weight="1" >
 
 
                 <!-- 출석버튼 -->
-                <ToggleButton
-                    android:layout_width="match_parent"
+                <Button
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:id="@+id/student_attendent1"
+                    android:layout_weight="1"
                     android:text="출석"
                     android:textStyle="bold|italic"
                     android:textSize="20sp"
-                    android:checked="false"
-                    android:textOff="결석"  />
+                    android:backgroundTint="#4CAF50"
+                    android:textColor="@color/black"/>
+
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="결석"
+                    android:textStyle="bold|italic"
+                    android:textSize="20sp"
+                    android:backgroundTint="#F44336"
+                    android:textColor="@color/black"/>
+
             </LinearLayout>
         </LinearLayout>
+
         <View
             android:layout_width="match_parent"
             android:layout_height="3dp"
             android:background="@color/black"/>
 
-        <LinearLayout
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Assignment"
+                android:textColor="@color/black"
+                android:textStyle="italic|bold"
+                android:textSize="40sp"
+                android:background="@color/cija"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="3dp"
+                android:background="@color/black"
+                android:layout_marginTop="50dp"/>
 
             <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
                 android:orientation="vertical"
-                android:layout_weight="1" >
+                android:layout_marginTop="60dp">
 
-                <!-- 학생 2 -->
-
-                <TextView
+                <ScrollView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/student_name2"
-                    android:text="test2"
-                    android:textSize="37sp"
-                    android:textStyle="bold" />
+                    android:layout_height="match_parent">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <ListView
+                            android:id="@+id/assignment"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:divider="@android:color/darker_gray"
+                            android:dividerHeight="1dp" />
+
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="3dp"
+                            android:background="@color/black" />
+
+                    </LinearLayout>
+                </ScrollView>
 
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:layout_weight="1" >
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="bottom|end"
+                android:layout_marginBottom="20dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/shape_for_cicle_btn"
+                android:text="+"
+                android:textSize="25sp"
+                android:id="@+id/admin"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
 
-                <!-- 출석버튼 -->
-                <ToggleButton
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/student_attendent2"
-                    android:text="출석"
-                    android:textStyle="bold|italic"
-                    android:textSize="20sp"
-                    android:checked="false"
-                    android:textOff="결석"  />
-            </LinearLayout>
-        </LinearLayout>
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="3dp"
-            android:background="@color/black"/>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:layout_weight="1" >
-
-                <!-- 학생 3 -->
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/student_name3"
-                    android:text="test3"
-                    android:textSize="37sp"
-                    android:textStyle="bold" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:layout_weight="1" >
+        </FrameLayout>
 
 
-                <!-- 출석버튼 -->
-                <ToggleButton
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/student_attendent3"
-                    android:text="출석"
-                    android:textStyle="bold|italic"
-                    android:textSize="20sp"
-                    android:checked="false"
-                    android:textOff="결석"  />
-            </LinearLayout>
-        </LinearLayout>
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="3dp"
-            android:background="@color/black"/>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:layout_weight="1" >
-
-                <!-- 학생 4 -->
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/student_name4"
-                    android:text="test4"
-                    android:textSize="37sp"
-                    android:textStyle="bold" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:layout_weight="1" >
 
 
-                <!-- 출석버튼 -->
-                <ToggleButton
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/student_attendent4"
-                    android:text="출석"
-                    android:textStyle="bold|italic"
-                    android:textSize="20sp"
-                    android:checked="false"
-                    android:textOff="결석"  />
-            </LinearLayout>
-        </LinearLayout>
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="3dp"
-            android:background="@color/black"/>
+
     </LinearLayout>
+
+
+
+
+
 </LinearLayout>
