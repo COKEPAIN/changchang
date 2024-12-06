@@ -190,331 +190,184 @@
                     android:layout_weight="3"
                     android:orientation="vertical">
 
-                    <FrameLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
-
-                        <!-- 상태 바 섹션 -->
-                        <LinearLayout
+                        <FrameLayout
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:background="@color/white"
-                            android:orientation="vertical">
+                            android:layout_height="match_parent">
 
-                            <!-- 스트레스 지수 -->
+                            <!-- 상태 바 섹션 -->
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:orientation="horizontal"
-                                android:layout_marginBottom="20dp"
-                                android:layout_marginTop="5dp">
+                                android:background="@color/white"
+                                android:orientation="vertical">
 
-                                <FrameLayout
+                                <!-- 스트레스 지수 -->
+                                <LinearLayout
                                     android:layout_width="match_parent"
-                                    android:layout_height="20dp"
-                                    android:background="#E0E0E0">
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:layout_marginBottom="20dp"
+                                    android:layout_marginTop="5dp">
 
-
-                                    <View
-                                        android:id="@+id/stress_bar"
-                                        android:layout_width="0dp"
-                                        android:layout_height="match_parent"
-                                        android:background="#FF5722"/>
-
-
-                                    <!-- 눈금 텍스트 -->
-                                    <LinearLayout
+                                    <FrameLayout
                                         android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:orientation="horizontal"
-                                        android:layout_marginTop="20dp">
+                                        android:layout_height="20dp"
+                                        android:background="#E0E0E0">
 
-                                        <TextView
+
+                                        <View
+                                            android:id="@+id/stress_bar"
                                             android:layout_width="0dp"
+                                            android:layout_height="match_parent"
+                                            android:background="#FF5722"/>
+
+
+                                        <!-- 눈금 텍스트 -->
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
                                             android:layout_height="wrap_content"
-                                            android:layout_weight="25"
-                                            android:text="0"
-                                            android:textSize="10sp"
-                                            android:gravity="start"/>
+                                            android:orientation="horizontal"
+                                            android:layout_marginTop="20dp">
 
-                                        <TextView
-                                            android:layout_width="0dp"
-                                            android:layout_height="wrap_content"
-                                            android:layout_weight="25"
-                                            android:text="25"
-                                            android:textSize="10sp"
-                                            android:gravity="center"/>
+                                            <TextView
+                                                android:layout_width="0dp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_weight="25"
+                                                android:text="0"
+                                                android:textSize="10sp"
+                                                android:gravity="start"/>
 
-                                        <TextView
-                                            android:layout_width="0dp"
-                                            android:layout_height="wrap_content"
-                                            android:layout_weight="25"
-                                            android:text="50"
-                                            android:textSize="10sp"
-                                            android:gravity="center"/>
+                                            <TextView
+                                                android:layout_width="0dp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_weight="25"
+                                                android:text="25"
+                                                android:textSize="10sp"
+                                                android:gravity="center"/>
 
-                                        <TextView
-                                            android:layout_width="0dp"
-                                            android:layout_height="wrap_content"
-                                            android:layout_weight="25"
-                                            android:text="75"
-                                            android:textSize="10sp"
-                                            android:gravity="end"/>
-                                    </LinearLayout>
-                                </FrameLayout>
-                            </LinearLayout>
+                                            <TextView
+                                                android:layout_width="0dp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_weight="25"
+                                                android:text="50"
+                                                android:textSize="10sp"
+                                                android:gravity="center"/>
 
-                            <!-- 행복도 -->
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal"
-                                android:layout_marginBottom="20dp">
+                                            <TextView
+                                                android:layout_width="0dp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_weight="25"
+                                                android:text="75"
+                                                android:textSize="10sp"
+                                                android:gravity="end"/>
+                                        </LinearLayout>
+                                    </FrameLayout>
+                                </LinearLayout>
 
-                                <FrameLayout
+                                <!-- 행복도 -->
+                                <LinearLayout
                                     android:layout_width="match_parent"
-                                    android:layout_height="20dp"
-                                    android:background="#E0E0E0">
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:layout_marginBottom="20dp">
 
-                                    <View
-                                        android:id="@+id/happiness_bar"
-                                        android:layout_width="0dp"
-                                        android:layout_height="match_parent"
-                                        android:background="#4CAF50"/>
-
-                                    <!-- 눈금 텍스트 -->
-                                    <LinearLayout
+                                    <FrameLayout
                                         android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:orientation="horizontal"
-                                        android:layout_marginTop="20dp">
+                                        android:layout_height="20dp"
+                                        android:background="#E0E0E0">
 
-                                        <TextView
+                                        <View
+                                            android:id="@+id/happiness_bar"
                                             android:layout_width="0dp"
+                                            android:layout_height="match_parent"
+                                            android:background="#4CAF50"/>
+
+                                        <!-- 눈금 텍스트 -->
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
                                             android:layout_height="wrap_content"
-                                            android:layout_weight="25"
-                                            android:text="0"
-                                            android:textSize="10sp"
-                                            android:gravity="start"/>
+                                            android:orientation="horizontal"
+                                            android:layout_marginTop="20dp">
 
-                                        <TextView
-                                            android:layout_width="0dp"
-                                            android:layout_height="wrap_content"
-                                            android:layout_weight="25"
-                                            android:text="25"
-                                            android:textSize="10sp"
-                                            android:gravity="center"/>
+                                            <TextView
+                                                android:layout_width="0dp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_weight="25"
+                                                android:text="0"
+                                                android:textSize="10sp"
+                                                android:gravity="start"/>
 
-                                        <TextView
-                                            android:layout_width="0dp"
-                                            android:layout_height="wrap_content"
-                                            android:layout_weight="25"
-                                            android:text="50"
-                                            android:textSize="10sp"
-                                            android:gravity="center"/>
+                                            <TextView
+                                                android:layout_width="0dp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_weight="25"
+                                                android:text="25"
+                                                android:textSize="10sp"
+                                                android:gravity="center"/>
 
-                                        <TextView
-                                            android:layout_width="0dp"
-                                            android:layout_height="wrap_content"
-                                            android:layout_weight="25"
-                                            android:text="75"
-                                            android:textSize="10sp"
-                                            android:gravity="end"/>
-                                    </LinearLayout>
-                                </FrameLayout>
-                            </LinearLayout>
+                                            <TextView
+                                                android:layout_width="0dp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_weight="25"
+                                                android:text="50"
+                                                android:textSize="10sp"
+                                                android:gravity="center"/>
 
-                            <!-- 집중력 -->
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal"
-                                android:layout_marginBottom="18dp">
+                                            <TextView
+                                                android:layout_width="0dp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_weight="25"
+                                                android:text="75"
+                                                android:textSize="10sp"
+                                                android:gravity="end"/>
+                                        </LinearLayout>
+                                    </FrameLayout>
+                                </LinearLayout>
 
-                                <FrameLayout
+                                <!-- 집중력 -->
+                                <LinearLayout
                                     android:layout_width="match_parent"
-                                    android:layout_height="20dp"
-                                    android:background="#E0E0E0">
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:layout_marginBottom="18dp">
 
-                                    <View
-                                        android:id="@+id/focus_bar"
-                                        android:layout_width="0dp"
-                                        android:layout_height="match_parent"
-                                        android:background="#2196F3"/>
-
-                                    <!-- 눈금 텍스트 -->
-                                    <LinearLayout
+                                    <FrameLayout
                                         android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:orientation="horizontal"
-                                        android:layout_marginTop="20dp">
+                                        android:layout_height="20dp"
+                                        android:background="#E0E0E0">
 
-                                        <TextView
+                                        <View
+                                            android:id="@+id/focus_bar"
                                             android:layout_width="0dp"
-                                            android:layout_height="wrap_content"
-                                            android:layout_weight="25"
-                                            android:text="0"
-                                            android:textSize="10sp"
-                                            android:gravity="start"/>
+                                            android:layout_height="match_parent"
+                                            android:background="#2196F3"/>
+                                    </FrameLayout>
+                                </LinearLayout>
 
-                                        <TextView
-                                            android:layout_width="0dp"
-                                            android:layout_height="wrap_content"
-                                            android:layout_weight="25"
-                                            android:text="25"
-                                            android:textSize="10sp"
-                                            android:gravity="center"/>
-
-                                        <TextView
-                                            android:layout_width="0dp"
-                                            android:layout_height="wrap_content"
-                                            android:layout_weight="25"
-                                            android:text="50"
-                                            android:textSize="10sp"
-                                            android:gravity="center"/>
-
-                                        <TextView
-                                            android:layout_width="0dp"
-                                            android:layout_height="wrap_content"
-                                            android:layout_weight="25"
-                                            android:text="75"
-                                            android:textSize="10sp"
-                                            android:gravity="end"/>
-                                    </LinearLayout>
-                                </FrameLayout>
-                            </LinearLayout>
-
-                            <!-- 학업 능력 -->
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal"
-                                android:layout_marginBottom="8dp">
-
-
-                                <FrameLayout
+                                <!-- 학업 능력 -->
+                                <LinearLayout
                                     android:layout_width="match_parent"
-                                    android:layout_height="20dp"
-                                    android:background="#E0E0E0">
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:layout_marginBottom="8dp">
 
-                                    <View
-                                        android:id="@+id/academic_bar"
-                                        android:layout_width="0dp"
-                                        android:layout_height="match_parent"
-                                        android:background="#9C27B0"/>
 
-                                    <!-- 눈금 텍스트 -->
-                                    <LinearLayout
+                                    <FrameLayout
                                         android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:orientation="horizontal"
-                                        android:layout_marginTop="20dp">
+                                        android:layout_height="20dp"
+                                        android:background="#E0E0E0">
 
-                                        <TextView
+                                        <View
+                                            android:id="@+id/academic_bar"
                                             android:layout_width="0dp"
-                                            android:layout_height="wrap_content"
-                                            android:layout_weight="1"
-                                            android:text="0.0"
-                                            android:textSize="8sp"
-                                            android:gravity="center"/>
-
-                                        <TextView
-                                            android:layout_width="0dp"
-                                            android:layout_height="wrap_content"
-                                            android:layout_weight="1"
-                                            android:text="0.5"
-                                            android:textSize="8sp"
-                                            android:gravity="center"/>
-
-                                        <TextView
-                                            android:layout_width="0dp"
-                                            android:layout_height="wrap_content"
-                                            android:layout_weight="1"
-                                            android:text="1.0"
-                                            android:textSize="8sp"
-                                            android:gravity="center"/>
-
-                                        <TextView
-                                            android:layout_width="0dp"
-                                            android:layout_height="wrap_content"
-                                            android:layout_weight="1"
-                                            android:text="1.5"
-                                            android:textSize="8sp"
-                                            android:gravity="center"/>
-
-                                        <TextView
-                                            android:layout_width="0dp"
-                                            android:layout_height="wrap_content"
-                                            android:layout_weight="1"
-                                            android:text="2.0"
-                                            android:textSize="8sp"
-                                            android:gravity="center"/>
-
-                                        <TextView
-                                            android:layout_width="0dp"
-                                            android:layout_height="wrap_content"
-                                            android:layout_weight="1"
-                                            android:text="2.5"
-                                            android:textSize="8sp"
-                                            android:gravity="center"/>
-
-                                        <TextView
-                                            android:layout_width="0dp"
-                                            android:layout_height="wrap_content"
-                                            android:layout_weight="1"
-                                            android:text="3.0"
-                                            android:textSize="8sp"
-                                            android:gravity="center"/>
-
-                                        <TextView
-                                            android:layout_width="0dp"
-                                            android:layout_height="wrap_content"
-                                            android:layout_weight="1"
-                                            android:text="3.5"
-                                            android:textSize="8sp"
-                                            android:gravity="center"/>
-
-                                        <TextView
-                                            android:layout_width="0dp"
-                                            android:layout_height="wrap_content"
-                                            android:layout_weight="1"
-                                            android:text="4.0"
-                                            android:textSize="8sp"
-                                            android:gravity="center"/>
-
-                                        <TextView
-                                            android:layout_width="0dp"
-                                            android:layout_height="wrap_content"
-                                            android:layout_weight="1"
-                                            android:text="4.5"
-                                            android:textSize="8sp"
-                                            android:gravity="center"
-                                            android:layout_marginTop="3dp"/>
-                                    </LinearLayout>
-                                </FrameLayout>
+                                            android:layout_height="match_parent"
+                                            android:background="#9C27B0"/>
+                                    </FrameLayout>
+                                </LinearLayout>
                             </LinearLayout>
-                        </LinearLayout>
+                        </FrameLayout>
 
-                        <View
-                            android:layout_width="3dp"
-                            android:layout_height="match_parent"
-                            android:layout_marginLeft="70dp"
-                            android:background="#80000000"/>
-
-                        <View
-                            android:layout_width="3dp"
-                            android:layout_height="match_parent"
-                            android:layout_marginLeft="140dp"
-                            android:background="#80000000"/>
-
-                        <View
-                            android:layout_width="3dp"
-                            android:layout_height="match_parent"
-                            android:layout_marginLeft="210dp"
-                            android:background="#80000000"/>
-
-                    </FrameLayout>
-                </LinearLayout>
+                    </LinearLayout>
             </LinearLayout>
         </LinearLayout>
 
@@ -566,5 +419,16 @@
                 android:scaleType="centerInside"
                 android:background="?attr/selectableItemBackgroundBorderless"/>
         </LinearLayout>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/admin"
+            android:text="Admin Page"
+            android:layout_gravity="end|bottom"
+            android:layout_marginBottom="90dp"
+            android:backgroundTint="@color/cija"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"/>
     </FrameLayout>
 </LinearLayout>

@@ -88,6 +88,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 changsay.setText("test");
+                changsay.setHeight(80);
             }
         });
     }
