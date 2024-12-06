@@ -101,7 +101,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
                                 android:layout_marginTop="8dp"
-                                android:text="아이템 1"
+                                android:text="창대생"
                                 android:textStyle="bold" />
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>
@@ -129,7 +129,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
                                 android:layout_marginTop="8dp"
-                                android:text="아이템 2"
+                                android:text="과대"
                                 android:textStyle="bold" />
 
                         </LinearLayout>
@@ -157,7 +157,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
                                 android:layout_marginTop="8dp"
-                                android:text="아이템 3"
+                                android:text="휴학생"
                                 android:textStyle="bold" />
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>
@@ -184,7 +184,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
                                 android:layout_marginTop="8dp"
-                                android:text="아이템 4"
+                                android:text="학회장"
                                 android:textStyle="bold" />
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>
@@ -211,7 +211,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
                                 android:layout_marginTop="8dp"
-                                android:text="아이템 5"
+                                android:text="졸업생"
                                 android:textStyle="bold" />
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>
@@ -238,7 +238,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
                                 android:layout_marginTop="8dp"
-                                android:text="아이템 6"
+                                android:text="부학회장"
                                 android:textStyle="bold" />
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>
@@ -265,7 +265,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
                                 android:layout_marginTop="8dp"
-                                android:text="아이템 7"
+                                android:text="비둘기"
                                 android:textStyle="bold" />
 
                         </LinearLayout>
@@ -293,7 +293,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
                                 android:layout_marginTop="8dp"
-                                android:text="아이템 8"
+                                android:text="동아리회장"
                                 android:textStyle="bold" />
 
                         </LinearLayout>
@@ -321,7 +321,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
                                 android:layout_marginTop="8dp"
-                                android:text="아이템 9"
+                                android:text="CASPER 회장"
                                 android:textStyle="bold" />
 
                         </LinearLayout>
@@ -349,7 +349,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
                                 android:layout_marginTop="8dp"
-                                android:text="아이템 10"
+                                android:text="복학생"
                                 android:textStyle="bold" />
 
                         </LinearLayout>
@@ -377,7 +377,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
                                 android:layout_marginTop="8dp"
-                                android:text="아이템 11"
+                                android:text="과탑"
                                 android:textStyle="bold" />
 
                         </LinearLayout>
@@ -405,7 +405,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
                                 android:layout_marginTop="8dp"
-                                android:text="아이템 12"
+                                android:text="컴공 1과대"
                                 android:textStyle="bold" />
 
                         </LinearLayout>
@@ -432,7 +432,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
                                 android:layout_marginTop="8dp"
-                                android:text="아이템 13"
+                                android:text="컴공 2과대"
                                 android:textStyle="bold" />
 
                         </LinearLayout>
@@ -459,7 +459,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
                                 android:layout_marginTop="8dp"
-                                android:text="아이템 14"
+                                android:text="컴공 3대"
                                 android:textStyle="bold" />
 
                         </LinearLayout>
@@ -486,7 +486,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
                                 android:layout_marginTop="8dp"
-                                android:text="아이템 15"
+                                android:text="컴공 4과대"
                                 android:textStyle="bold" />
 
                         </LinearLayout>

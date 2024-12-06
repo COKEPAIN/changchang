@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,10 +12,17 @@ import androidx.appcompat.app.AppCompatActivity;
 public class Book extends AppCompatActivity {
     ImageButton home, map, todo, shop, profile, book;
     Intent intent;
+    int userid;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_book);
+
+        intent = getIntent();
+        userid = intent.getIntExtra("userid",0);
+
+        Toast.makeText(Book.this, "tset"+userid, Toast.LENGTH_SHORT).show();
 
         home = (ImageButton) findViewById(R.id.btn_home);
         map = (ImageButton) findViewById(R.id.btn_map);
