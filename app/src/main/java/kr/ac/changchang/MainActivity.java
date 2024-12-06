@@ -43,7 +43,9 @@ public class MainActivity extends AppCompatActivity {
         int academicAbility = intent.getIntExtra("academicAbility", 0);
         String title = intent.getStringExtra("title");
 
-        Toast.makeText(this, username, Toast.LENGTH_SHORT).show();
+        int userid = intent.getIntExtra("userid",0);
+        String test = String.valueOf(userid);
+        Toast.makeText(this, test, Toast.LENGTH_SHORT).show();
 
         // 승민
         try {
