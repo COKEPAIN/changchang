@@ -78,6 +78,7 @@ public class Todo extends AppCompatActivity {
             public void onClick(View view) {
                 intent = new Intent(getApplicationContext(),MainActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
         book.setOnClickListener(new View.OnClickListener() { // 도감 액티비티 전환
