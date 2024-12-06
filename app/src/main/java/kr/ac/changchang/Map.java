@@ -49,8 +49,6 @@ public class Map extends AppCompatActivity implements OnMapReadyCallback {
 
         intent = getIntent();
         int userid = intent.getIntExtra("userid",0);
-        String test = String.valueOf(userid);
-        Toast.makeText(this, test, Toast.LENGTH_SHORT).show();
 
         home = (ImageButton) findViewById(R.id.btn_home);
         map = (ImageButton) findViewById(R.id.btn_map);

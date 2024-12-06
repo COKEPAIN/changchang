@@ -9,4 +9,7 @@
     <color name="purple">#673AB7</color>
     <color name="MAYHEM">#1E1E1E</color>
     <color name="NaVy">#2F2E41</color>
+    <color name="light_background">#FFFFFF</color> <!-- 밝은 배경 -->
+    <color name="dark_background">#908D8D</color> <!-- 어두운 배경 -->
+
 </resources>

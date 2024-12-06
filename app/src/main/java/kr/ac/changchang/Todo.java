@@ -41,7 +41,7 @@ public class Todo extends AppCompatActivity {
     Todo_checkListAdapter adapter_todo; // todo 리스트에 대한 어뎁터
     Todo_textview_threeAdapter adapter_textview; // textview에대한 어뎁터
     Todo_textview_threeAdapter adapter_schedule; // schedule에대한 어뎁터
-    ApiService apiService = RetrofitClient.getRetrofitInstance().create(ApiService.class);; // api 설정하기 위한 변수
+    ApiService apiService = RetrofitClient.getRetrofitInstance().create(ApiService.class); // api 설정하기 위한 변수
     List<Todo_textview_three> task; //남은 과제 리스트
     String today;
     String userId;
@@ -53,8 +53,6 @@ public class Todo extends AppCompatActivity {
 
         intent = getIntent();
         int userid = intent.getIntExtra("userid",0);
-        String test = String.valueOf(userid);
-        Toast.makeText(this, test, Toast.LENGTH_SHORT).show();
 
         // 기본 버튼 구현
         home = (ImageButton) findViewById(R.id.btn_home);

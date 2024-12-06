@@ -491,33 +491,6 @@
 
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_columnWeight="1"
-                        android:layout_margin="8dp"
-                        app:cardCornerRadius="8dp"
-                        app:cardElevation="4dp">
-
-                        <LinearLayout
-                            android:id="@+id/item16_back"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:background="#908D8D"
-                            android:orientation="vertical"
-                            android:padding="16dp">
-
-                            <TextView
-                                android:id="@+id/item16"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:layout_marginTop="8dp"
-                                android:text="아이템 16"
-                                android:textStyle="bold" />
-
-                        </LinearLayout>
-                    </androidx.cardview.widget.CardView>
 
 
                 </GridLayout>

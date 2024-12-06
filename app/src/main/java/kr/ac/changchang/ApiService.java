@@ -21,11 +21,11 @@ public interface ApiService {
     );
 
     // 유저의 과제 추가 (POST)
-    @POST("api/assignments/add")
+    @POST("api/assignment/add")
     Call<Void> addAssignment(@Body Todo_assignmentRequest assignmentRequest);
 
     // 유저의 과제 제출 조회 (GET)
-    @GET("api/assignments/{studentId}")
+    @GET("api/assignment/{studentId}")
     Call<List<Todo_assignmentRespones>> getAssignments(@Path("studentId") int studentId);
 
     // 유저 정보 조회 (GET)
@@ -57,5 +57,16 @@ public interface ApiService {
     Call<ResponseBody> addTodo(
             @Path("studentId") int studentId,
             @Body TodoRequest todoRequest
+    );
+
+    // 유저의 타이틀 리스트 가져오기
+    @GET("/api/character/{userId}/titles")
+    Call<List<TitleResponse>> getTitles(@Path("userId") int userId);
+
+    // 유저의 타이틀 정보 변경
+    @PUT("api/character/{studentId}/title/{titleId}")
+    Call<Void> changeUserTitle(
+            @Path("studentId") int studentId,
+            @Path("titleId") int titleId
     );
 }

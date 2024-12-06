@@ -46,8 +46,18 @@ public class MainActivity extends AppCompatActivity {
         String title = intent.getStringExtra("title");
 
         userid = intent.getIntExtra("userid",0);
-        String test = String.valueOf(userid);
-        Toast.makeText(this, test, Toast.LENGTH_SHORT).show();
+        intent.putExtra("userid",userid);
+        if (intent != null && intent.hasExtra("updatedTitle")) {
+            String updatedTitle = intent.getStringExtra("updatedTitle");
+
+            // UI 업데이트 (예: TextView에 변경된 칭호 표시)
+            TextView titleTextView = findViewById(R.id.changchangtitle);
+            titleTextView.setText(updatedTitle);
+        }else{
+            //창창이 타이틀
+            TextView changchangTItle = (TextView)findViewById(R.id.changchangtitle);
+            changchangTItle.setText(title);
+        }
 
         // 승민
         try {
@@ -120,9 +130,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        //창창이 타이틀
-        TextView changchangTItle = (TextView)findViewById(R.id.changchangtitle);
-        changchangTItle.setText(title);
+
 
 
         changchang.setOnClickListener(new View.OnClickListener() {
