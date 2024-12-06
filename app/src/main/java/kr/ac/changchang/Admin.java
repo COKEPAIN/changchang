@@ -26,8 +26,9 @@ public class Admin extends AppCompatActivity {
     // TextView와 Button을 위한 변수 선언
     TextView administer, studentName1;
     Button studentAttend1, studentAbsence1;
-    ListView assignmentListView;
     Button admin;
+    EditText assignment, assignmentDeadline;
+    
 
     ViewGroup.LayoutParams params;
     int userid;
@@ -54,7 +55,8 @@ public class Admin extends AppCompatActivity {
         studentAttend1 = findViewById(R.id.student_attendent1);
         studentAbsence1 = findViewById(R.id.student_attendent2);
         admin = findViewById(R.id.admin);
-        assignmentListView = findViewById(R.id.assignment);
+        assignment = findViewById(R.id.assignment);
+        assignmentDeadline = findViewById(R.id.deadline);
 
         getUserStat(userid);
 
@@ -88,10 +90,8 @@ public class Admin extends AppCompatActivity {
         admin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String subjectName = "고급자료구조";
-                String deadline = "2023-12-31T23:59:59";
-
-                addAssignment(userid, subjectName, deadline);
+                addAssignment(userid, assignment.getText().toString(), assignmentDeadline.getText().toString());
+                Toast.makeText(Admin.this, "과제 추가 완료", Toast.LENGTH_SHORT).show();
             }
         });
     }
