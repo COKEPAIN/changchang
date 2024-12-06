@@ -71,6 +71,7 @@ public class MainActivity extends AppCompatActivity {
                 intent = new Intent(getApplicationContext(),Map.class);
                 // 승민
                 intent.addFlags(Intent.FLAG_ACTIVITY_NO_USER_ACTION);
+                intent.putExtra("userid",userid);
                 startActivity(intent);
             }
         });
@@ -80,6 +81,7 @@ public class MainActivity extends AppCompatActivity {
                 intent = new Intent(getApplicationContext(),Profile.class);
                 // 승민
                 intent.addFlags(Intent.FLAG_ACTIVITY_NO_USER_ACTION);
+                intent.putExtra("userid",userid);
                 startActivity(intent);
             }
         });
@@ -89,6 +91,7 @@ public class MainActivity extends AppCompatActivity {
                 intent = new Intent(getApplicationContext(),Todo.class);
                 // 승민
                 intent.addFlags(Intent.FLAG_ACTIVITY_NO_USER_ACTION);
+                intent.putExtra("userid",userid);
                 startActivity(intent);
             }
         });
@@ -98,6 +101,7 @@ public class MainActivity extends AppCompatActivity {
                 intent = new Intent(getApplicationContext(),Book.class);
                 // 승민
                 intent.addFlags(Intent.FLAG_ACTIVITY_NO_USER_ACTION);
+                intent.putExtra("userid",userid);
                 startActivity(intent);
             }
         });
@@ -107,6 +111,7 @@ public class MainActivity extends AppCompatActivity {
                 intent = new Intent(getApplicationContext(),Shop.class);
                 // 승민
                 intent.addFlags(Intent.FLAG_ACTIVITY_NO_USER_ACTION);
+                intent.putExtra("userid",userid);
                 startActivity(intent);
             }
         });

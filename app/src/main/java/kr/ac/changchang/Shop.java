@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,6 +18,11 @@ public class Shop extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shop);
 
+        intent = getIntent();
+        int userid = intent.getIntExtra("userid",0);
+        String test = String.valueOf(userid);
+        Toast.makeText(this, test, Toast.LENGTH_SHORT).show();
+
         home = (ImageButton) findViewById(R.id.btn_home);
         map = (ImageButton) findViewById(R.id.btn_map);
         todo = (ImageButton) findViewById(R.id.btn_todo);
@@ -28,6 +34,7 @@ public class Shop extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 intent = new Intent(getApplicationContext(),Profile.class);
+                intent.putExtra("userid",userid);
                 startActivity(intent);
             }
         });
@@ -35,6 +42,7 @@ public class Shop extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 intent = new Intent(getApplicationContext(),Todo.class);
+                intent.putExtra("userid",userid);
                 startActivity(intent);
             }
         });
@@ -42,6 +50,7 @@ public class Shop extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 intent = new Intent(getApplicationContext(),MainActivity.class);
+                intent.putExtra("userid",userid);
                 startActivity(intent);
             }
         });
@@ -49,6 +58,7 @@ public class Shop extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 intent = new Intent(getApplicationContext(),Map.class);
+                intent.putExtra("userid",userid);
                 startActivity(intent);
             }
         });
@@ -56,6 +66,7 @@ public class Shop extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 intent = new Intent(getApplicationContext(),Book.class);
+                intent.putExtra("userid",userid);
                 startActivity(intent);
             }
         });

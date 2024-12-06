@@ -51,6 +51,11 @@ public class Todo extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_todo);
 
+        intent = getIntent();
+        int userid = intent.getIntExtra("userid",0);
+        String test = String.valueOf(userid);
+        Toast.makeText(this, test, Toast.LENGTH_SHORT).show();
+
         // 기본 버튼 구현
         home = (ImageButton) findViewById(R.id.btn_home);
         map = (ImageButton) findViewById(R.id.btn_map);
@@ -63,6 +68,7 @@ public class Todo extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 intent = new Intent(getApplicationContext(),Map.class);
+                intent.putExtra("userid",userid);
                 startActivity(intent);
             }
         });
@@ -70,6 +76,7 @@ public class Todo extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 intent = new Intent(getApplicationContext(),Profile.class);
+                intent.putExtra("userid",userid);
                 startActivity(intent);
             }
         });
@@ -77,6 +84,7 @@ public class Todo extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 intent = new Intent(getApplicationContext(),MainActivity.class);
+                intent.putExtra("userid",userid);
                 startActivity(intent);
             }
         });
@@ -84,6 +92,7 @@ public class Todo extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 intent = new Intent(getApplicationContext(),Book.class);
+                intent.putExtra("userid",userid);
                 startActivity(intent);
             }
         });
@@ -91,6 +100,7 @@ public class Todo extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 intent = new Intent(getApplicationContext(),Shop.class);
+                intent.putExtra("userid",userid);
                 startActivity(intent);
             }
         });

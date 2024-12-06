@@ -69,6 +69,7 @@ public class Login extends AppCompatActivity {
                         intent.putExtra("focus", userStatusResponse.getFocus());
                         intent.putExtra("academicAbility", userStatusResponse.getAcademicAbility());
                         intent.putExtra("title", userStatusResponse.getTitle().getName());  // Title의 name만 전달
+
                         intent.putExtra("userid",userid);
 
                         startActivity(intent);
