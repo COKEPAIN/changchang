@@ -25,6 +25,8 @@ public class MainActivity extends AppCompatActivity {
     Intent intent;
     TextView changsay;
 
+    int userid;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,9 +44,19 @@ public class MainActivity extends AppCompatActivity {
         int academicAbility = intent.getIntExtra("academicAbility", 0);
         String title = intent.getStringExtra("title");
 
-        int userid = intent.getIntExtra("userid",0);
-        String test = String.valueOf(userid);
-        Toast.makeText(this, test, Toast.LENGTH_SHORT).show();
+        userid = intent.getIntExtra("userid",0);
+        intent.putExtra("userid",userid);
+        if (intent != null && intent.hasExtra("updatedTitle")) {
+            String updatedTitle = intent.getStringExtra("updatedTitle");
+
+            // UI 업데이트 (예: TextView에 변경된 칭호 표시)
+            TextView titleTextView = findViewById(R.id.changchangtitle);
+            titleTextView.setText(updatedTitle);
+        }else{
+            //창창이 타이틀
+            TextView changchangTItle = (TextView)findViewById(R.id.changchangtitle);
+            changchangTItle.setText(title);
+        }
 
         home = (ImageButton) findViewById(R.id.btn_home);
         map = (ImageButton) findViewById(R.id.btn_map);
@@ -99,8 +111,13 @@ public class MainActivity extends AppCompatActivity {
         changchang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // 3가지 문장을 배열에 저장
                 String[] messages = {"오늘 기분 좋다잉", "배고프다", "호관아 뭐하냐"};
+
+                // 랜덤으로 문장 선택
                 int randomIndex = (int) (Math.random() * messages.length);
+
+                // 랜덤으로 선택된 문장을 changsay에 설정
                 changsay.setText(messages[randomIndex]);
 
                 // FrameLayout.LayoutParams 사용

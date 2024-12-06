@@ -70,6 +70,7 @@
                     android:textColor="@color/black"/>
 
                 <Button
+                    android:id="@+id/student_attendent2"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -89,7 +90,7 @@
 
         <View
             android:layout_width="0dp"
-            android:layout_height="190dp"
+            android:layout_height="190dp"/>
 
         <FrameLayout
             android:layout_width="match_parent"

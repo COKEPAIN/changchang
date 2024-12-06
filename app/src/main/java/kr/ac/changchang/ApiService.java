@@ -32,7 +32,7 @@ public interface ApiService {
     @GET("api/user/{userId}")
     Call<UserStatusResponse> getUserStatus(@Path("userId") int userId);
 
-    // 유저 정보 조회 (GET)
+    // 유저 로그인 요청 (GET)
     @GET("api/user/{userId}")
     Call<UserStatusResponse> getUser(@Path("userId") int userId);
 
@@ -58,4 +58,23 @@ public interface ApiService {
             @Path("studentId") int studentId,
             @Body TodoRequest todoRequest
     );
+
+    // 유저의 타이틀 리스트 가져오기
+    @GET("/api/character/{userId}/titles")
+    Call<List<TitleResponse>> getTitles(@Path("userId") int userId);
+
+    // 유저의 타이틀 정보 변경
+    @PUT("api/character/{studentId}/title/{titleId}")
+    Call<Void> changeUserTitle(
+            @Path("studentId") int studentId,
+            @Path("titleId") int titleId
+    );
+
+    // 사용자의 스탯 변경
+    @POST("/api/character/{studentId}")
+    Call<Void> updateUserStatus(@Path("studentId") int studentId, @Body UserStatusUpdateRequest request);
+
+    // 사용자에게 과제 추가
+    @POST("/api/assignment/add")
+    Call<Void> addAssignment(@Body AssignmentRequest request);
 }

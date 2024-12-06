@@ -80,7 +80,8 @@
                 android:textAlignment="center"
                 android:background="@drawable/rounded_nav2"
                 android:textSize="20sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:id="@+id/changchangtitle"/>
 
             <ImageView
                 android:layout_width="220dp"
