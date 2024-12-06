@@ -64,7 +64,7 @@
                     android:id="@+id/student_attendent1"
                     android:layout_weight="1"
                     android:text="출석"
-                    android:textStyle="bold|italic"
+                    android:textStyle="bold"
                     android:textSize="20sp"
                     android:backgroundTint="#4CAF50"
                     android:textColor="@color/black"/>
@@ -74,7 +74,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="결석"
-                    android:textStyle="bold|italic"
+                    android:textStyle="bold"
                     android:textSize="20sp"
                     android:backgroundTint="#F44336"
                     android:textColor="@color/black"/>
@@ -86,6 +86,10 @@
             android:layout_width="match_parent"
             android:layout_height="3dp"
             android:background="@color/black"/>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="190dp"
 
         <FrameLayout
             android:layout_width="match_parent"
@@ -121,13 +125,32 @@
                         android:layout_height="match_parent"
                         android:orientation="vertical">
 
-                        <ListView
-                            android:id="@+id/assignment"
+                        <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:divider="@android:color/darker_gray"
-                            android:dividerHeight="1dp" />
+                            android:orientation="horizontal">
 
+                            <TextView
+                                android:id="@+id/assignment"
+                                android:layout_width="300dp"
+                                android:layout_height="match_parent"
+                                android:divider="@android:color/darker_gray"
+                                android:text="test"
+                                android:dividerHeight="1dp"
+                                android:textSize="25sp"
+                                android:textStyle="bold" />
+
+                            <Button
+                                android:id="@+id/admin"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="제출"
+                                android:textSize="20sp"
+                                android:textStyle="bold"
+                                android:backgroundTint="@color/black" />
+
+
+                        </LinearLayout>
 
                         <View
                             android:layout_width="match_parent"
@@ -138,21 +161,6 @@
                 </ScrollView>
 
             </LinearLayout>
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_gravity="bottom|end"
-                android:layout_marginBottom="20dp"
-                android:layout_marginRight="10dp"
-                android:background="@drawable/shape_for_cicle_btn"
-                android:text="+"
-                android:textSize="25sp"
-                android:id="@+id/admin"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
 
 
         </FrameLayout>
