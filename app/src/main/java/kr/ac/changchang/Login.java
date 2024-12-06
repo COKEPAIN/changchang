@@ -57,7 +57,7 @@ public class Login extends AppCompatActivity {
                 if (response.isSuccessful() && response.body() != null) {
                     UserStatusResponse userStatusResponse = response.body();
                     // 서버에서 받은 password와 현재 입력 password 비교
-                    if (userStatusResponse.getUsername().equals(password)) {
+                    if (userStatusResponse.getPassword().equals(password)) {
                         intent = new Intent(getApplicationContext(), MainActivity.class);
                         intent.putExtra("username", userStatusResponse.getUsername());
                         intent.putExtra("grade", userStatusResponse.getGrade());

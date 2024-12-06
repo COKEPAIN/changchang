@@ -2,8 +2,10 @@ package kr.ac.changchang;
 
 import java.util.List;
 
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
@@ -29,6 +31,10 @@ public interface ApiService {
     // 유저 정보 조회 (GET)
     @GET("api/user/{userId}")
     Call<UserStatusResponse> getUserStatus(@Path("userId") int userId);
+
+    // 유저 정보 조회 (GET)
+    @GET("api/user/{userId}")
+    Call<UserStatusResponse> getUser(@Path("userId") int userId);
 
     // 공지 사항 정보 (GET)
     @GET("notices/department/{id}") //
