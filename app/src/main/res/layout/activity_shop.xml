@@ -91,13 +91,20 @@
                             android:orientation="vertical"
                             android:padding="16dp">
 
+                            <ImageView
+                                android:layout_width="100dp"
+                                android:layout_height="100dp"
+                                android:layout_gravity="center"
+                                android:src="@drawable/changchang2"
+                                android:scaleType="centerCrop"/>
+
                             <TextView
                                 android:id="@+id/item1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
                                 android:layout_marginTop="8dp"
-                                android:text="아이템 1"
+                                android:text="나도사랑할줄안다창창"
                                 android:textStyle="bold" />
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>
@@ -118,13 +125,20 @@
                             android:orientation="vertical"
                             android:padding="16dp">
 
+                            <ImageView
+                                android:layout_width="100dp"
+                                android:layout_height="100dp"
+                                android:layout_gravity="center"
+                                android:src="@drawable/changchang3"
+                                android:scaleType="centerCrop"/>
+
                             <TextView
                                 android:id="@+id/item2"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
                                 android:layout_marginTop="8dp"
-                                android:text="아이템 2"
+                                android:text="빡센 육군 제대한 창창"
                                 android:textStyle="bold" />
 
                         </LinearLayout>
@@ -145,13 +159,20 @@
                             android:orientation="vertical"
                             android:padding="16dp">
 
+                            <ImageView
+                                android:layout_width="100dp"
+                                android:layout_height="100dp"
+                                android:layout_gravity="center"
+                                android:src="@drawable/changchang4"
+                                android:scaleType="centerCrop"/>
+
                             <TextView
                                 android:id="@+id/item3"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
                                 android:layout_marginTop="8dp"
-                                android:text="아이템 3"
+                                android:text="사랑니 뺀 창창"
                                 android:textStyle="bold" />
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>
@@ -171,13 +192,20 @@
                             android:orientation="vertical"
                             android:padding="16dp">
 
+                            <ImageView
+                                android:layout_width="100dp"
+                                android:layout_height="100dp"
+                                android:layout_gravity="center"
+                                android:src="@drawable/changchang5"
+                                android:scaleType="centerCrop"/>
+
                             <TextView
                                 android:id="@+id/item4"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
                                 android:layout_marginTop="8dp"
-                                android:text="아이템 4"
+                                android:text="시간이촉박한창창"
                                 android:textStyle="bold" />
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>
@@ -197,13 +225,20 @@
                             android:orientation="vertical"
                             android:padding="16dp">
 
+                            <ImageView
+                                android:layout_width="100dp"
+                                android:layout_height="100dp"
+                                android:layout_gravity="center"
+                                android:src="@drawable/changchang6"
+                                android:scaleType="centerCrop"/>
+
                             <TextView
                                 android:id="@+id/item5"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
                                 android:layout_marginTop="8dp"
-                                android:text="아이템 5"
+                                android:text="모두를사랑하는창창"
                                 android:textStyle="bold" />
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>
@@ -223,13 +258,20 @@
                             android:orientation="vertical"
                             android:padding="16dp">
 
+                            <ImageView
+                                android:layout_width="100dp"
+                                android:layout_height="100dp"
+                                android:layout_gravity="center"
+                                android:src="@drawable/changchang7"
+                                android:scaleType="centerCrop"/>
+
                             <TextView
                                 android:id="@+id/item6"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
                                 android:layout_marginTop="8dp"
-                                android:text="아이템 6"
+                                android:text="여러분과함께하는창창"
                                 android:textStyle="bold" />
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>
@@ -249,13 +291,20 @@
                             android:orientation="vertical"
                             android:padding="16dp">
 
+                            <ImageView
+                                android:layout_width="100dp"
+                                android:layout_height="100dp"
+                                android:layout_gravity="center"
+                                android:src="@drawable/changchang8"
+                                android:scaleType="centerCrop"/>
+
                             <TextView
                                 android:id="@+id/item7"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
                                 android:layout_marginTop="8dp"
-                                android:text="아이템 7"
+                                android:text="과제에 화가난 창창"
                                 android:textStyle="bold" />
 
                         </LinearLayout>
@@ -276,13 +325,20 @@
                             android:orientation="vertical"
                             android:padding="16dp">
 
+                            <ImageView
+                                android:layout_width="100dp"
+                                android:layout_height="100dp"
+                                android:layout_gravity="center"
+                                android:src="@drawable/changchang9"
+                                android:scaleType="centerCrop"/>
+
                             <TextView
                                 android:id="@+id/item8"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
                                 android:layout_marginTop="8dp"
-                                android:text="아이템 8"
+                                android:text="과제에 열받은 창창"
                                 android:textStyle="bold" />
 
                         </LinearLayout>
@@ -303,13 +359,20 @@
                             android:orientation="vertical"
                             android:padding="16dp">
 
+                            <ImageView
+                                android:layout_width="100dp"
+                                android:layout_height="100dp"
+                                android:layout_gravity="center"
+                                android:src="@drawable/changchang10"
+                                android:scaleType="centerCrop"/>
+
                             <TextView
                                 android:id="@+id/item9"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
                                 android:layout_marginTop="8dp"
-                                android:text="아이템 9"
+                                android:text="과제가 미운 창창"
                                 android:textStyle="bold" />
 
                         </LinearLayout>
@@ -330,13 +393,20 @@
                             android:orientation="vertical"
                             android:padding="16dp">
 
+                            <ImageView
+                                android:layout_width="100dp"
+                                android:layout_height="100dp"
+                                android:layout_gravity="center"
+                                android:src="@drawable/changchang11"
+                                android:scaleType="centerCrop"/>
+
                             <TextView
                                 android:id="@+id/item10"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
                                 android:layout_marginTop="8dp"
-                                android:text="아이템 10"
+                                android:text="과제에 지친 창창"
                                 android:textStyle="bold" />
 
                         </LinearLayout>
@@ -357,13 +427,20 @@
                             android:orientation="vertical"
                             android:padding="16dp">
 
+                            <ImageView
+                                android:layout_width="100dp"
+                                android:layout_height="100dp"
+                                android:layout_gravity="center"
+                                android:src="@drawable/changchang12"
+                                android:scaleType="centerCrop"/>
+
                             <TextView
                                 android:id="@+id/item11"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
                                 android:layout_marginTop="8dp"
-                                android:text="아이템 11"
+                                android:text="피곤한 창창"
                                 android:textStyle="bold" />
 
                         </LinearLayout>
@@ -384,13 +461,20 @@
                             android:orientation="vertical"
                             android:padding="16dp">
 
+                            <ImageView
+                                android:layout_width="100dp"
+                                android:layout_height="100dp"
+                                android:layout_gravity="center"
+                                android:src="@drawable/changchang14"
+                                android:scaleType="centerCrop"/>
+
                             <TextView
                                 android:id="@+id/item12"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
                                 android:layout_marginTop="8dp"
-                                android:text="아이템 12"
+                                android:text="짜릿한 옆태"
                                 android:textStyle="bold" />
 
                         </LinearLayout>
@@ -410,102 +494,30 @@
                             android:orientation="vertical"
                             android:padding="16dp">
 
+                            <ImageView
+                                android:layout_width="100dp"
+                                android:layout_height="100dp"
+                                android:layout_gravity="center"
+                                android:src="@drawable/changchang15"
+                                android:scaleType="centerCrop"/>
+
                             <TextView
                                 android:id="@+id/item13"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
                                 android:layout_marginTop="8dp"
-                                android:text="아이템 13"
+                                android:text="매혹적인 뒷태"
                                 android:textStyle="bold" />
 
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_columnWeight="1"
-                        android:layout_margin="8dp"
-                        app:cardCornerRadius="8dp"
-                        app:cardElevation="4dp">
-
-                        <LinearLayout
-                            android:id="@+id/item14_back"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            android:padding="16dp">
-
-                            <TextView
-                                android:id="@+id/item14"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:layout_marginTop="8dp"
-                                android:text="아이템 14"
-                                android:textStyle="bold" />
-
-                        </LinearLayout>
-                    </androidx.cardview.widget.CardView>
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_columnWeight="1"
-                        android:layout_margin="8dp"
-                        app:cardCornerRadius="8dp"
-                        app:cardElevation="4dp">
-
-                        <LinearLayout
-                            android:id="@+id/item15_back"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            android:padding="16dp">
-
-                            <TextView
-                                android:id="@+id/item15"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:layout_marginTop="8dp"
-                                android:text="아이템 15"
-                                android:textStyle="bold" />
-
-                        </LinearLayout>
-                    </androidx.cardview.widget.CardView>
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_columnWeight="1"
-                        android:layout_margin="8dp"
-                        app:cardCornerRadius="8dp"
-                        app:cardElevation="4dp">
-
-                        <LinearLayout
-                            android:id="@+id/item16_back"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            android:padding="16dp">
-
-                            <TextView
-                                android:id="@+id/item16"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:layout_marginTop="8dp"
-                                android:text="아이템 16"
-                                android:textStyle="bold" />
-
-                        </LinearLayout>
-                    </androidx.cardview.widget.CardView>
-
-
                 </GridLayout>
-
+                
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"/>
             </LinearLayout>
-
-
         </ScrollView>
 
 
