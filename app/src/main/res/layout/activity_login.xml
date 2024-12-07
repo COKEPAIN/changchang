@@ -46,6 +46,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/rounded_edittext"
                 android:hint="Username"
+                android:textColor="@color/black"
                 android:padding="16dp"
                 android:layout_marginBottom="16dp"
                 android:id="@+id/login_Username"/>
@@ -90,17 +91,17 @@
         </LinearLayout>
     </LinearLayout>
 
-        <!-- Login 버튼 -->
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="LOGIN"
-            android:textColor="@color/white"
-            android:background="@drawable/rounded_btn"
-            android:padding="16dp"
-            android:layout_marginBottom="16dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="10dp"
-            android:id="@+id/btn_login"/>
+    <!-- Login 버튼 -->
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="LOGIN"
+        android:textColor="@color/white"
+        android:background="@drawable/rounded_btn"
+        android:padding="16dp"
+        android:layout_marginBottom="16dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:id="@+id/btn_login"/>
 
 </LinearLayout>

@@ -140,7 +140,7 @@ public class Admin extends AppCompatActivity {
                     happiness = userData.getHappiness();
                     academicAbility = userData.getAcademicAbility();
                     currentTitle = userData.getTitle(); // 현재 칭호
-
+                    focus= userData.getFocus();
                     // 새로운 칭호 목록 처리
                     List<Title> availableTitles = userData.getAvailableTitles();
                     if (availableTitles != null) {
