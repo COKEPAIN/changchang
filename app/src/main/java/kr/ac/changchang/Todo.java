@@ -217,8 +217,12 @@ public class Todo extends AppCompatActivity {
                                     adapter_todo.notifyDataSetChanged();
 
                                     // 높이 재조정
-                                    params.height = (int) (60 * (checklist.size()-1) * getResources().getDisplayMetrics().density);
+                                    params = listView_todo.getLayoutParams();
+                                    params.height = (int) (60 * checklist.size() * getResources().getDisplayMetrics().density);
                                     listView_todo.setLayoutParams(params);
+
+                                    // 리스트뷰를 맨 아래로 스크롤
+                                    listView_todo.post(() -> listView_todo.setSelection(adapter_todo.getCount() - 1));
                                 } else {
                                     Toast.makeText(Todo.this, "알 수 없는 응답: " + serverMessage, Toast.LENGTH_SHORT).show();
                                 }
@@ -254,6 +258,7 @@ public class Todo extends AppCompatActivity {
 
         builder.create().show();
     }
+
 
 
     private void getUserTask(int studentId, Runnable onComplete) {
@@ -338,8 +343,8 @@ public class Todo extends AppCompatActivity {
         Map<Integer, String> day = new HashMap<>();
         day.put(1,"Monday");
         day.put(2,"Tuesday");
-        day.put(3,"Thursday");
-        day.put(4,"Wednesday");
+        day.put(3,"Wednesday");
+        day.put(4,"Thursday");
         day.put(5,"Friday");
 
 
@@ -358,7 +363,7 @@ public class Todo extends AppCompatActivity {
                                     ", Day: " + schedule.getDayOfWeek() +
                                     ", Start: " + schedule.getStartTime() +
                                     ", End: " + schedule.getEndTime());
-                            if(schedule.getDayOfWeek().equals("Monday")){ // 임시 수정
+                            if(schedule.getDayOfWeek().equals("Tuesday")){ // 임시 수정
 
                                 today_class.add(new Todo_textview_three(
                                         subject.getSubjectName(),

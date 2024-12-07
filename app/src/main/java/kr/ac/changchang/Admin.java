@@ -65,34 +65,7 @@ public class Admin extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // 출석 버튼 클릭 시, 메시지 토스트 출력
-                if(stress > 5){
-                    stress -= 5;
-                }else{
-                    stress =0;
-                }
-                if(happiness < 95){
-                    happiness += 5;
-                }else{
-                    happiness =100;
-                }
-                if(focus > 5){
-                    focus -= 5;
-                }else{
-                    focus =0;
-                }
 
-
-                updateUserStatus(userid, grade, stress, happiness, focus, academicAbility);
-                updateUserPoints(userid, 50);
-                Toast.makeText(Admin.this, "출석 반영 완료", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        // "결석" 버튼 클릭 시 동작
-        studentAbsence1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // 출석 버튼 클릭 시, 메시지 토스트 출력
                 if(stress < 95){
                     stress += 5;
                 }else{
@@ -110,14 +83,44 @@ public class Admin extends AppCompatActivity {
                 }
 
                 updateUserStatus(userid, grade, stress, happiness, focus, academicAbility);
-                Toast.makeText(Admin.this, "결석 반영 완료", Toast.LENGTH_SHORT).show();
+                updateUserPoints(userid, 50);
+            }
+        });
+
+        // "결석" 버튼 클릭 시 동작
+        studentAbsence1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // 출석 버튼 클릭 시, 메시지 토스트 출력
+                if(stress > 5){
+                    stress -= 5;
+                }else{
+                    stress =0;
+                }
+                if(happiness < 95){
+                    happiness += 5;
+                }else{
+                    happiness =100;
+                }
+                if(focus > 5){
+                    focus -= 5;
+                }else{
+                    focus =0;
+                }
+
+                updateUserStatus(userid, grade, stress, happiness, focus, academicAbility);
             }
         });
         admin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(stress < 90){
+                    stress += 10;
+                }else{
+                    stress =100;
+                }
                 addAssignment(userid, assignment.getText().toString(), assignmentDeadline.getText().toString());
-                Toast.makeText(Admin.this, "과제 추가 완료", Toast.LENGTH_SHORT).show();
+                updateUserStatus(userid, grade, stress, happiness, focus, academicAbility);
             }
         });
     }
@@ -135,6 +138,7 @@ public class Admin extends AppCompatActivity {
                     health = userData.getHealth();
                     stress = userData.getStress();
                     happiness = userData.getHappiness();
+                    academicAbility = userData.getAcademicAbility();
                     currentTitle = userData.getTitle(); // 현재 칭호
 
                     // 새로운 칭호 목록 처리
@@ -167,7 +171,6 @@ public class Admin extends AppCompatActivity {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
                 if (response.isSuccessful()) {
-                    Toast.makeText(Admin.this, "유저 상태가 성공적으로 변경되었습니다.", Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(Admin.this, "유저 상태 변경에 실패했습니다. 응답 코드: " + response.code(), Toast.LENGTH_SHORT).show();
                 }
@@ -188,7 +191,6 @@ public class Admin extends AppCompatActivity {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
                 if (response.isSuccessful()) {
-                    Toast.makeText(Admin.this, "과제가 성공적으로 추가되었습니다.", Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(Admin.this, "과제 추가 실패. 응답 코드: " + response.code(), Toast.LENGTH_SHORT).show();
                     try {
@@ -218,7 +220,6 @@ public class Admin extends AppCompatActivity {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
                 if (response.isSuccessful()) {
-                    Toast.makeText(Admin.this, "포인트가 성공적으로 업데이트되었습니다.", Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(Admin.this, "포인트 업데이트에 실패했습니다. 응답 코드: " + response.code(), Toast.LENGTH_SHORT).show();
                 }

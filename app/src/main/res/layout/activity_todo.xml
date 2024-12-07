@@ -126,6 +126,10 @@
                         android:layout_height="1dp"
                         android:background="@color/black" />
 
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="60dp"/>
+
 
                 </LinearLayout>
 
