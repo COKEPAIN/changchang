@@ -100,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // 3가지 문장을 배열에 저장
-                String[] messages = {"오늘 기분 좋다잉", "배고프다", "호관아 뭐하냐"};
+                String[] messages = {"출석안해?", "오늘 학식 국밥이래", "너무 피곤하다", "말걸지마", "곧 시험기간이야"};
 
                 // 랜덤으로 문장 선택
                 int randomIndex = (int) (Math.random() * messages.length);
