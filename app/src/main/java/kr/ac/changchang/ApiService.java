@@ -77,4 +77,16 @@ public interface ApiService {
     // 사용자에게 과제 추가
     @POST("/api/assignment/add")
     Call<Void> addAssignment(@Body AssignmentRequest request);
+
+    // 사용자의 포인트 반환
+    @GET("/api/user/{userid}/points")
+    Call<Integer> getUserPoints(@Path("userid") int userId);
+
+    // 사용자에게 포인트 추가
+    @POST("api/user/{userId}/points")
+    Call<Void> updateUserPoints(
+            @Path("userId") int userId,
+            @Body PointsRequest pointsRequest
+    );
+
 }

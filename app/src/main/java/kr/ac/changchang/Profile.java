@@ -118,7 +118,7 @@ public class Profile extends AppCompatActivity {
         studentId.setText(String.valueOf(userid));
 
         getUserStat(userid);
-
+        getPoints(userid);
 
     }
     private void getUserStat(int userId) { // 유저 정보 들고오기
@@ -173,4 +173,32 @@ public class Profile extends AppCompatActivity {
             }
         });
     }
+    private void getPoints(int userId) {
+        Call<Integer> call = apiService.getUserPoints(userId);
+        call.enqueue(new Callback<Integer>() {
+            @Override
+            public void onResponse(Call<Integer> call, Response<Integer> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    int points = response.body();
+                    point.setText("Point : "+Integer.toString(response.body()));
+                } else {
+                    Toast.makeText(Profile.this, "포인트를 가져오지 못했습니다. 응답 코드: " + response.code(), Toast.LENGTH_SHORT).show();
+                    try {
+                        if (response.errorBody() != null) {
+                            Log.e("API_ERROR_BODY", response.errorBody().string());
+                        }
+                    } catch (Exception e) {
+                        Log.e("API_ERROR_BODY", "Error parsing error body", e);
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Integer> call, Throwable t) {
+                Toast.makeText(Profile.this, "서버 요청 실패: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                t.printStackTrace();
+            }
+        });
+    }
+
 }

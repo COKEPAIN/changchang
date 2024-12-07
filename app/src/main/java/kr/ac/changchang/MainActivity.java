@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
@@ -18,15 +19,21 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class MainActivity extends AppCompatActivity {
 
     ImageButton home, map, todo, shop, profile, book;
     ImageView changchang;
     Intent intent;
     TextView changsay;
-
+    ApiService apiService = RetrofitClient.getRetrofitInstance().create(ApiService.class); // api 설정하기 위한 변수
     int userid;
-
+    String title;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,29 +41,10 @@ public class MainActivity extends AppCompatActivity {
 
         // Intent로부터 전달받은 데이터 가져오기
         intent = getIntent();
-        String username = intent.getStringExtra("username");
-        int grade = intent.getIntExtra("grade", 0);
-        int health = intent.getIntExtra("health", 0);
-        int intel = intent.getIntExtra("intel", 0);
-        int stress = intent.getIntExtra("stress", 0);
-        int happiness = intent.getIntExtra("happiness", 0);
-        int focus = intent.getIntExtra("focus", 0);
-        int academicAbility = intent.getIntExtra("academicAbility", 0);
-        String title = intent.getStringExtra("title");
 
         userid = intent.getIntExtra("userid",0);
         intent.putExtra("userid",userid);
-        if (intent != null && intent.hasExtra("updatedTitle")) {
-            String updatedTitle = intent.getStringExtra("updatedTitle");
-
-            // UI 업데이트 (예: TextView에 변경된 칭호 표시)
-            TextView titleTextView = findViewById(R.id.changchangtitle);
-            titleTextView.setText(updatedTitle);
-        }else{
-            //창창이 타이틀
-            TextView changchangTItle = (TextView)findViewById(R.id.changchangtitle);
-            changchangTItle.setText(title);
-        }
+        getUserStat(userid);
 
         home = (ImageButton) findViewById(R.id.btn_home);
         map = (ImageButton) findViewById(R.id.btn_map);
@@ -146,5 +134,29 @@ public class MainActivity extends AppCompatActivity {
     private int dpToPx(int dp) {
         float density = getResources().getDisplayMetrics().density;
         return Math.round((float) dp * density);
+    }
+    private void getUserStat(int userId) {
+        Call<UserStatusResponse> call = apiService.getUserStatus(userId);
+
+        call.enqueue(new Callback<UserStatusResponse>() {
+            @Override
+            public void onResponse(Call<UserStatusResponse> call, Response<UserStatusResponse> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    UserStatusResponse userData = response.body();
+                    title = userData.getTitle().getName(); // 현재 칭호
+                    TextView changchangTItle = (TextView)findViewById(R.id.changchangtitle);
+                    changchangTItle.setText(title);
+
+                } else {
+                    Toast.makeText(MainActivity.this, "유저 데이터를 불러오지 못했습니다.", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<UserStatusResponse> call, Throwable t) {
+                Log.e("API_FAILURE", "Error: " + t.getMessage());
+                Toast.makeText(MainActivity.this, "API 호출 실패", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }

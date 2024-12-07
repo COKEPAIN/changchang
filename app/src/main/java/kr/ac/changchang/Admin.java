@@ -65,11 +65,25 @@ public class Admin extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // 출석 버튼 클릭 시, 메시지 토스트 출력
-                stress -= 5;
-                happiness += 5;
-                focus -= 5;
+                if(stress > 5){
+                    stress -= 5;
+                }else{
+                    stress =0;
+                }
+                if(happiness < 95){
+                    happiness += 5;
+                }else{
+                    happiness =100;
+                }
+                if(focus > 5){
+                    focus -= 5;
+                }else{
+                    focus =0;
+                }
+
 
                 updateUserStatus(userid, grade, stress, happiness, focus, academicAbility);
+                updateUserPoints(userid, 50);
                 Toast.makeText(Admin.this, "출석 반영 완료", Toast.LENGTH_SHORT).show();
             }
         });
@@ -79,9 +93,21 @@ public class Admin extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // 출석 버튼 클릭 시, 메시지 토스트 출력
-                stress += 5;
-                happiness -= 5;
-                focus += 5;
+                if(stress < 95){
+                    stress += 5;
+                }else{
+                    stress =100;
+                }
+                if(happiness > 5){
+                    happiness -= 5;
+                }else{
+                    happiness =0;
+                }
+                if(focus < 95){
+                    focus += 5;
+                }else{
+                    focus =100;
+                }
 
                 updateUserStatus(userid, grade, stress, happiness, focus, academicAbility);
                 Toast.makeText(Admin.this, "결석 반영 완료", Toast.LENGTH_SHORT).show();
@@ -155,7 +181,7 @@ public class Admin extends AppCompatActivity {
         });
     }
     private void addAssignment(int studentId, String subjectName, String deadline) {
-        AssignmentRequest request = new AssignmentRequest(studentId, subjectName, deadline);
+        AssignmentRequest request = new AssignmentRequest( studentId, subjectName, deadline);
 
         Call<Void> call = apiService.addAssignment(request);
         call.enqueue(new Callback<Void>() {
@@ -172,6 +198,29 @@ public class Admin extends AppCompatActivity {
                     } catch (Exception e) {
                         Log.e("API_ERROR_BODY", "Error parsing error body", e);
                     }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+                Toast.makeText(Admin.this, "서버 요청 실패: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                t.printStackTrace();
+            }
+
+
+        });
+    }
+    private void updateUserPoints(int userId, int points) {
+        PointsRequest pointsRequest = new PointsRequest(points);
+
+        Call<Void> call = apiService.updateUserPoints(userId, pointsRequest);
+        call.enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                if (response.isSuccessful()) {
+                    Toast.makeText(Admin.this, "포인트가 성공적으로 업데이트되었습니다.", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(Admin.this, "포인트 업데이트에 실패했습니다. 응답 코드: " + response.code(), Toast.LENGTH_SHORT).show();
                 }
             }
 
