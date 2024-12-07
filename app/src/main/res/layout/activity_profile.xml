@@ -564,5 +564,17 @@
                 android:scaleType="centerInside"
                 android:background="?attr/selectableItemBackgroundBorderless"/>
         </LinearLayout>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/admin"
+            android:text="Admin Page"
+            android:layout_gravity="end|bottom"
+            android:layout_marginBottom="90dp"
+            android:backgroundTint="@color/cija"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"/>
     </FrameLayout>
 </LinearLayout>
